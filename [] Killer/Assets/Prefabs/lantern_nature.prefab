@@ -9702,6 +9702,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 23861569580565672, guid: ddd05300a285e5946ae2723619ab32e4,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23861569580565672, guid: ddd05300a285e5946ae2723619ab32e4,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddd05300a285e5946ae2723619ab32e4, type: 3}
 --- !u!4 &5795198871944352637 stripped
