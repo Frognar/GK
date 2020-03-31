@@ -14,6 +14,8 @@ public class OptionMenu : MonoBehaviour
 
     public TMPro.TMP_Dropdown graphicDropdown;
 
+    public Toggle fulscreenToggle;
+
     Resolution[] resolutions;
 
     void Start()
@@ -44,6 +46,9 @@ public class OptionMenu : MonoBehaviour
         int qualitySettings = QualitySettings.GetQualityLevel();
         graphicDropdown.value = qualitySettings;
         graphicDropdown.RefreshShownValue();
+
+        bool isFullscreen = Screen.fullScreen;
+        fulscreenToggle.isOn = isFullscreen;
     }
 
     public void SetVolume (float volume)
