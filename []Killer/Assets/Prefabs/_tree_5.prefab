@@ -80,11 +80,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 4ced87296fde405449ae85007388206d, type: 2}
+      objectReference: {fileID: 2100000, guid: 5a244615eb587b84ca03000553d77f4d, type: 2}
     - target: {fileID: -927199367670048503, guid: 254181854e89d504697e9506bddd931c,
         type: 3}
       propertyPath: m_Name
       value: _tree_5
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 254181854e89d504697e9506bddd931c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 254181854e89d504697e9506bddd931c, type: 3}

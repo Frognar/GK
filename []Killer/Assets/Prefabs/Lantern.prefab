@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3120007436911447269}
   - component: {fileID: 3120007436911447271}
   - component: {fileID: 3120007436911447270}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3120007437313439607}
   - component: {fileID: 2291116200933722149}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lantern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 3120007437356750756}
   - component: {fileID: 3120007437356750758}
   - component: {fileID: 3120007437356750757}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 3120007437999986171}
   - component: {fileID: 3120007437999986173}
   - component: {fileID: 3120007437999986172}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,6 +302,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 858954498140318181, guid: 160aa1882eab9bd4aa3e0ee9f33197be,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1891685444240289609, guid: 160aa1882eab9bd4aa3e0ee9f33197be,
         type: 3}

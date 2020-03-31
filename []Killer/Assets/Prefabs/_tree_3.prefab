@@ -89,7 +89,12 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 06c800abf4fe60d4db7cc7fc6b603f14,
         type: 3}
       propertyPath: m_Name
-      value: _tree_3_merged
+      value: _tree_3
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 06c800abf4fe60d4db7cc7fc6b603f14,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06c800abf4fe60d4db7cc7fc6b603f14, type: 3}
