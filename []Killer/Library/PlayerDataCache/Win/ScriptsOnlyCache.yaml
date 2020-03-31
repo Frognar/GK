@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - MainMenu
     - MouseLook
     - OptionMenu
+    - PauseMenu
     - PlayerMovement
     Unity.RenderPipelines.Core.Runtime.dll:
     - UnityEngine.Rendering.UI.DebugUIHandlerBitField
@@ -110,19 +111,45 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
+      Script: {instanceID: 11394}
+    - Class: 114
+      Script: {instanceID: 11954}
+    - Class: 114
+      Script: {instanceID: 12532}
+    - Class: 114
+      Script: {instanceID: 13002}
+    - Class: 114
       Script: {instanceID: 13612}
     - Class: 114
-      Script: {instanceID: 15838}
+      Script: {instanceID: 14064}
     - Class: 114
-      Script: {instanceID: 16214}
+      Script: {instanceID: 14582}
     - Class: 114
-      Script: {instanceID: 16254}
+      Script: {instanceID: 14910}
+    - Class: 114
+      Script: {instanceID: 15086}
+    - Class: 114
+      Script: {instanceID: 15240}
+    - Class: 114
+      Script: {instanceID: 15840}
+    - Class: 114
+      Script: {instanceID: 15970}
+    - Class: 114
+      Script: {instanceID: 16216}
+    - Class: 114
+      Script: {instanceID: 16250}
+    - Class: 114
+      Script: {instanceID: 16256}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 135
       Script: {instanceID: 0}
@@ -138,7 +165,15 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 196
       Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
     - Class: 218
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
       Script: {instanceID: 0}
     - Class: 73398921
       Script: {instanceID: 0}
@@ -240,39 +275,39 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14824}
     - Class: 114
-      Script: {instanceID: 15084}
+      Script: {instanceID: 15086}
     - Class: 114
-      Script: {instanceID: 15220}
+      Script: {instanceID: 15222}
     - Class: 114
-      Script: {instanceID: 15238}
+      Script: {instanceID: 15240}
     - Class: 114
-      Script: {instanceID: 15304}
+      Script: {instanceID: 15306}
     - Class: 114
-      Script: {instanceID: 15646}
+      Script: {instanceID: 15648}
     - Class: 114
-      Script: {instanceID: 15698}
+      Script: {instanceID: 15700}
     - Class: 114
-      Script: {instanceID: 15848}
+      Script: {instanceID: 15850}
     - Class: 114
-      Script: {instanceID: 15914}
+      Script: {instanceID: 15916}
     - Class: 114
-      Script: {instanceID: 15968}
-    - Class: 114
-      Script: {instanceID: 16206}
+      Script: {instanceID: 15970}
     - Class: 114
       Script: {instanceID: 16208}
     - Class: 114
-      Script: {instanceID: 16248}
+      Script: {instanceID: 16210}
     - Class: 114
-      Script: {instanceID: 16280}
+      Script: {instanceID: 16250}
     - Class: 114
-      Script: {instanceID: 16284}
+      Script: {instanceID: 16282}
     - Class: 114
-      Script: {instanceID: 16336}
+      Script: {instanceID: 16286}
     - Class: 114
-      Script: {instanceID: 16450}
+      Script: {instanceID: 16338}
     - Class: 114
-      Script: {instanceID: 16456}
+      Script: {instanceID: 16452}
+    - Class: 114
+      Script: {instanceID: 16458}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1078,6 +1113,12 @@ ScriptsOnlyBuild:
     className: HDRenderPipelineEditorResources
   - hash:
       serializedVersion: 2
+      Hash: c8c5e65e9fb858572516474d6e2102bc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PauseMenu
+  - hash:
+      serializedVersion: 2
       Hash: 6254799d090249e4f3dac25375ca0cee
     assemblyName: Unity.RenderPipelines.HighDefinition.Runtime.dll
     namespaceName: UnityEngine.Rendering.HighDefinition
@@ -1458,4 +1499,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/Menu.unity
   - Assets/Scenes/Game.unity
-  playerPath: C:/Users/Frogi/Desktop/test/[]Killer.exe
+  playerPath: C:/Users/Frogi/Desktop/[]Killer/[]Killer.exe

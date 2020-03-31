@@ -12,6 +12,8 @@ public class OptionMenu : MonoBehaviour
 
     public TMPro.TMP_Dropdown resolutionDropdown;
 
+    public TMPro.TMP_Dropdown graphicDropdown;
+
     Resolution[] resolutions;
 
     void Start()
@@ -38,6 +40,10 @@ public class OptionMenu : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
+
+        int qualitySettings = QualitySettings.GetQualityLevel();
+        graphicDropdown.value = qualitySettings;
+        graphicDropdown.RefreshShownValue();
     }
 
     public void SetVolume (float volume)
