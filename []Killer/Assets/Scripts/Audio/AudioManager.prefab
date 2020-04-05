@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4940821583634392753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4940821583634392752}
+  - component: {fileID: 4940821583634392766}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4940821583634392752
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4940821583634392753}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4940821583634392766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4940821583634392753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27269fd4ebcea1e4b880c013f94687d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: GameTheme0
+    clip: {fileID: 8300000, guid: 9fdbc7aee3a8a4a48a41f4a8a0521015, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68,
+      type: 2}
+    source: {fileID: 0}
+  - name: GameTheme1
+    clip: {fileID: 8300000, guid: 9e0b178d12236c24790699bb6123f95f, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68,
+      type: 2}
+    source: {fileID: 0}
+  - name: GameTheme2
+    clip: {fileID: 8300000, guid: e6a2b57541b0a2441bd196dc4b266ed2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68,
+      type: 2}
+    source: {fileID: 0}
+  - name: GameTheme3
+    clip: {fileID: 8300000, guid: fff04bd8fbc95bd4cb43903aebdd8124, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68,
+      type: 2}
+    source: {fileID: 0}
+  - name: GameTheme4
+    clip: {fileID: 8300000, guid: 6bc07f21534250a4b929a2dd18b71b46, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68,
+      type: 2}
+    source: {fileID: 0}
+  - name: GameTheme5
+    clip: {fileID: 8300000, guid: 258e90fb428109f439d6e58ea3e3948c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68,
+      type: 2}
+    source: {fileID: 0}
