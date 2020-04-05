@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class MusicPlayer : MonoBehaviour
 {
@@ -8,13 +9,15 @@ public class MusicPlayer : MonoBehaviour
     [SerializeField] int musicIndex;
     private float timeOfClip = 0;
     private float time = 0;
-    [SerializeField] float volume = 0.7f;
     AudioSource audioSource;
+
+    public AudioMixerGroup masterAudioGroup;
 
     // Start is called before the first frame update
     void Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.outputAudioMixerGroup = masterAudioGroup;
         PlayMusic(musicClips[musicIndex]);
     }
 
@@ -35,13 +38,7 @@ public class MusicPlayer : MonoBehaviour
     void PlayMusic(AudioClip musicClip)
     {
         audioSource.clip = musicClip;
-        audioSource.volume = volume;
         timeOfClip = musicClips[musicIndex].length;
         audioSource.Play();
-    }
-
-    public void SetVolume(float newVolume)
-    {
-        volume = newVolume;
     }
 }
