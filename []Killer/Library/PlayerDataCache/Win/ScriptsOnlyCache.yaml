@@ -1,9 +1,10 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AudioManager
     - MainMenu
     - MouseLook
-    - MusicPlayer
+    - OnMouseOver
     - OptionMenu
     - PauseMenu
     - PlayerMovement
@@ -139,39 +140,41 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12782}
     - Class: 114
-      Script: {instanceID: 12802}
+      Script: {instanceID: 12786}
     - Class: 114
-      Script: {instanceID: 13264}
+      Script: {instanceID: 13268}
     - Class: 114
-      Script: {instanceID: 13374}
+      Script: {instanceID: 13378}
     - Class: 114
-      Script: {instanceID: 13674}
+      Script: {instanceID: 13678}
     - Class: 114
-      Script: {instanceID: 13706}
+      Script: {instanceID: 13710}
     - Class: 114
-      Script: {instanceID: 14072}
+      Script: {instanceID: 14076}
     - Class: 114
-      Script: {instanceID: 14162}
+      Script: {instanceID: 14166}
     - Class: 114
-      Script: {instanceID: 14420}
+      Script: {instanceID: 14424}
     - Class: 114
-      Script: {instanceID: 14592}
+      Script: {instanceID: 14596}
     - Class: 114
-      Script: {instanceID: 14730}
+      Script: {instanceID: 14734}
     - Class: 114
-      Script: {instanceID: 15424}
+      Script: {instanceID: 15428}
     - Class: 114
-      Script: {instanceID: 15488}
+      Script: {instanceID: 15492}
     - Class: 114
-      Script: {instanceID: 15658}
+      Script: {instanceID: 15662}
     - Class: 114
-      Script: {instanceID: 15670}
+      Script: {instanceID: 15674}
     - Class: 114
-      Script: {instanceID: 15684}
+      Script: {instanceID: 15688}
     - Class: 114
-      Script: {instanceID: 15734}
+      Script: {instanceID: 15738}
     - Class: 114
-      Script: {instanceID: 15810}
+      Script: {instanceID: 15814}
+    - Class: 114
+      Script: {instanceID: 24462}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -231,6 +234,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 109
@@ -268,77 +273,81 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12782}
     - Class: 114
-      Script: {instanceID: 12854}
+      Script: {instanceID: 12786}
     - Class: 114
-      Script: {instanceID: 12914}
+      Script: {instanceID: 12858}
     - Class: 114
-      Script: {instanceID: 12990}
+      Script: {instanceID: 12918}
     - Class: 114
-      Script: {instanceID: 13150}
+      Script: {instanceID: 12994}
     - Class: 114
-      Script: {instanceID: 13200}
+      Script: {instanceID: 13154}
     - Class: 114
-      Script: {instanceID: 13264}
+      Script: {instanceID: 13204}
     - Class: 114
-      Script: {instanceID: 13380}
+      Script: {instanceID: 13268}
     - Class: 114
-      Script: {instanceID: 13706}
+      Script: {instanceID: 13384}
     - Class: 114
-      Script: {instanceID: 13734}
+      Script: {instanceID: 13710}
     - Class: 114
-      Script: {instanceID: 13896}
+      Script: {instanceID: 13738}
     - Class: 114
-      Script: {instanceID: 14078}
+      Script: {instanceID: 13900}
     - Class: 114
-      Script: {instanceID: 14158}
+      Script: {instanceID: 14082}
     - Class: 114
       Script: {instanceID: 14162}
     - Class: 114
-      Script: {instanceID: 14180}
+      Script: {instanceID: 14166}
     - Class: 114
-      Script: {instanceID: 14186}
+      Script: {instanceID: 14184}
     - Class: 114
-      Script: {instanceID: 14322}
+      Script: {instanceID: 14190}
     - Class: 114
-      Script: {instanceID: 14358}
+      Script: {instanceID: 14326}
     - Class: 114
-      Script: {instanceID: 14366}
+      Script: {instanceID: 14362}
     - Class: 114
-      Script: {instanceID: 14592}
+      Script: {instanceID: 14370}
     - Class: 114
-      Script: {instanceID: 14712}
+      Script: {instanceID: 14596}
     - Class: 114
-      Script: {instanceID: 14730}
+      Script: {instanceID: 14716}
     - Class: 114
-      Script: {instanceID: 14790}
+      Script: {instanceID: 14734}
     - Class: 114
-      Script: {instanceID: 15096}
+      Script: {instanceID: 14794}
     - Class: 114
-      Script: {instanceID: 15148}
+      Script: {instanceID: 15100}
     - Class: 114
-      Script: {instanceID: 15306}
+      Script: {instanceID: 15152}
     - Class: 114
-      Script: {instanceID: 15374}
+      Script: {instanceID: 15310}
     - Class: 114
-      Script: {instanceID: 15424}
+      Script: {instanceID: 15378}
     - Class: 114
-      Script: {instanceID: 15488}
+      Script: {instanceID: 15428}
     - Class: 114
-      Script: {instanceID: 15620}
+      Script: {instanceID: 15492}
     - Class: 114
-      Script: {instanceID: 15622}
+      Script: {instanceID: 15624}
     - Class: 114
-      Script: {instanceID: 15658}
+      Script: {instanceID: 15626}
     - Class: 114
-      Script: {instanceID: 15684}
+      Script: {instanceID: 15662}
     - Class: 114
       Script: {instanceID: 15688}
     - Class: 114
-      Script: {instanceID: 15734}
+      Script: {instanceID: 15692}
     - Class: 114
-      Script: {instanceID: 15832}
+      Script: {instanceID: 15738}
     - Class: 114
-      Script: {instanceID: 15838}
+      Script: {instanceID: 15836}
+    - Class: 114
+      Script: {instanceID: 15842}
+    - Class: 114
+      Script: {instanceID: 24462}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -674,6 +683,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualEffectGraph.Runtime.dll
     namespaceName: UnityEngine.VFX.Utility
     className: VFXTerrainBinder
+  - hash:
+      serializedVersion: 2
+      Hash: f4120f3b92ebb5b74d2f48bbd18d7f3a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AudioManager
   - hash:
       serializedVersion: 2
       Hash: cc4274b586df3c02688bac01b88bd16c
@@ -1394,6 +1409,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualEffectGraph.Runtime.dll
     namespaceName: UnityEngine.VFX.Utility
     className: VFXUISliderBinder
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: OnMouseOver
   platform: 5
   scenePathNames:
   - Assets/Scenes/Menu/Menu.unity

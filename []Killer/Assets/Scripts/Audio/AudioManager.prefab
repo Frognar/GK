@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4940821583634392753}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -46,7 +46,7 @@ MonoBehaviour:
   sounds:
   - name: GameTheme0
     clip: {fileID: 8300000, guid: 9fdbc7aee3a8a4a48a41f4a8a0521015, type: 3}
-    volume: 1
+    volume: 0.4
     pitch: 1
     loop: 0
     outputAudioMixerGroup: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68,
@@ -54,7 +54,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: GameTheme1
     clip: {fileID: 8300000, guid: 9e0b178d12236c24790699bb6123f95f, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     loop: 0
     outputAudioMixerGroup: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68,
@@ -62,7 +62,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: GameTheme2
     clip: {fileID: 8300000, guid: e6a2b57541b0a2441bd196dc4b266ed2, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     loop: 0
     outputAudioMixerGroup: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68,
@@ -70,7 +70,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: GameTheme3
     clip: {fileID: 8300000, guid: fff04bd8fbc95bd4cb43903aebdd8124, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     loop: 0
     outputAudioMixerGroup: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68,
@@ -78,7 +78,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: GameTheme4
     clip: {fileID: 8300000, guid: 6bc07f21534250a4b929a2dd18b71b46, type: 3}
-    volume: 1
+    volume: 0.3
     pitch: 1
     loop: 0
     outputAudioMixerGroup: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68,
@@ -86,6 +86,14 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: GameTheme5
     clip: {fileID: 8300000, guid: 258e90fb428109f439d6e58ea3e3948c, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68,
+      type: 2}
+    source: {fileID: 0}
+  - name: ButtonHoverSound
+    clip: {fileID: 8300000, guid: 0a7396d409e5fdd4c8f2244993dfdf6d, type: 3}
     volume: 1
     pitch: 1
     loop: 0
