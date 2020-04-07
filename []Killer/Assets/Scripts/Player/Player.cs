@@ -2,32 +2,49 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IKillable<int>
 {
-    public int maxHealth = 100;
-    public int currentHealth;
-
-    public HealthBar healthBar;
-
-    void Start()
-    {
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
-    }
+    // -----------IKillable-----------
+    public int health { get; set; }
+    public int maxHealth { get; set; }
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        if (currentHealth <= 0)
-            Death();
-        else
-            FindObjectOfType<AudioManager>().Play("PlayerTakenDamage");
+        health -= damage;
 
-        healthBar.SetHealth(currentHealth);
+        if (health <= 0)
+            Die();
+        else
+            FindObjectOfType<AudioManager>().Play("EnemyTakeDamage");
+
+        healthBar.SetHealth(health);
     }
 
-    private void Death()
+    public void Die()
     {
         FindObjectOfType<AudioManager>().Play("PlayerDeath");
+        Respawn();
     }
+    // -------------------------------
+    public HealthBar healthBar;
+    public Transform spawn;
+
+    Player()
+    {
+        maxHealth = 100;
+        health = maxHealth;
+    }
+
+    void Start()
+    {
+        healthBar.SetMaxHealth(maxHealth);
+        gameObject.transform.position = spawn.position;
+    }
+
+    void Respawn()
+    {
+        health = maxHealth;
+        gameObject.transform.position = spawn.position;
+    }
+
 }

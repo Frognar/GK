@@ -1,12 +1,51 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IKillable<int>
 {
-    public int maxHealth = 100;
-    public int currentHealth;
+    // -----------IKillable-----------
+    public int health { get; set; }
+    public int maxHealth { get; set; }
+
+    public void TakeDamage(int damage) {
+        health -= damage;
+
+        if (health <= 0)
+            Die();
+        else
+            FindObjectOfType<AudioManager>().Play("EnemyTakeDamage");
+
+        healthBar.SetHealth(health);
+    }
+    
+    public void Die() {
+        FindObjectOfType<AudioManager>().Play("EnemyDeath");
+        Gradient gradient;
+        GradientColorKey[] colorKey;
+        GradientAlphaKey[] alphaKey;
+
+        gradient = new Gradient();
+        colorKey = new GradientColorKey[1];
+        alphaKey = new GradientAlphaKey[2];
+        colorKey[0].color = gameObject.GetComponentInChildren<MeshRenderer>().material.GetColor("_BaseColor");
+        Debug.Log(colorKey[0].color);
+        colorKey[0].time = 0f;
+        alphaKey[0].alpha = 1f;
+        alphaKey[0].time = 0f;
+        gradient.SetKeys(colorKey, alphaKey);
+
+        GameObject deathEffect = Instantiate(enemyDeath, gameObject.transform.position + new Vector3(0f, .5f, 0f), Quaternion.LookRotation(new Vector3(0f, 0f, 0f)));
+        VisualEffect death = deathEffect.GetComponent<VisualEffect>();
+        death.SetGradient("Color", gradient);
+        death.Play();
+        
+        Destroy(deathEffect, 5f);
+        Destroy(gameObject, .1f);
+    }
+    // -------------------------------
 
     public int damage = 10;
 
@@ -15,12 +54,23 @@ public class Enemy : MonoBehaviour
 
     Transform target;
     NavMeshAgent agent;
+    public GameObject enemyDeath;
 
     public HealthBar healthBar;
+    public GameObject fireball;
+    public float fireballSpeed = 20f;
+    public float fireballFireRate = .5f;
+    private float nextTimeToFire = 0f;
+    public Transform fbSpawner;
+
+    Enemy()
+    {
+        maxHealth = 100;
+        health = maxHealth;
+    }
 
     void Start()
     {
-        currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
 
         target = PlayerManager.instance.player.transform;
@@ -37,7 +87,12 @@ public class Enemy : MonoBehaviour
             if (distance <= attackRadius)
             {
                 FaceTarget();
-                AttackTarget();
+
+                if (Time.time >= nextTimeToFire && Time.timeScale > 0f)
+                {
+                    nextTimeToFire = Time.time + 1f / fireballFireRate;
+                    AttackTarget();
+                }
             }
             agent.SetDestination(target.position);
         }
@@ -52,27 +107,13 @@ public class Enemy : MonoBehaviour
 
     void AttackTarget()
     {
-        ;
+        GameObject fireBall = Instantiate(fireball, fbSpawner.position, transform.rotation);
+        Rigidbody rb = fireBall.GetComponent<Rigidbody>();
+        rb.velocity = transform.forward * fireballSpeed;
+        Destroy(fireBall, 5f);
     }
 
-    public void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
-        if (currentHealth <= 0)
-            Death();
-        else
-            FindObjectOfType<AudioManager>().Play("EnemyTakeDamage");
-
-        healthBar.SetHealth(currentHealth);
-    }
-
-    void Death()
-    {
-        FindObjectOfType<AudioManager>().Play("EnemyDeath");
-        Destroy(gameObject);
-    }
-
-    void OnDrawGizmosSelected()
+    void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRadius);

@@ -116,3 +116,43 @@ MonoBehaviour:
     outputAudioMixerGroup: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68,
       type: 2}
     source: {fileID: 0}
+  - name: EnemyTakeDamage
+    clip: {fileID: 8300000, guid: 33a3655701bbfb34e8a588e2e1f11d89, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68,
+      type: 2}
+    source: {fileID: 0}
+  - name: EnemyDeath
+    clip: {fileID: 8300000, guid: 38d96dedbb4288b4aa8c2ae17960aee4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68,
+      type: 2}
+    source: {fileID: 0}
+  - name: RifleShot
+    clip: {fileID: 8300000, guid: 95449fbf1e9672548877e63ae7109a33, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68,
+      type: 2}
+    source: {fileID: 0}
+  - name: ShotgunShot
+    clip: {fileID: 8300000, guid: ab4216bf4c92b24478d936c3d63c1b67, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68,
+      type: 2}
+    source: {fileID: 0}
+  - name: PistolShot
+    clip: {fileID: 8300000, guid: 6c83dda2a0157a248bb8dc766b766ea0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68,
+      type: 2}
+    source: {fileID: 0}
