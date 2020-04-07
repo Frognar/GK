@@ -100,3 +100,19 @@ MonoBehaviour:
     outputAudioMixerGroup: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68,
       type: 2}
     source: {fileID: 0}
+  - name: PlayerTakenDamage
+    clip: {fileID: 8300000, guid: fd469b6b186535a40b97b2e8f0445ddc, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68,
+      type: 2}
+    source: {fileID: 0}
+  - name: PlayerDeath
+    clip: {fileID: 8300000, guid: 971ff6034bcb0bf47996cadaf3c993c0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    outputAudioMixerGroup: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68,
+      type: 2}
+    source: {fileID: 0}
