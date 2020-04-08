@@ -1,2 +1,98 @@
 Base path: 'C:/Program Files/Unity/Editor/2019.3.7f1/Editor/Data', plugins path 'C:/Program Files/Unity/Editor/2019.3.7f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
+Cmd: preprocessCompute
+  insize=1366 outsize=1372 ok=1
+Cmd: preprocessCompute
+  insize=5013 outsize=5015 ok=1
+Cmd: preprocessCompute
+  insize=10326 outsize=10338 ok=1
+Cmd: preprocessCompute
+  insize=1163 outsize=1165 ok=1
+Cmd: preprocessCompute
+  insize=6372 outsize=6374 ok=1
+Cmd: preprocessCompute
+  insize=5816 outsize=5818 ok=1
+Cmd: preprocess
+  insize=39496 outsize=631 ok=1
+Cmd: preprocessCompute
+  insize=1968 outsize=1970 ok=1
+Cmd: preprocessCompute
+  insize=6423 outsize=6425 ok=1
+Cmd: preprocessCompute
+  insize=7831 outsize=7833 ok=1
+Cmd: preprocess
+  insize=39633 outsize=629 ok=1
+Cmd: preprocessCompute
+  insize=1971 outsize=1973 ok=1
+Cmd: preprocessCompute
+  insize=6334 outsize=6336 ok=1
+Cmd: preprocessCompute
+  insize=5808 outsize=5810 ok=1
+Cmd: preprocess
+  insize=39493 outsize=636 ok=1
+Cmd: preprocessCompute
+  insize=1968 outsize=1970 ok=1
+Cmd: preprocessCompute
+  insize=6370 outsize=6372 ok=1
+Cmd: preprocessCompute
+  insize=5808 outsize=5810 ok=1
+Cmd: preprocess
+  insize=39491 outsize=634 ok=1
+Cmd: preprocessCompute
+  insize=1968 outsize=1970 ok=1
+Cmd: preprocessCompute
+  insize=6346 outsize=6348 ok=1
+Cmd: preprocessCompute
+  insize=5822 outsize=5824 ok=1
+Cmd: preprocess
+  insize=39513 outsize=637 ok=1
+Cmd: preprocessCompute
+  insize=1969 outsize=1971 ok=1
+Cmd: preprocessCompute
+  insize=6339 outsize=6341 ok=1
+Cmd: preprocessCompute
+  insize=6283 outsize=6285 ok=1
+Cmd: preprocess
+  insize=39511 outsize=635 ok=1
+Cmd: preprocessCompute
+  insize=1969 outsize=1971 ok=1
+Cmd: preprocessCompute
+  insize=6338 outsize=6340 ok=1
+Cmd: preprocessCompute
+  insize=5822 outsize=5824 ok=1
+Cmd: preprocess
+  insize=39502 outsize=626 ok=1
+Cmd: preprocessCompute
+  insize=1969 outsize=1971 ok=1
+Cmd: preprocessCompute
+  insize=10664 outsize=10666 ok=1
+Cmd: preprocess
+  insize=39988 outsize=631 ok=1
+Cmd: preprocessCompute
+  insize=9836 outsize=9838 ok=1
+Cmd: preprocessCompute
+  insize=1969 outsize=1971 ok=1
+Cmd: preprocessCompute
+  insize=6370 outsize=6372 ok=1
+Cmd: preprocessCompute
+  insize=5808 outsize=5810 ok=1
+Cmd: preprocess
+  insize=39492 outsize=634 ok=1
+Cmd: preprocessCompute
+  insize=1968 outsize=1970 ok=1
+Cmd: preprocessCompute
+  insize=5421 outsize=5423 ok=1
+Cmd: preprocessCompute
+  insize=4896 outsize=4898 ok=1
+Cmd: preprocess
+  insize=39227 outsize=630 ok=1
+Cmd: preprocessCompute
+  insize=1926 outsize=1928 ok=1
+Cmd: preprocessCompute
+  insize=6386 outsize=6388 ok=1
+Cmd: preprocessCompute
+  insize=5808 outsize=5810 ok=1
+Cmd: preprocess
+  insize=39494 outsize=637 ok=1
+Cmd: preprocessCompute
+  insize=1968 outsize=1970 ok=1

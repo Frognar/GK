@@ -112,7 +112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 218a25f294c911948af7f42266c3af53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
   healthBar: {fileID: 7114045847021111411}
   bar: {fileID: 7114045847021111409}
 --- !u!1 &7114045847008872100
@@ -414,7 +413,7 @@ GameObject:
   - component: {fileID: 7114045847996367469}
   m_Layer: 13
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -448,15 +447,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859e278d3e423a04aa4a04c7e056ee5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  lookRadius: 40
-  attackRadius: 20
+  lookRadius: 100
+  attackRadius: 30
   enemyDeath: {fileID: 1244048475266233037, guid: 8b2463b2545d6864d867d2cf1dc9ff83,
     type: 3}
   healthBar: {fileID: 7114045847021111411}
   fireball: {fileID: 4333735131589390889, guid: de3ea7acde6b0604c9d09cfbba70268b,
     type: 3}
-  fireballSpeed: 20
+  fireballSpeed: 30
   fireballFireRate: 2
   fbSpawner: {fileID: 7114045847385222838}
 --- !u!195 &7114045847996367379

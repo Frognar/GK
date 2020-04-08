@@ -8,19 +8,17 @@ public class Fireball : MonoBehaviour
 
     public GameObject explosionVFX;
 
-
-
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag != "Enemy" && other.tag != "Bullet")
         {
-            PlayerManager.instance.player.GetComponent<Player>().TakeDamage(50);
-            Debug.Log("Player");
+            if (other.tag == "Player")
+                PlayerManager.instance.player.GetComponent<Player>().TakeDamage(50);
+            GameObject explosion = Instantiate(explosionVFX, transform.position, transform.rotation);
+            explosion.GetComponent<VisualEffect>().Play();
+            Destroy(explosion, 3f);
+            Destroy(gameObject);
         }
-        GameObject explosion = Instantiate(explosionVFX, transform.position, transform.rotation);
-        explosion.GetComponent<VisualEffect>().Play();
-        Destroy(explosion, 3f);
-        Destroy(gameObject);
     }
 
 }

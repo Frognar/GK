@@ -51,7 +51,7 @@ public class Rifle : MonoBehaviour, IShotable<int>
     public void Update()
     {
 
-        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire && Time.timeScale > 0f)
+        if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire && Time.timeScale > 0f && PlayerManager.instance.player.GetComponent<Player>().isAlive)
         {
             nextTimeToFire = Time.time + 1f / fireRate;
             Shot();

@@ -47,8 +47,6 @@ public class Enemy : MonoBehaviour, IKillable<int>
     }
     // -------------------------------
 
-    public int damage = 10;
-
     public float lookRadius = 15f;
     public float attackRadius = 10f;
 
@@ -109,7 +107,7 @@ public class Enemy : MonoBehaviour, IKillable<int>
     {
         GameObject fireBall = Instantiate(fireball, fbSpawner.position, transform.rotation);
         Rigidbody rb = fireBall.GetComponent<Rigidbody>();
-        rb.velocity = transform.forward * fireballSpeed;
+        rb.velocity = (target.position - transform.position).normalized * fireballSpeed;//transform.forward * fireballSpeed;
         Destroy(fireBall, 5f);
     }
 

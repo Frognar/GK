@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4598613609156114804}
   - component: {fileID: 2933855334567019829}
   m_Layer: 0
-  m_Name: GunImpactEffect
-  m_TagString: Untagged
+  m_Name: PistolIImpactEffect
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

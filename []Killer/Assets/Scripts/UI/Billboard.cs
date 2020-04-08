@@ -6,9 +6,14 @@ using UnityEngine.UI;
 public class Billboard : MonoBehaviour
 {
 
-    public Transform cam;
+    Transform cam;
     public HealthBar healthBar;
     public GameObject bar;
+
+    void Start()
+    {
+        cam = PlayerManager.instance.player.transform.Find("Camera");
+    }
 
     void Update()
     {
