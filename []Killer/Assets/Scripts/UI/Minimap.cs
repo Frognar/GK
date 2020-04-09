@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Minimap : MonoBehaviour
 {
+    private Transform player;
 
-    public Transform player;
+    void Start()
+    {
+        player = Player.instance.transform;
+    }
 
     void LateUpdate()
     {

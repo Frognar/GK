@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2958227824668658542}
   - component: {fileID: 2865566831536094957}
   - component: {fileID: 2709687840855150918}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 4922216354714149641}
   - component: {fileID: 1942589768022753649}
   - component: {fileID: 477139796332759920}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 3515943331067731450}
   - component: {fileID: 1214845709991605798}
   - component: {fileID: 4730675652724531822}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,13 +289,13 @@ GameObject:
   m_Component:
   - component: {fileID: 2334435673677394396}
   - component: {fileID: 3844375120918891517}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2334435673677394396
 Transform:
   m_ObjectHideFlags: 0
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fpsCam: {fileID: 0}
   shotEffect: {fileID: 9214633741638484155}
-  impactEffect: {fileID: 6304981931472472505, guid: aafd538c44167b54f9e6da7725e5c3a2,
+  impactEffect: {fileID: 3040826003949266460, guid: 7ca2ebfe6c3c761478778b03d929aced,
     type: 3}
 --- !u!1 &7282094373908837381
 GameObject:
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 8591919340649148732}
   - component: {fileID: 6636754954031708474}
   - component: {fileID: 1916216086965906051}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -435,7 +435,7 @@ GameObject:
   - component: {fileID: 9179715669688474203}
   - component: {fileID: 9214633741638484155}
   - component: {fileID: 4736220761409907038}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PistolShotEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,30 +464,108 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7642454694548788699}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: bc1a34d978b429a47931dfd655037caf, type: 3}
-  m_InitialEventName: OnPlay
-  m_InitialEventNameOverriden: 0
+  m_Asset: {fileID: 8926484042661614526, guid: 0d851c45da02d504faa48b86937b45f2, type: 3}
+  m_InitialEventName: 
+  m_InitialEventNameOverriden: 1
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_PropertySheet:
     m_Float:
       m_Array: []
     m_Vector2f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0.1, y: 0.4}
+        m_Name: Lifetime
+        m_Overridden: 1
     m_Vector3f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: -0.5, y: -0.5, z: 0.3}
+        m_Name: MinVelocity
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: 0.5, z: 0.8}
+        m_Name: MaxVelocity
+        m_Overridden: 1
     m_Vector4f:
       m_Array: []
     m_Uint:
-      m_Array: []
+      m_Array:
+      - m_Value: 5
+        m_Name: ParticleCount
+        m_Overridden: 1
     m_Int:
       m_Array: []
     m_Matrix4x4f:
       m_Array: []
     m_AnimationCurve:
-      m_Array: []
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0.1
+            inSlope: 0.10000001
+            outSlope: 0.10000001
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.5
+            value: 0.15
+            inSlope: -0.1
+            outSlope: -0.1
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: -0.3
+            outSlope: -0.3
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        m_Name: Size
+        m_Overridden: 1
     m_Gradient:
-      m_Array: []
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 2.9960785, g: 0.5019608, b: 0.45490196, a: 0}
+          key1: {r: 2.1185474, g: 1.1313709, b: 0.25511304, a: 1}
+          key2: {r: 1.4980392, g: 0.1882353, b: 0.16470589, a: 1}
+          key3: {r: 0.5943396, g: 0, b: 0.017823229, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 4048
+          ctime1: 11758
+          ctime2: 33539
+          ctime3: 65535
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 4433
+          atime2: 50308
+          atime3: 64764
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_NumColorKeys: 4
+          m_NumAlphaKeys: 4
+        m_Name: Color
+        m_Overridden: 1
     m_NamedObject:
       m_Array: []
     m_Bool:

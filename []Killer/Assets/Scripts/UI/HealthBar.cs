@@ -20,9 +20,7 @@ public class HealthBar : MonoBehaviour
 
     public bool IsMaxValue()
     {
-        if (slider.value == slider.maxValue)
-            return true;
-        return false;
+        return slider.value == slider.maxValue;
     }
 
 }

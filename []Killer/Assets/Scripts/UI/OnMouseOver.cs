@@ -5,6 +5,6 @@ public class OnMouseOver : MonoBehaviour, IPointerEnterHandler
 {
     public void OnPointerEnter(PointerEventData eventData)
     {
-        FindObjectOfType<AudioManager>().Play("ButtonHoverSound");
+        AudioManager.instance.Play("ButtonHoverSound");
     }
 }

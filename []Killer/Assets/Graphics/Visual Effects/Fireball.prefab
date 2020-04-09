@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7122228015565670466}
   - component: {fileID: 969509259483079050}
   - component: {fileID: 6741875917804146619}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fireball
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ VisualEffect:
   m_GameObject: {fileID: 4333735131589390889}
   m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: cadb196b4d229664c956fb0924981673, type: 3}
-  m_InitialEventName: OnPlay
+  m_InitialEventName: 
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1

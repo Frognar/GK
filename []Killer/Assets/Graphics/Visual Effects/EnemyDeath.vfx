@@ -18,9 +18,9 @@ MonoBehaviour:
   categories: []
   uiBounds:
     serializedVersion: 2
-    x: 501
+    x: 454
     y: -133
-    width: 834
+    width: 881
     height: 1781
 --- !u!114 &114350483966674976
 MonoBehaviour:
@@ -806,36 +806,36 @@ VisualEffectResource:
         data[1]: -1
         data[2]: -1
         data[3]: 3
-      - op: 6
+      - op: 1
         valueIndex: 16
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
+        data[3]: 3
+      - op: 6
+        valueIndex: 19
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: -1
       - op: 1
-        valueIndex: 17
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 3
-      - op: 1
         valueIndex: 20
         data[0]: -1
         data[1]: -1
         data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 21
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
-        data[3]: 1
-      - op: 1
-        valueIndex: 22
-        data[0]: -1
-        data[1]: -1
-        data[2]: -1
         data[3]: 3
+      - op: 1
+        valueIndex: 23
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
+        data[3]: 1
+      - op: 1
+        valueIndex: 24
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
+        data[3]: 1
       - op: 1
         valueIndex: 25
         data[0]: -1
@@ -859,15 +859,21 @@ VisualEffectResource:
         data[0]: -1
         data[1]: -1
         data[2]: -1
+        data[3]: 3
+      - op: 1
+        valueIndex: 37
+        data[0]: -1
+        data[1]: -1
+        data[2]: -1
         data[3]: 2
       - op: 1
-        valueIndex: 36
+        valueIndex: 39
         data[0]: -1
         data[1]: -1
         data[2]: -1
         data[3]: 7
       - op: 9
-        valueIndex: 37
+        valueIndex: 40
         data[0]: -1
         data[1]: -1
         data[2]: -1
@@ -888,30 +894,32 @@ VisualEffectResource:
           m_Value: 0.5
         - m_ExpressionIndex: 8
           m_Value: 0.1
-        - m_ExpressionIndex: 12
-          m_Value: 5
         - m_ExpressionIndex: 13
+          m_Value: 5
+        - m_ExpressionIndex: 14
           m_Value: 2
       m_Vector2f:
         m_Array:
         - m_ExpressionIndex: 1
           m_Value: {x: 500, y: 1500}
-        - m_ExpressionIndex: 18
+        - m_ExpressionIndex: 19
           m_Value: {x: 0, y: 0}
       m_Vector3f:
         m_Array:
         - m_ExpressionIndex: 9
-          m_Value: {x: 0, y: -1, z: 0}
-        - m_ExpressionIndex: 11
-          m_Value: {x: 0, y: -9.81, z: 0}
-        - m_ExpressionIndex: 14
-          m_Value: {x: 2, y: 4, z: 2}
-        - m_ExpressionIndex: 15
-          m_Value: {x: -2, y: 0, z: -2}
-        - m_ExpressionIndex: 16
-          m_Value: {x: 2, y: 3, z: 2}
-        - m_ExpressionIndex: 17
           m_Value: {x: 0, y: 1, z: 0}
+        - m_ExpressionIndex: 10
+          m_Value: {x: 0, y: -1, z: 0}
+        - m_ExpressionIndex: 12
+          m_Value: {x: 0, y: -9.81, z: 0}
+        - m_ExpressionIndex: 15
+          m_Value: {x: 2, y: 4, z: 2}
+        - m_ExpressionIndex: 16
+          m_Value: {x: -2, y: 0, z: -2}
+        - m_ExpressionIndex: 17
+          m_Value: {x: 1000, y: 1000, z: 1000}
+        - m_ExpressionIndex: 18
+          m_Value: {x: 0, y: 0, z: 0}
       m_Vector4f:
         m_Array:
         - m_ExpressionIndex: 4
@@ -958,7 +966,7 @@ VisualEffectResource:
             m_NumAlphaKeys: 4
       m_NamedObject:
         m_Array:
-        - m_ExpressionIndex: 19
+        - m_ExpressionIndex: 20
           m_Value: {fileID: 2800000, guid: 16c7effc0eace894c83d915251455b26, type: 3}
       m_Bool:
         m_Array: []
@@ -1103,7 +1111,7 @@ VisualEffectResource:
       - nameId: Count
         index: 1
       - nameId: Delay
-        index: 18
+        index: 19
       params: []
       processor: {fileID: 0}
       shaderSourceIndex: -1
@@ -1130,9 +1138,9 @@ VisualEffectResource:
       index: 6
     values:
     - nameId: bounds_center
-      index: 17
+      index: 18
     - nameId: bounds_size
-      index: 16
+      index: 17
     tasks:
     - type: 536870912
       buffers:
@@ -1148,9 +1156,9 @@ VisualEffectResource:
       values: []
       params:
       - nameId: bounds_center
-        index: 17
+        index: 18
       - nameId: bounds_size
-        index: 16
+        index: 17
       processor: {fileID: 0}
       shaderSourceIndex: 0
     - type: 805306368
@@ -1164,7 +1172,7 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: deltaTime_a
-        index: 10
+        index: 11
       params: []
       processor: {fileID: 0}
       shaderSourceIndex: 1
@@ -1181,7 +1189,7 @@ VisualEffectResource:
       temporaryBuffers: []
       values:
       - nameId: localToWorld
-        index: 20
+        index: 21
       params: []
       processor: {fileID: 0}
       shaderSourceIndex: 3
@@ -1198,7 +1206,7 @@ VisualEffectResource:
       - nameId: Color_c
         index: 2
       - nameId: mainTexture
-        index: 19
+        index: 20
       params:
       - nameId: sortPriority
         index: 0
@@ -1290,7 +1298,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614560}
   - {fileID: 8926484042661614564}
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 1
+  m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_MasterSlot: {fileID: 8926484042661614559}
   m_MasterData:
@@ -1299,7 +1307,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.AABox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":0.0,"y":1.0,"z":0.0},"size":{"x":2.0,"y":3.0,"z":2.0}}'
+      m_SerializableObject: '{"center":{"x":0.0,"y":0.0,"z":0.0},"size":{"x":1000.0,"y":1000.0,"z":1000.0}}'
     m_Space: 0
   m_Property:
     name: bounds
@@ -2340,7 +2348,7 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661614618}
       inputSlot: {fileID: 8926484042661614594}
-    position: {x: 610, y: 988}
+    position: {x: 504, y: 1027}
     expandedSlots: []
     expanded: 0
 --- !u!114 &8926484042661614618
@@ -2767,7 +2775,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614706}
   - {fileID: 8926484042661614710}
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 0
+  m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_MasterSlot: {fileID: 8926484042661614705}
   m_MasterData:
@@ -3304,7 +3312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 501, y: 814}
+  m_UIPosition: {x: 454, y: 763}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots: []

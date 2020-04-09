@@ -4,81 +4,65 @@ using UnityEngine;
 using UnityEngine.VFX;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour, IKillable<int>
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(NavMeshAgent))]
+public class Enemy : MonoBehaviour, IKillable<int>, IAttackableAI, IWalkableAI
 {
-    // -----------IKillable-----------
-    public int health { get; set; }
-    public int maxHealth { get; set; }
+    #region Zmianne
+    #region IKillable
+    [SerializeField] private int m_maxHealth;
+    [SerializeField] private int m_health;
+    public int maxHealth { get { return m_maxHealth; } set { m_maxHealth = value; } }
+    public int health { get { return m_health; } set { m_health = value; } }
+    #endregion
 
-    public void TakeDamage(int damage) {
-        health -= damage;
+    #region IAttackableAI
+    [SerializeField] private float m_attackRadius;
+    [SerializeField] private float m_attacksPerSecond;
+    private float m_nextTimeToAttack;
+    private Player m_target;
+    public float attackRadius { get { return m_attackRadius; } set { m_attackRadius = value; } }
+    public float attacksPerSecond { get { return m_attacksPerSecond; } set { m_attacksPerSecond = value; } }
+    public float nextTimeToAttack { get { return m_nextTimeToAttack; } set { m_nextTimeToAttack = value; } }
+    public Player target { get { return m_target; } set { m_target = value; } }
+    #endregion
 
-        if (health <= 0)
-            Die();
-        else
-            FindObjectOfType<AudioManager>().Play("EnemyTakeDamage");
+    #region IWalkableAI
+    [SerializeField] private float m_lookRadius;
+    private NavMeshAgent m_agent;
+    public float lookRadius { get { return m_lookRadius; } set { m_lookRadius = value; } }
+    public NavMeshAgent agent { get { return m_agent; } set { m_agent = value; } }
+    #endregion
 
-        healthBar.SetHealth(health);
-    }
-    
-    public void Die() {
-        FindObjectOfType<AudioManager>().Play("EnemyDeath");
-        Gradient gradient;
-        GradientColorKey[] colorKey;
-        GradientAlphaKey[] alphaKey;
-
-        gradient = new Gradient();
-        colorKey = new GradientColorKey[1];
-        alphaKey = new GradientAlphaKey[2];
-        colorKey[0].color = gameObject.GetComponentInChildren<MeshRenderer>().material.GetColor("_BaseColor");
-        Debug.Log(colorKey[0].color);
-        colorKey[0].time = 0f;
-        alphaKey[0].alpha = 1f;
-        alphaKey[0].time = 0f;
-        gradient.SetKeys(colorKey, alphaKey);
-
-        GameObject deathEffect = Instantiate(enemyDeath, gameObject.transform.position + new Vector3(0f, .5f, 0f), Quaternion.LookRotation(new Vector3(0f, 0f, 0f)));
-        VisualEffect death = deathEffect.GetComponent<VisualEffect>();
-        death.SetGradient("Color", gradient);
-        death.Play();
-        
-        Destroy(deathEffect, 5f);
-        Destroy(gameObject, .1f);
-    }
-    // -------------------------------
-
-    public float lookRadius = 15f;
-    public float attackRadius = 10f;
-
-    Transform target;
-    NavMeshAgent agent;
-    public GameObject enemyDeath;
-
+    public GameObject deathEffectGO;
     public HealthBar healthBar;
     public GameObject fireball;
-    public float fireballSpeed = 20f;
-    public float fireballFireRate = .5f;
-    private float nextTimeToFire = 0f;
-    public Transform fbSpawner;
+    [SerializeField] private float m_fireballSpeed = 20f;
+    public float fireballSpeed { get { return m_fireballSpeed; } set { m_fireballSpeed = value; } }
+    #endregion
 
     Enemy()
     {
         maxHealth = 100;
-        health = maxHealth;
+        attackRadius = 25f;
+        attacksPerSecond = 0.5f;
+        fireballSpeed = 20f;
+        lookRadius = 60f;
+        nextTimeToAttack = 0f;
     }
 
     void Start()
     {
-        healthBar.SetMaxHealth(maxHealth);
-
-        target = PlayerManager.instance.player.transform;
+        health = maxHealth;
+        target = Player.instance;
         agent = GetComponent<NavMeshAgent>();
         agent.stoppingDistance = attackRadius;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     void Update()
     {
-        float distance = Vector3.Distance(target.position, transform.position);
+        float distance = DistanceToTarget(target.transform);
 
         if(distance <= lookRadius)
         {
@@ -86,36 +70,84 @@ public class Enemy : MonoBehaviour, IKillable<int>
             {
                 FaceTarget();
 
-                if (Time.time >= nextTimeToFire && Time.timeScale > 0f)
+                if (Time.time >= nextTimeToAttack && Time.timeScale > 0f)
                 {
-                    nextTimeToFire = Time.time + 1f / fireballFireRate;
+                    nextTimeToAttack = Time.time + 1f / attacksPerSecond;
                     AttackTarget();
                 }
             }
-            agent.SetDestination(target.position);
+            GoToTarget(target.transform);
         }
     }
 
-    void FaceTarget()
-    {
-        Vector3 direction = (target.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
-    }
-
-    void AttackTarget()
-    {
-        GameObject fireBall = Instantiate(fireball, fbSpawner.position, transform.rotation);
-        Rigidbody rb = fireBall.GetComponent<Rigidbody>();
-        rb.velocity = (target.position - transform.position).normalized * fireballSpeed;//transform.forward * fireballSpeed;
-        Destroy(fireBall, 5f);
-    }
-
-    void OnDrawGizmos()
+    public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRadius);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
+
+    #region IKillable
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+            Die();
+        else
+            AudioManager.instance.Play("EnemyTakeDamage");
+
+        healthBar.SetHealth(health);
+    }
+
+    public void Die()
+    {
+        AudioManager.instance.Play("EnemyDeath");
+        GameObject deathEffect = Instantiate(deathEffectGO, gameObject.transform.position + new Vector3(0f, .5f, 0f), Quaternion.LookRotation(new Vector3(0f, 0f, 0f)));
+        VisualEffect death = deathEffect.GetComponent<VisualEffect>();
+
+        MeshRenderer myRenderer = gameObject.GetComponentInChildren<MeshRenderer>();
+        if (myRenderer != null)
+        {
+            Gradient gradient = MaterialsColorManager.instance.NiceGradientForEnemyDeathEffect(myRenderer.material);
+            death.SetGradient("Color", gradient);
+        }
+
+        death.Play();
+        Destroy(deathEffect, 5f);
+        Destroy(gameObject, .1f);
+    }
+    #endregion
+
+    #region IAttackableAI
+    public void FaceTarget()
+    {
+        Vector3 direction = (target.transform.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+    }
+
+    public void AttackTarget()
+    {
+        GameObject fireBall = Instantiate(fireball, transform.position, transform.rotation);
+        Rigidbody rb = fireBall.GetComponent<Rigidbody>();
+        if(rb != null)
+            rb.velocity = (target.transform.position - transform.position).normalized * fireballSpeed;
+        Destroy(fireBall, 5f);
+    }
+    #endregion
+
+    #region IWalkableAI
+    public float DistanceToTarget(Transform target)
+    {
+        return Vector3.Distance(target.position, transform.position);
+    }
+
+    public void GoToTarget(Transform target)
+    {
+        agent.SetDestination(target.position);
+    }
+    #endregion
+
 }

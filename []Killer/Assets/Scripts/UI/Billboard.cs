@@ -12,7 +12,7 @@ public class Billboard : MonoBehaviour
 
     void Start()
     {
-        cam = PlayerManager.instance.player.transform.Find("Camera");
+        cam = Player.instance.transform.Find("Camera");
     }
 
     void Update()

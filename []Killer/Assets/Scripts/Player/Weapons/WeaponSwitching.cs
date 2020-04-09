@@ -14,10 +14,9 @@ public class WeaponSwitching : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        int previousSelectedWeapon = selectedWeapon;
-        if (PlayerManager.instance.player.GetComponent<Player>().isAlive)
+        if (!GameManager.instance.gameIsPaused && Player.instance.isAlive)
         {
+            int previousSelectedWeapon = selectedWeapon;
             if (Input.GetAxis("Mouse ScrollWheel") > 0)
             {
                 if (selectedWeapon >= transform.childCount - 1)
@@ -32,21 +31,21 @@ public class WeaponSwitching : MonoBehaviour
                 else
                     selectedWeapon--;
             }
+
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+                selectedWeapon = 0;
+            else if (Input.GetKeyDown(KeyCode.Alpha2) && transform.childCount >= 2)
+                selectedWeapon = 1;
+            else if (Input.GetKeyDown(KeyCode.Alpha3) && transform.childCount >= 3)
+                selectedWeapon = 2;
+            else if (Input.GetKeyDown(KeyCode.Alpha4) && transform.childCount >= 4)
+                selectedWeapon = 3;
+            else if (Input.GetKeyDown(KeyCode.Alpha5) && transform.childCount >= 5)
+                selectedWeapon = 4;
+
+            if (previousSelectedWeapon != selectedWeapon)
+                SelectWeapon();
         }
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            selectedWeapon = 0;
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && transform.childCount >= 2)
-            selectedWeapon = 1;
-        else if (Input.GetKeyDown(KeyCode.Alpha3) && transform.childCount >= 3)
-            selectedWeapon = 2;
-        else if (Input.GetKeyDown(KeyCode.Alpha4) && transform.childCount >= 4)
-            selectedWeapon = 3;
-        else if (Input.GetKeyDown(KeyCode.Alpha5) && transform.childCount >= 5)
-            selectedWeapon = 4;
-
-        if (previousSelectedWeapon != selectedWeapon)
-            SelectWeapon();
     }
 
     void SelectWeapon()

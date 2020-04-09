@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2285722593896009790}
   - component: {fileID: 3791565789441382456}
   - component: {fileID: 8220162133142211457}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 4477894091740459160}
   - component: {fileID: 1593902249141200439}
   - component: {fileID: 1324221704414377038}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 538418581929596209}
   - component: {fileID: 1508221026035321754}
   - component: {fileID: 2133284134631367668}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 6967620154476289568}
   - component: {fileID: 1192120153460789476}
   - component: {fileID: 6059121883211221961}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 4722473913588623980}
   - component: {fileID: 5710753793003184111}
   - component: {fileID: 5557049640415604804}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,7 +477,7 @@ GameObject:
   - component: {fileID: 3227704595994640907}
   - component: {fileID: 8246463181946151027}
   - component: {fileID: 7933936909799074418}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +569,7 @@ GameObject:
   - component: {fileID: 8223092223995018676}
   - component: {fileID: 1434028923304948549}
   - component: {fileID: 2633296711776261733}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RifleShotEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +598,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5612324140783300609}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: 490a08d1387233744bbed1ccd33b43f6, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: 0d851c45da02d504faa48b86937b45f2, type: 3}
   m_InitialEventName: 
   m_InitialEventNameOverriden: 1
   m_StartSeed: 0
@@ -607,21 +607,99 @@ VisualEffect:
     m_Float:
       m_Array: []
     m_Vector2f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0.1, y: 0.4}
+        m_Name: Lifetime
+        m_Overridden: 1
     m_Vector3f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: -0.5, y: -0.5, z: 0.3}
+        m_Name: MinVelocity
+        m_Overridden: 1
+      - m_Value: {x: 0.5, y: 0.5, z: 0.8}
+        m_Name: MaxVelocity
+        m_Overridden: 1
     m_Vector4f:
       m_Array: []
     m_Uint:
-      m_Array: []
+      m_Array:
+      - m_Value: 10
+        m_Name: ParticleCount
+        m_Overridden: 1
     m_Int:
       m_Array: []
     m_Matrix4x4f:
       m_Array: []
     m_AnimationCurve:
-      m_Array: []
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0.2
+            inSlope: 0.099999994
+            outSlope: 0.099999994
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.5
+            value: 0.25
+            inSlope: -0.2
+            outSlope: -0.2
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: -0.5
+            outSlope: -0.5
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        m_Name: Size
+        m_Overridden: 1
     m_Gradient:
-      m_Array: []
+      m_Array:
+      - m_Value:
+          serializedVersion: 2
+          key0: {r: 2.9960785, g: 0.5019608, b: 0.45490196, a: 0}
+          key1: {r: 2.1185474, g: 1.1313709, b: 0.25511304, a: 1}
+          key2: {r: 1.4980392, g: 0.1882353, b: 0.16470589, a: 1}
+          key3: {r: 0.5943396, g: 0, b: 0.017823229, a: 0}
+          key4: {r: 0, g: 0, b: 0, a: 0}
+          key5: {r: 0, g: 0, b: 0, a: 0}
+          key6: {r: 0, g: 0, b: 0, a: 0}
+          key7: {r: 0, g: 0, b: 0, a: 0}
+          ctime0: 4048
+          ctime1: 11758
+          ctime2: 33539
+          ctime3: 65535
+          ctime4: 0
+          ctime5: 0
+          ctime6: 0
+          ctime7: 0
+          atime0: 0
+          atime1: 4433
+          atime2: 50308
+          atime3: 64764
+          atime4: 0
+          atime5: 0
+          atime6: 0
+          atime7: 0
+          m_Mode: 0
+          m_NumColorKeys: 4
+          m_NumAlphaKeys: 4
+        m_Name: Color
+        m_Overridden: 1
     m_NamedObject:
       m_Array: []
     m_Bool:
@@ -677,7 +755,7 @@ GameObject:
   - component: {fileID: 910594849127678205}
   - component: {fileID: 8519216996232635308}
   - component: {fileID: 2525743839536369634}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -768,7 +846,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5251673704868909278}
   - component: {fileID: 7080985949554980019}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -813,7 +891,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fpsCam: {fileID: 0}
   shotEffect: {fileID: 1434028923304948549}
-  impactEffect: {fileID: 895159251178209232, guid: 30c6e6e0dd1526e4f897936464493899,
+  impactEffect: {fileID: 910522345135843638, guid: 9bdcce9c058d5894ea5a7346503d5466,
     type: 3}
 --- !u!1 &6788810340759143982
 GameObject:
@@ -827,7 +905,7 @@ GameObject:
   - component: {fileID: 6363311792260709624}
   - component: {fileID: 8673891324589905700}
   - component: {fileID: 2964100802346402668}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -920,7 +998,7 @@ GameObject:
   - component: {fileID: 8793472493827416053}
   - component: {fileID: 3903356831323261520}
   - component: {fileID: 5968692825012340909}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
