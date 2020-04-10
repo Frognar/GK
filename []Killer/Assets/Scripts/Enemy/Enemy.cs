@@ -6,20 +6,20 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(NavMeshAgent))]
-public class Enemy : MonoBehaviour, IKillable<int>, IAttackableAI, IWalkableAI
+public class Enemy : MonoBehaviour, ITakeDamage<int>, IAttackableAI, IWalkableAI
 {
     #region Zmianne
-    #region IKillable
-    [SerializeField] private int m_maxHealth;
-    [SerializeField] private int m_health;
+    #region ICanBeKilled
+    [SerializeField] private int m_maxHealth = 100;
+    [SerializeField] private int m_health = 100;
     public int maxHealth { get { return m_maxHealth; } set { m_maxHealth = value; } }
     public int health { get { return m_health; } set { m_health = value; } }
     #endregion
 
     #region IAttackableAI
-    [SerializeField] private float m_attackRadius;
-    [SerializeField] private float m_attacksPerSecond;
-    private float m_nextTimeToAttack;
+    [SerializeField] private float m_attackRadius = 25f;
+    [SerializeField] private float m_attacksPerSecond = 0.5f;
+    private float m_nextTimeToAttack = 0f;
     private Player m_target;
     public float attackRadius { get { return m_attackRadius; } set { m_attackRadius = value; } }
     public float attacksPerSecond { get { return m_attacksPerSecond; } set { m_attacksPerSecond = value; } }
@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour, IKillable<int>, IAttackableAI, IWalkableAI
     #endregion
 
     #region IWalkableAI
-    [SerializeField] private float m_lookRadius;
+    [SerializeField] private float m_lookRadius = 60f;
     private NavMeshAgent m_agent;
     public float lookRadius { get { return m_lookRadius; } set { m_lookRadius = value; } }
     public NavMeshAgent agent { get { return m_agent; } set { m_agent = value; } }
@@ -40,16 +40,6 @@ public class Enemy : MonoBehaviour, IKillable<int>, IAttackableAI, IWalkableAI
     [SerializeField] private float m_fireballSpeed = 20f;
     public float fireballSpeed { get { return m_fireballSpeed; } set { m_fireballSpeed = value; } }
     #endregion
-
-    Enemy()
-    {
-        maxHealth = 100;
-        attackRadius = 25f;
-        attacksPerSecond = 0.5f;
-        fireballSpeed = 20f;
-        lookRadius = 60f;
-        nextTimeToAttack = 0f;
-    }
 
     void Start()
     {

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0136aaf72311d54fb89155e37531842, type: 3}
+  m_Name: ShotgunPattern
+  m_EditorClassIdentifier: 
+  damage: 100
+  range: 50
+  fireRate: 1
+  impactForce: 240
+  bulletsCount: 5
+  shotInacurracy: 5
+  shotSoundName: ShotgunShot
+  impactEffectPrefab: {fileID: 7480268875133555099, guid: 57e3e97f6e345da48be61c414b712b0e,
+    type: 3}
+  shotEffect: {fileID: 5107213852570531925, guid: 0a1d4cc9de9fc61498787abe63f4e448,
+    type: 3}
