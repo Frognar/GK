@@ -14,7 +14,8 @@ public class WeaponSwitching : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.instance.gameIsPaused && Player.instance.isAlive)
+        if (!PauseManager.gameIsPaused &&
+            PlayerManager.instance.player.GetComponent<Player>().IsAlive)
         {
             int previousSelectedWeapon = selectedWeapon;
             if (Input.GetAxis("Mouse ScrollWheel") > 0)

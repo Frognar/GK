@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Minimap : MonoBehaviour
 {
@@ -8,7 +6,7 @@ public class Minimap : MonoBehaviour
 
     void Start()
     {
-        player = Player.instance.transform;
+        player = PlayerManager.instance.player.transform;
     }
 
     void LateUpdate()

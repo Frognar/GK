@@ -16,8 +16,8 @@ MonoBehaviour:
   range: 50
   fireRate: 1
   impactForce: 240
-  bulletsCount: 5
-  shotInacurracy: 5
+  bulletsCount: 10
+  shotInacurracy: 6
   shotSoundName: ShotgunShot
   impactEffectPrefab: {fileID: 7480268875133555099, guid: 57e3e97f6e345da48be61c414b712b0e,
     type: 3}

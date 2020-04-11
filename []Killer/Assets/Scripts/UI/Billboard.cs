@@ -1,18 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class Billboard : MonoBehaviour
 {
-
-    Transform cam;
+    private Transform playerCamera;
     public HealthBar healthBar;
     public GameObject bar;
 
     void Start()
     {
-        cam = Player.instance.transform.Find("Camera");
+        playerCamera = PlayerManager.instance.player.transform.Find("Camera");
     }
 
     void Update()
@@ -25,6 +21,6 @@ public class Billboard : MonoBehaviour
 
     void LateUpdate()
     {
-        transform.LookAt(transform.position + cam.forward);
+        transform.LookAt(transform.position + playerCamera.forward);
     }
 }

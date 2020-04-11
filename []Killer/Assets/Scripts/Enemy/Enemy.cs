@@ -6,53 +6,41 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(NavMeshAgent))]
-public class Enemy : MonoBehaviour, ITakeDamage<int>, IAttackableAI, IWalkableAI
+public class Enemy : MonoBehaviour, ITakeDamage<int>
 {
-    #region Zmianne
-    #region ICanBeKilled
-    [SerializeField] private int m_maxHealth = 100;
-    [SerializeField] private int m_health = 100;
-    public int maxHealth { get { return m_maxHealth; } set { m_maxHealth = value; } }
-    public int health { get { return m_health; } set { m_health = value; } }
-    #endregion
+    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int health = 100;
+    public int MaxHealth { get { return maxHealth; } }
+    public int Health { get { return health; } }
 
-    #region IAttackableAI
-    [SerializeField] private float m_attackRadius = 25f;
-    [SerializeField] private float m_attacksPerSecond = 0.5f;
-    private float m_nextTimeToAttack = 0f;
-    private Player m_target;
-    public float attackRadius { get { return m_attackRadius; } set { m_attackRadius = value; } }
-    public float attacksPerSecond { get { return m_attacksPerSecond; } set { m_attacksPerSecond = value; } }
-    public float nextTimeToAttack { get { return m_nextTimeToAttack; } set { m_nextTimeToAttack = value; } }
-    public Player target { get { return m_target; } set { m_target = value; } }
-    #endregion
+    [SerializeField] private float attackRadius = 25f;
+    [SerializeField] private float attacksPerSecond = 0.5f;
+    private float nextTimeToAttack = 0f;
+    private Transform target;
 
-    #region IWalkableAI
-    [SerializeField] private float m_lookRadius = 60f;
-    private NavMeshAgent m_agent;
-    public float lookRadius { get { return m_lookRadius; } set { m_lookRadius = value; } }
-    public NavMeshAgent agent { get { return m_agent; } set { m_agent = value; } }
-    #endregion
+    [SerializeField] private float lookRadius = 60f;
+    private NavMeshAgent agent;
 
     public GameObject deathEffectGO;
     public HealthBar healthBar;
     public GameObject fireball;
-    [SerializeField] private float m_fireballSpeed = 20f;
-    public float fireballSpeed { get { return m_fireballSpeed; } set { m_fireballSpeed = value; } }
-    #endregion
+    [SerializeField] private float fireballSpeed = 20f;
+
+    private SoundManager soundManager;
 
     void Start()
     {
         health = maxHealth;
-        target = Player.instance;
+        target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
         agent.stoppingDistance = attackRadius;
         healthBar.SetMaxHealth(maxHealth);
+        soundManager = SoundManager.instance;
     }
 
     void Update()
     {
-        float distance = DistanceToTarget(target.transform);
+        float distance = Vector3.Distance(target.position, transform.position);
 
         if(distance <= lookRadius)
         {
@@ -66,7 +54,7 @@ public class Enemy : MonoBehaviour, ITakeDamage<int>, IAttackableAI, IWalkableAI
                     AttackTarget();
                 }
             }
-            GoToTarget(target.transform);
+            agent.SetDestination(target.position);
         }
     }
 
@@ -78,7 +66,6 @@ public class Enemy : MonoBehaviour, ITakeDamage<int>, IAttackableAI, IWalkableAI
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
 
-    #region IKillable
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -86,14 +73,14 @@ public class Enemy : MonoBehaviour, ITakeDamage<int>, IAttackableAI, IWalkableAI
         if (health <= 0)
             Die();
         else
-            AudioManager.instance.Play("EnemyTakeDamage");
+            soundManager.PlaySound("EnemyTakeDamage");
 
         healthBar.SetHealth(health);
     }
 
     public void Die()
     {
-        AudioManager.instance.Play("EnemyDeath");
+        soundManager.PlaySound("EnemyDie");
         GameObject deathEffect = Instantiate(deathEffectGO, gameObject.transform.position + new Vector3(0f, .5f, 0f), Quaternion.LookRotation(new Vector3(0f, 0f, 0f)));
         VisualEffect death = deathEffect.GetComponent<VisualEffect>();
 
@@ -108,9 +95,7 @@ public class Enemy : MonoBehaviour, ITakeDamage<int>, IAttackableAI, IWalkableAI
         Destroy(deathEffect, 5f);
         Destroy(gameObject, .1f);
     }
-    #endregion
 
-    #region IAttackableAI
     public void FaceTarget()
     {
         Vector3 direction = (target.transform.position - transform.position).normalized;
@@ -122,22 +107,11 @@ public class Enemy : MonoBehaviour, ITakeDamage<int>, IAttackableAI, IWalkableAI
     {
         GameObject fireBall = Instantiate(fireball, transform.position, transform.rotation);
         Rigidbody rb = fireBall.GetComponent<Rigidbody>();
+        
         if(rb != null)
             rb.velocity = (target.transform.position - transform.position).normalized * fireballSpeed;
+        
         Destroy(fireBall, 5f);
     }
-    #endregion
-
-    #region IWalkableAI
-    public float DistanceToTarget(Transform target)
-    {
-        return Vector3.Distance(target.position, transform.position);
-    }
-
-    public void GoToTarget(Transform target)
-    {
-        agent.SetDestination(target.position);
-    }
-    #endregion
 
 }

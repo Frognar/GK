@@ -1,82 +1,46 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-
-[RequireComponent(typeof(CharacterController))]
-public class Player : MonoBehaviour, IKillable<int>
+[RequireComponent(typeof(SoundPlayer))]
+public class Player : MonoBehaviour
 {
-    #region Singleton
-    public static Player instance;
+    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int health = 100;
 
-    void Awake()
-    {
-        if (instance == null)
-            instance = this;
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-    }
-    #endregion
+    private bool isAlive = true;
+    public bool IsAlive { get { return isAlive; } }
 
-    #region Zmianne
-    #region IKillable
-    [SerializeField] private int m_maxHealth = 100;
-    [SerializeField] private int m_health = 100;
-    public int maxHealth { get { return m_maxHealth; } set { m_maxHealth = value; } }
-    public int health { get { return m_health; } set { m_health = value; } }
-    #endregion
-
-    private bool m_isAlive = true;
-    public bool isAlive { get { return m_isAlive; } set { m_isAlive = value; } }
-
-    private Transform spawnPosition;
     public HealthBar healthBar;
-    #endregion
 
     void Start()
     {
-        spawnPosition = GameManager.instance.playerSpawn;
-        health = maxHealth;
-
-        healthBar.SetMaxHealth(maxHealth);
-        transform.position = spawnPosition.position;
+        ResetPlayer();
     }
 
-    #region IKillable
     public void TakeDamage(int damage)
     {
-        if (isAlive)
+        if (IsAlive)
         {
             health -= damage;
 
             if (health <= 0)
                 Die();
             else
-                AudioManager.instance.Play("PlayerTakeDamage");
+                GetComponent<SoundPlayer>().PlaySoundEvent("PlayerTakeDamage");
 
             healthBar.SetHealth(health);
         }
     }
 
-    public void Die()
+    private void Die()
     {
-        AudioManager.instance.Play("PlayerDeath");
+        GetComponent<SoundPlayer>().PlaySoundEvent("PlayerDie");
         isAlive = false;
-        StartCoroutine(Respawn());
     }
-    #endregion
 
-    IEnumerator Respawn()
+    public void ResetPlayer()
     {
-        yield return new WaitForSeconds(2f);
-        transform.position = GameManager.instance.playerSpawn.position;
-        yield return new WaitForSeconds(.2f);
         health = maxHealth;
-        healthBar.SetHealth(health);
+        healthBar.SetMaxHealth(maxHealth);
         isAlive = true;
     }
 

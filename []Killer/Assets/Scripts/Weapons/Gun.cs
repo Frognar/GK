@@ -15,6 +15,7 @@ public class Gun : MonoBehaviour
     [HideInInspector] public GameObject impactEffectPrefab;
     public VisualEffect shotEffect;
     public Transform raycastFrom;
+    public Animator animator;
     private float nextTimeToFire = 0f;
 
     private void Awake()
@@ -32,7 +33,8 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
-        if (!GameManager.instance.gameIsPaused && Player.instance.isAlive)
+        if (!PauseManager.gameIsPaused && 
+            PlayerManager.instance.player.GetComponent<Player>().IsAlive)
         {
             if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
             {
@@ -42,11 +44,14 @@ public class Gun : MonoBehaviour
         }
     }
 
-    private void Shot()
+    private void ShotEffectPlay()
     {
         shotEffect.SendEvent("OnPlay");
-        AudioManager.instance.Play(shotSoundName);
+    }
 
+    private void Shot()
+    {
+        animator.SetTrigger("Shot");
         for (int i = 0; i < bulletsCount; i++)
         {
             RaycastHit hitInfo;

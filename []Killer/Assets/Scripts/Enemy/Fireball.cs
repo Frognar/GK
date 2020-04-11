@@ -16,7 +16,11 @@ public class Fireball : MonoBehaviour
         if (other.tag != "Enemy" && other.tag != "Bullet")
         {
             if (other.tag == "Player")
-                Player.instance.TakeDamage(damage);
+            {
+                Player player = other.GetComponent<Player>();
+                if (player != null)
+                    player.TakeDamage(damage);
+            }
 
             GameObject explosion = Instantiate(explosionVFX, transform.position, transform.rotation);
             explosion.GetComponent<VisualEffect>().Play();

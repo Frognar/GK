@@ -1,13 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-
 public class OptionMenu : MonoBehaviour
 {
-
     public AudioMixer audioMixer;
     public TMPro.TMP_Dropdown resolutionDropdown;
     public TMPro.TMP_Dropdown graphicDropdown;
@@ -46,7 +43,7 @@ public class OptionMenu : MonoBehaviour
         audioMixer.GetFloat("volume", out volume);
         volumeSlider.value = volume;
     }
-
+    
     public void SetVolume (float volume)
     {
         audioMixer.SetFloat("volume", volume);

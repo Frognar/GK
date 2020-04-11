@@ -1,10 +1,11 @@
 ﻿using UnityEngine.EventSystems;
 using UnityEngine;
 
+[RequireComponent(typeof(SoundPlayer))]
 public class OnMouseOver : MonoBehaviour, IPointerEnterHandler
 {
     public void OnPointerEnter(PointerEventData eventData)
     {
-        AudioManager.instance.Play("ButtonHoverSound");
+        GetComponent<SoundPlayer>().PlaySoundEvent("OnMouseOver");
     }
 }

@@ -1,7 +1,7 @@
 ﻿public interface ITakeDamage<T>
 {
-    T health { get; set; }
-    T maxHealth { get; }
+    T MaxHealth { get; }
+    T Health { get; }
 
     void TakeDamage(T damage);
     void Die();
