@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(.2f);
         player.GetComponent<Player>().ResetPlayer();
         deathPanel.SetActive(false);
-        respawning = true;
+        respawning = false;
     }
 
 }

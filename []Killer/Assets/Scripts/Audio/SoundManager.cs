@@ -33,6 +33,7 @@ public class SoundEvent
 
         float randomVolume = Random.Range(minVolume, maxVolume);
         float randomPitch = Random.Range(minPitch, maxPitch);
+
         audioSource.volume = randomVolume;
         audioSource.pitch = randomPitch;
         audioSource.panStereo = stereoPan;
