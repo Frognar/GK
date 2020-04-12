@@ -17,6 +17,7 @@ public class Gun : MonoBehaviour
     public Transform raycastFrom;
     public Animator animator;
     private float nextTimeToFire = 0f;
+    private SoundManager soundManager;
 
     private void Awake()
     {
@@ -29,6 +30,11 @@ public class Gun : MonoBehaviour
         shotSoundName = gunPattern.shotSoundName;
         impactEffectPrefab = gunPattern.impactEffectPrefab;
         //shotEffect = gunPattern.shotEffect;
+    }
+
+    private void Start()
+    {
+        soundManager = SoundManager.instance;
     }
 
     private void Update()
@@ -47,6 +53,7 @@ public class Gun : MonoBehaviour
     private void ShotEffectPlay()
     {
         shotEffect.SendEvent("OnPlay");
+        soundManager.PlaySound(shotSoundName);
     }
 
     private void Shot()
