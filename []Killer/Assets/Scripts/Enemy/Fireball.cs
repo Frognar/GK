@@ -13,9 +13,9 @@ public class Fireball : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "Enemy" && other.tag != "Bullet")
+        if (!other.CompareTag("Enemy") && !other.CompareTag("Ignore"))
         {
-            if (other.tag == "Player")
+            if (other.CompareTag("Player"))
             {
                 Player player = other.GetComponent<Player>();
                 if (player != null)

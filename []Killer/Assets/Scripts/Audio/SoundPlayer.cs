@@ -9,7 +9,7 @@ public class SoundPlayer : MonoBehaviour
 
     public string[] soundNames;
 
-    public string[] SoundName { get { return soundNames; } set { soundNames = value; } }
+    public string[] SoundNames { get { return soundNames; } set { soundNames = value; } }
 
     private void Start()
     {

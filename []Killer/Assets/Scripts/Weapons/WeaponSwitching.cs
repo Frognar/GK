@@ -1,9 +1,18 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class WeaponSwitching : MonoBehaviour
 {
 
     public int selectedWeapon = 0;
+
+    private List<Transform> weaponStartTransforms = new List<Transform>();
+
+    private void Awake()
+    {
+        foreach(Transform t in transform)
+            weaponStartTransforms.Add(t);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +63,9 @@ public class WeaponSwitching : MonoBehaviour
         int i = 0;
         foreach(Transform weapon in transform)
         {
+            weapon.position = weaponStartTransforms[i].position;
+            weapon.rotation = weaponStartTransforms[i].rotation;
+
             if (i == selectedWeapon)
                 weapon.gameObject.SetActive(true);
             else

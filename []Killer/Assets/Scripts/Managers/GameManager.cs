@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
     private GameObject player;
     private bool respawning = false;
 
+    //MusicChanger
+    private bool playingBattleMusicNow = false;
+    public static bool inBattle = false;
+
 
     void Start()
     {
@@ -38,6 +42,18 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(PlayerRespawn());
             respawning = true;
+        }
+
+        if (inBattle && !playingBattleMusicNow)
+        {
+            SoundManager.instance.ChangeMusicInicjalizeCoroution("GameTheme", "BattleTheme");
+            playingBattleMusicNow = true;
+        }
+
+        else if (!inBattle && playingBattleMusicNow)
+        {
+            SoundManager.instance.ChangeMusicInicjalizeCoroution("BattleTheme", "GameTheme");
+            playingBattleMusicNow = false;
         }
     }
 

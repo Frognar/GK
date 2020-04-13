@@ -115,6 +115,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField]
     SoundEvent[] SoundEvents;
 
+    private bool changingSound = false;
+
     private void Awake()
     {
         if (instance != null)
@@ -166,7 +168,7 @@ public class SoundManager : MonoBehaviour
 
         s.Play();
     }
-
+    
     public void StopSound(string name)
     {
         SoundEvent s = Array.Find(SoundEvents, sound => sound.name == name);
@@ -202,6 +204,40 @@ public class SoundManager : MonoBehaviour
                     PlaySound(SoundEvents[i].name);
                 }
             }
+        }
+    }
+
+    public void ChangeMusicInicjalizeCoroution(string from, string to)
+    {
+        if (!changingSound)
+        {
+            changingSound = true;
+            StartCoroutine(ChangeMusic(from, to));
+        }
+    }
+
+    IEnumerator ChangeMusic(string from, string to)
+    {
+        SoundEvent s = Array.Find(SoundEvents, sound => sound.name == from);
+        if (s == null)
+        {
+            Debug.LogWarning("SoundManager: Sound not found in SoundEvents [" + from + "]");
+            yield return null;
+        }
+        else
+        {
+            while (s.audioSource.volume > 0f)
+            {
+                yield return new WaitForSeconds(0.05f);
+                s.audioSource.volume -= 0.01f;
+            }
+
+            StopSound(from);
+
+            yield return new WaitForSeconds(0.5f);
+
+            PlaySound(to);
+            changingSound = false;
         }
     }
 

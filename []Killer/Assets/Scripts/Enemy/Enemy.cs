@@ -93,6 +93,7 @@ public class Enemy : MonoBehaviour, ITakeDamage<int>
 
         death.Play();
         Destroy(deathEffect, 5f);
+        gameObject.transform.position = new Vector3(0f, 0f, 0f);
         Destroy(gameObject, .1f);
     }
 
