@@ -58,26 +58,29 @@ public class Gun : MonoBehaviour
 
     private void Shot()
     {
-        animator.SetTrigger("Shot");
-        for (int i = 0; i < bulletsCount; i++)
+        if (PlayerManager.instance.player.GetComponent<Player>().UsePixels(bulletsCount))
         {
-            RaycastHit hitInfo;
-            Vector3 shotInacurracyVector = new Vector3(Random.Range(-shotInacurracy, shotInacurracy), Random.Range(-shotInacurracy, shotInacurracy), Random.Range(-shotInacurracy, shotInacurracy));
-            Vector3 direction = raycastFrom.forward * range + shotInacurracyVector;
-
-            if(Physics.Raycast(raycastFrom.position, direction, out hitInfo, range))
+            animator.SetTrigger("Shot");
+            for (int i = 0; i < bulletsCount; i++)
             {
-                if (hitInfo.rigidbody != null)
-                    hitInfo.rigidbody.AddForce(-hitInfo.normal * impactForce / bulletsCount);
-                
-                SpawnImpactEffect(hitInfo);
+                RaycastHit hitInfo;
+                Vector3 shotInacurracyVector = new Vector3(Random.Range(-shotInacurracy, shotInacurracy), Random.Range(-shotInacurracy, shotInacurracy), Random.Range(-shotInacurracy, shotInacurracy));
+                Vector3 direction = raycastFrom.forward * range + shotInacurracyVector;
 
-                ITakeDamage<int> hittedObject = hitInfo.transform.GetComponent<ITakeDamage<int>>();
-                if(hittedObject != null)
-                    hittedObject.TakeDamage(damage / bulletsCount);
+                if (Physics.Raycast(raycastFrom.position, direction, out hitInfo, range))
+                {
+                    if (hitInfo.rigidbody != null)
+                        hitInfo.rigidbody.AddForce(-hitInfo.normal * impactForce / bulletsCount);
 
+                    SpawnImpactEffect(hitInfo);
+
+                    ITakeDamage<int> hittedObject = hitInfo.transform.GetComponent<ITakeDamage<int>>();
+                    if (hittedObject != null)
+                        hittedObject.TakeDamage(damage / bulletsCount);
+
+                }
             }
-        }
+        }        
     }
 
     private void SpawnImpactEffect(RaycastHit hitInfo)
