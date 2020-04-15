@@ -578,7 +578,7 @@ MonoBehaviour:
     delay: 0
     randomizeLoop: 0
     loop: 1
-    mute: 1
+    mute: 0
     playOnAwake: 1
     playCalled: 0
   - name: PistolShot
@@ -761,10 +761,10 @@ MonoBehaviour:
     - {fileID: 8300000, guid: d4699176f9079014c9a9127d7b64592b, type: 3}
     - {fileID: 8300000, guid: 1d5fd0ce9ee6e00478cdfe269f646042, type: 3}
     output: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68, type: 2}
-    minVolume: 0.9
+    minVolume: 1
     maxVolume: 1
-    minPitch: 0.9
-    maxPitch: 1.1
+    minPitch: 1
+    maxPitch: 1
     stereoPan: 0
     delayTime: 0
     randomizeDelay: 0
