@@ -13,23 +13,24 @@ public class MusicChanger : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (inCollider.Count > 0 && !GameManager.inBattle)
+        if (inCollider.Count > 0)
             GameManager.inBattle = true;
 
-        else if (inCollider.Count == 0 && GameManager.inBattle)
+        else if (inCollider.Count == 0)
             GameManager.inBattle = false;
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
             inCollider.Add(other);
+        Debug.Log(other.gameObject.name);
     }
 
     private void OnTriggerExit(Collider other)
     {
         inCollider.Remove(other);
+        Debug.Log(other.gameObject.name);
     }
 
 }

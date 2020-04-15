@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\CandleFlameLight.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\Fireball.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IHavePiksels.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ITakeDamage.cs" />
     <Compile Include="Assets\Scripts\Managers\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />

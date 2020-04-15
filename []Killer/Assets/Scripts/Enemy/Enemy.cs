@@ -6,27 +6,36 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(NavMeshAgent))]
-public class Enemy : MonoBehaviour, ITakeDamage<int>
+public class Enemy : MonoBehaviour, ITakeDamage<int>, IHavePiksels
 {
+    [Header("Health")]
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int health = 100;
     public int MaxHealth { get { return maxHealth; } }
     public int Health { get { return health; } }
 
+    [Header("Attack")]
     [SerializeField] private float attackRadius = 25f;
     [SerializeField] private float attacksPerSecond = 0.5f;
     private float nextTimeToAttack = 0f;
     private Transform target;
+    public GameObject fireball;
+    [SerializeField] private float fireballSpeed = 20f;
 
     [SerializeField] private float lookRadius = 60f;
     private NavMeshAgent agent;
 
+    [Header("Other")]
     public GameObject deathEffectGO;
     public HealthBar healthBar;
-    public GameObject fireball;
-    [SerializeField] private float fireballSpeed = 20f;
 
     private SoundManager soundManager;
+
+    [Header("Drop")]
+    [SerializeField] private int minPixelsDrop = 5;
+    [SerializeField] private int maxPixelsDrop = 15;
+    public int MinPixelsDrop { get { return minPixelsDrop; } }
+    public int MaxPixelsDrop { get { return maxPixelsDrop; } }
 
     void Start()
     {
@@ -83,7 +92,6 @@ public class Enemy : MonoBehaviour, ITakeDamage<int>
         soundManager.PlaySound("EnemyDie");
         GameObject deathEffect = Instantiate(deathEffectGO, gameObject.transform.position + new Vector3(0f, .5f, 0f), Quaternion.LookRotation(new Vector3(0f, 0f, 0f)));
         VisualEffect death = deathEffect.GetComponent<VisualEffect>();
-        PlayerManager.instance.player.GetComponent<Player>().Pixels += Random.Range(5, 15);
 
         MeshRenderer myRenderer = gameObject.GetComponentInChildren<MeshRenderer>();
         if (myRenderer != null)
@@ -96,6 +104,14 @@ public class Enemy : MonoBehaviour, ITakeDamage<int>
         Destroy(deathEffect, 15f);
         gameObject.transform.position = new Vector3(0f, 0f, 0f);
         Destroy(gameObject, .1f);
+        DropPixels();
+    }
+
+    public int DropPixels()
+    {
+        int Pixels = Random.Range(MinPixelsDrop, MaxPixelsDrop);
+        PlayerManager.instance.player.GetComponent<Player>().Pixels += Pixels;
+        return Pixels;
     }
 
     public void FaceTarget()
@@ -115,5 +131,4 @@ public class Enemy : MonoBehaviour, ITakeDamage<int>
         
         Destroy(fireBall, 5f);
     }
-
 }

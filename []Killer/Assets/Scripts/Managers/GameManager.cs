@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
     }
     #endregion
 
@@ -24,7 +25,6 @@ public class GameManager : MonoBehaviour
     private bool respawning = false;
 
     //MusicChanger
-    private bool playingBattleMusicNow = false;
     public static bool inBattle = false;
 
 
@@ -35,7 +35,9 @@ public class GameManager : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        // SoundManager.instance.StopSound("BattleTheme");
     }
+
     void Update()
     {
         if (!player.GetComponent<Player>().IsAlive && !respawning)
@@ -44,17 +46,13 @@ public class GameManager : MonoBehaviour
             respawning = true;
         }
 
-        if (inBattle && !playingBattleMusicNow)
-        {
-            SoundManager.instance.ChangeMusicInicjalizeCoroution("GameTheme", "BattleTheme");
-            playingBattleMusicNow = true;
-        }
+        bool battleMusic = SoundManager.instance.IsSoundPlaying("BattleTheme");
 
-        else if (!inBattle && playingBattleMusicNow)
-        {
+        if (inBattle && !battleMusic)
+            SoundManager.instance.ChangeMusicInicjalizeCoroution("GameTheme", "BattleTheme");
+
+        if (!inBattle && battleMusic)
             SoundManager.instance.ChangeMusicInicjalizeCoroution("BattleTheme", "GameTheme");
-            playingBattleMusicNow = false;
-        }
     }
 
     IEnumerator PlayerRespawn()

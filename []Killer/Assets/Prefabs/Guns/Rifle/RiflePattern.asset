@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0136aaf72311d54fb89155e37531842, type: 3}
   m_Name: RiflePattern
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 8
   range: 100
   fireRate: 5
-  impactForce: 45
+  impactForce: 80
   bulletsCount: 1
   shotInacurracy: 1.5
   shotSoundName: RifleShot

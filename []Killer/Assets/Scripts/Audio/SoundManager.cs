@@ -105,6 +105,11 @@ public class SoundEvent
             audioSource.Stop();
         }
     }
+
+    public bool IsPlaying()
+    {
+        return audioSource.isPlaying;
+    }
 }
 
 public class SoundManager : MonoBehaviour
@@ -182,6 +187,19 @@ public class SoundManager : MonoBehaviour
         s.Stop();
     }
 
+    public bool IsSoundPlaying(string name)
+    {
+        SoundEvent s = Array.Find(SoundEvents, sound => sound.name == name);
+
+        if (s == null)
+        {
+            Debug.LogWarning("SoundManager: Sound not found in SoundEvents [" + name + "]");
+            return false;
+        }
+
+        return s.IsPlaying();
+    }
+
     IEnumerator RepeatPlaySound()
     {
         for (int i = 0; i < SoundEvents.Length; i++)
@@ -209,33 +227,38 @@ public class SoundManager : MonoBehaviour
 
     public void ChangeMusicInicjalizeCoroution(string from, string to)
     {
-        if (!changingSound)
-        {
-            changingSound = true;
-            StartCoroutine(ChangeMusic(from, to));
-        }
+        StartCoroutine(ChangeMusic(from, to));
     }
 
     IEnumerator ChangeMusic(string from, string to)
     {
-        SoundEvent s = Array.Find(SoundEvents, sound => sound.name == from);
-        if (s == null)
+        if (changingSound)
+            StopCoroutine(ChangeMusic(from, to));
+        else
+            changingSound = true;
+        SoundEvent SoundNowPlaying = Array.Find(SoundEvents, sound => sound.name == from);
+        SoundEvent SoundToPlay = Array.Find(SoundEvents, sound => sound.name == from);
+        if (SoundNowPlaying == null)
         {
             Debug.LogWarning("SoundManager: Sound not found in SoundEvents [" + from + "]");
             yield return null;
         }
+        else if (SoundToPlay == null)
+        {
+            Debug.LogWarning("SoundManager: Sound not found in SoundEvents [" + to + "]");
+            yield return null;
+        }
         else
         {
-            while (s.audioSource.volume > 0f)
+            while (SoundNowPlaying.audioSource.volume > 0f)
             {
-                yield return new WaitForSeconds(0.05f);
-                s.audioSource.volume -= 0.01f;
+                yield return new WaitForSeconds(0.025f);
+                SoundNowPlaying.audioSource.volume -= 0.01f;
             }
 
+            yield return new WaitForSeconds(0.2f);
+
             StopSound(from);
-
-            yield return new WaitForSeconds(0.5f);
-
             PlaySound(to);
             changingSound = false;
         }

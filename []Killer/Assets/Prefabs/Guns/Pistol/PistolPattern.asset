@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0136aaf72311d54fb89155e37531842, type: 3}
   m_Name: PistolPattern
   m_EditorClassIdentifier: 
-  damage: 5
-  range: 30
+  damage: 15
+  range: 50
   fireRate: 2
-  impactForce: 10
+  impactForce: 150
   bulletsCount: 1
   shotInacurracy: 2
   shotSoundName: PistolShot

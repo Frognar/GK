@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0136aaf72311d54fb89155e37531842, type: 3}
   m_Name: ShotgunPattern
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 120
   range: 50
   fireRate: 1
-  impactForce: 240
+  impactForce: 400
   bulletsCount: 10
-  shotInacurracy: 6
+  shotInacurracy: 7
   shotSoundName: ShotgunShot
   impactEffectPrefab: {fileID: 7480268875133555099, guid: 57e3e97f6e345da48be61c414b712b0e,
     type: 3}
