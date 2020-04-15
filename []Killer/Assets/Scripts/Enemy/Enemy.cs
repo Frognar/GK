@@ -83,6 +83,7 @@ public class Enemy : MonoBehaviour, ITakeDamage<int>
         soundManager.PlaySound("EnemyDie");
         GameObject deathEffect = Instantiate(deathEffectGO, gameObject.transform.position + new Vector3(0f, .5f, 0f), Quaternion.LookRotation(new Vector3(0f, 0f, 0f)));
         VisualEffect death = deathEffect.GetComponent<VisualEffect>();
+        PlayerManager.instance.player.GetComponent<Player>().Pixels += Random.Range(5, 15);
 
         MeshRenderer myRenderer = gameObject.GetComponentInChildren<MeshRenderer>();
         if (myRenderer != null)
@@ -92,7 +93,7 @@ public class Enemy : MonoBehaviour, ITakeDamage<int>
         }
 
         death.Play();
-        Destroy(deathEffect, 5f);
+        Destroy(deathEffect, 15f);
         gameObject.transform.position = new Vector3(0f, 0f, 0f);
         Destroy(gameObject, .1f);
     }

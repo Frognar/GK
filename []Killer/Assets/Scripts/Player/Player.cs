@@ -7,6 +7,21 @@ public class Player : MonoBehaviour
     [SerializeField] private int health = 100;
     [SerializeField] int maxPixels = 100;
     [SerializeField] int pixels = 100;
+    public int Pixels {
+        get {
+            return pixels;
+        }
+        set {
+            if (value > maxPixels)
+                pixels = maxPixels;
+            else if (value < 0)
+                pixels = 0;
+            else
+                pixels = value;
+
+            pixelsBar.SetHealth(pixels);
+        }
+    }
 
     private bool isAlive = true;
     public bool IsAlive { get { return isAlive; } }
@@ -36,13 +51,12 @@ public class Player : MonoBehaviour
 
     public bool UsePixels(int noOfPixelsUsed)
     {
-        if (pixels < noOfPixelsUsed)
+        if (Pixels < noOfPixelsUsed)
         {
             return false;
         }
 
-        pixels -= noOfPixelsUsed;
-        pixelsBar.SetHealth(pixels);
+        Pixels -= noOfPixelsUsed;
         return true;
     }
 

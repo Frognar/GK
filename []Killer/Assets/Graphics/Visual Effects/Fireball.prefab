@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6741875917804146619}
   m_Layer: 2
   m_Name: Fireball
-  m_TagString: Bullet
+  m_TagString: Ignore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,3 +153,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionVFX: {fileID: 5577325567762440293, guid: e9ff6e27e734b2f429d9aa682f079bd2,
     type: 3}
+  m_damage: 35

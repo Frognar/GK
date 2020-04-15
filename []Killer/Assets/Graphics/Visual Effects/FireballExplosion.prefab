@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2127162039109813034}
   m_Layer: 2
   m_Name: FireballExplosion
-  m_TagString: Bullet
+  m_TagString: Ignore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

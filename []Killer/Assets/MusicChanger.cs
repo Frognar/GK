@@ -6,6 +6,11 @@ public class MusicChanger : MonoBehaviour
 
     private List<Collider> inCollider = new List<Collider>();
 
+    private void Start()
+    {
+        inCollider.Clear();
+    }
+
     private void LateUpdate()
     {
         if (inCollider.Count > 0 && !GameManager.inBattle)

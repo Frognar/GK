@@ -12,6 +12,7 @@ ScriptsOnlyBuild:
     - MaterialsColorManager
     - Minimap
     - MouseLook
+    - MusicChanger
     - OnMouseOver
     - OptionMenu
     - PauseManager
@@ -71,6 +72,37 @@ ScriptsOnlyBuild:
     - TMPro.TMP_StyleSheet
     - TMPro.TMP_SubMeshUI
     - TMPro.TextMeshProUGUI
+    Unity.VisualEffectGraph.Editor.dll:
+    - UnityEditor.VFX.Block.AttributeFromCurve
+    - UnityEditor.VFX.Block.Gravity
+    - UnityEditor.VFX.Block.Orient
+    - UnityEditor.VFX.Block.SetAttribute
+    - UnityEditor.VFX.UI.VFXGraphUndoCursor
+    - UnityEditor.VFX.VFXBasicInitialize
+    - UnityEditor.VFX.VFXBasicSpawner
+    - UnityEditor.VFX.VFXBasicUpdate
+    - UnityEditor.VFX.VFXDataParticle
+    - UnityEditor.VFX.VFXGraph
+    - UnityEditor.VFX.VFXParameter
+    - UnityEditor.VFX.VFXPlanarPrimitiveOutput
+    - UnityEditor.VFX.VFXResources
+    - UnityEditor.VFX.VFXSlot
+    - UnityEditor.VFX.VFXSlotAnimationCurve
+    - UnityEditor.VFX.VFXSlotFloat
+    - UnityEditor.VFX.VFXSlotFloat2
+    - UnityEditor.VFX.VFXSlotFloat3
+    - UnityEditor.VFX.VFXSlotGradient
+    - UnityEditor.VFX.VFXSlotTexture2D
+    - UnityEditor.VFX.VFXSlotUint
+    - UnityEditor.VFX.VFXSlotVector
+    - UnityEditor.VFX.VFXSpawnerBurst
+    - UnityEditor.VFX.VFXUI
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -202,31 +234,33 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 15172}
     - Class: 114
-      Script: {instanceID: 15250}
+      Script: {instanceID: 15224}
     - Class: 114
-      Script: {instanceID: 15330}
+      Script: {instanceID: 15252}
     - Class: 114
-      Script: {instanceID: 15506}
+      Script: {instanceID: 15332}
     - Class: 114
-      Script: {instanceID: 15748}
+      Script: {instanceID: 15508}
     - Class: 114
-      Script: {instanceID: 16136}
+      Script: {instanceID: 15750}
     - Class: 114
-      Script: {instanceID: 16208}
+      Script: {instanceID: 16138}
     - Class: 114
-      Script: {instanceID: 16220}
+      Script: {instanceID: 16210}
     - Class: 114
-      Script: {instanceID: 16228}
+      Script: {instanceID: 16222}
     - Class: 114
-      Script: {instanceID: 16404}
+      Script: {instanceID: 16230}
     - Class: 114
-      Script: {instanceID: 16436}
+      Script: {instanceID: 16406}
     - Class: 114
-      Script: {instanceID: 16492}
+      Script: {instanceID: 16438}
     - Class: 114
-      Script: {instanceID: 16524}
+      Script: {instanceID: 16494}
     - Class: 114
-      Script: {instanceID: 16584}
+      Script: {instanceID: 16526}
+    - Class: 114
+      Script: {instanceID: 16586}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -377,39 +411,39 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 15172}
     - Class: 114
-      Script: {instanceID: 15308}
+      Script: {instanceID: 15310}
     - Class: 114
-      Script: {instanceID: 15330}
+      Script: {instanceID: 15332}
     - Class: 114
-      Script: {instanceID: 15404}
+      Script: {instanceID: 15406}
     - Class: 114
-      Script: {instanceID: 15764}
+      Script: {instanceID: 15766}
     - Class: 114
-      Script: {instanceID: 15818}
+      Script: {instanceID: 15820}
     - Class: 114
-      Script: {instanceID: 16002}
+      Script: {instanceID: 16004}
     - Class: 114
-      Script: {instanceID: 16078}
+      Script: {instanceID: 16080}
     - Class: 114
-      Script: {instanceID: 16136}
+      Script: {instanceID: 16138}
     - Class: 114
-      Script: {instanceID: 16208}
+      Script: {instanceID: 16210}
     - Class: 114
-      Script: {instanceID: 16362}
+      Script: {instanceID: 16364}
     - Class: 114
-      Script: {instanceID: 16366}
+      Script: {instanceID: 16368}
     - Class: 114
-      Script: {instanceID: 16404}
+      Script: {instanceID: 16406}
     - Class: 114
-      Script: {instanceID: 16436}
+      Script: {instanceID: 16438}
     - Class: 114
-      Script: {instanceID: 16442}
+      Script: {instanceID: 16444}
     - Class: 114
-      Script: {instanceID: 16492}
+      Script: {instanceID: 16494}
     - Class: 114
-      Script: {instanceID: 16606}
+      Script: {instanceID: 16608}
     - Class: 114
-      Script: {instanceID: 16612}
+      Script: {instanceID: 16614}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -843,7 +877,7 @@ ScriptsOnlyBuild:
     className: WeaponSwitching
   - hash:
       serializedVersion: 2
-      Hash: 31fc6c0ad5953b3b035056a36b561705
+      Hash: 1b6f2351282975204d108518be11f25b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -1245,6 +1279,12 @@ ScriptsOnlyBuild:
     className: ColorAdjustments
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MusicChanger
+  - hash:
+      serializedVersion: 2
       Hash: 8d4458b476a9a4dd8df843a849fcfffa
     assemblyName: NavMeshComponents.dll
     namespaceName: UnityEngine.AI
@@ -1631,4 +1671,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/Menu/Menu.unity
   - Assets/Scenes/Game/Game.unity
-  playerPath: C:/Users/Frogi/Desktop/[]Killer_Alpha/[]Killer.exe
+  playerPath: C:/Users/Frogi/Desktop/[]Killer_alpha/[]Killer.exe

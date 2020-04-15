@@ -22,6 +22,9 @@ public class Fireball : MonoBehaviour
                     player.TakeDamage(damage);
             }
 
+            Debug.Log(other.tag);
+            Debug.Log(other.gameObject.name);
+
             GameObject explosion = Instantiate(explosionVFX, transform.position, transform.rotation);
             explosion.GetComponent<VisualEffect>().Play();
             Destroy(explosion, 3f);

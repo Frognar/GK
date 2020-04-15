@@ -61,6 +61,7 @@ public class PauseManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         gameIsPaused = false;
+        GameManager.inBattle = false;
         SceneManager.LoadScene(sceneIndex);
     }
 
