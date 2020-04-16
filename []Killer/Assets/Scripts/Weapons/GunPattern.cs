@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.VFX;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewGun", menuName = "Guns/Gun", order = 1)]
+[CreateAssetMenu(fileName = "NewGun", menuName = "Gun")]
 public class GunPattern : ScriptableObject
 {
     public int damage = 35;
@@ -14,5 +14,4 @@ public class GunPattern : ScriptableObject
     public float shotInacurracy = .5f;
     public string shotSoundName = "RifleShot";
     public GameObject impactEffectPrefab;
-    public VisualEffect shotEffect;
 }

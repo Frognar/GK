@@ -63,16 +63,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\MusicChanger.cs" />
-    <Compile Include="Assets\Scripts\Audio\Sound.cs" />
+    <Compile Include="Assets\Scripts\Audio\MusicChanger.cs" />
     <Compile Include="Assets\Scripts\Audio\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Audio\SoundPlayer.cs" />
-    <Compile Include="Assets\Scripts\CandleFlameLight.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\Fireball.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IHavePiksels.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ITakeDamage.cs" />
-    <Compile Include="Assets\Scripts\Managers\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PauseManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerManager.cs" />

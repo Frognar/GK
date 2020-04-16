@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Allow extract base color from material, avg color from texture and create gradient color.
+ * Used for calculate VFX gradient color.
+ */
 public class MaterialsColorManager : MonoBehaviour
 {
     #region Singleton
@@ -15,6 +19,9 @@ public class MaterialsColorManager : MonoBehaviour
 
     #endregion
 
+    /**
+     * Create gradient for VFX ImpactEffect.
+     */
     public Gradient NiceGradientForImpactEffect(Material material)
     {
         Texture texture = GetMaterialMainTexture(material);
@@ -52,6 +59,9 @@ public class MaterialsColorManager : MonoBehaviour
         return gradient;
     }
 
+    /**
+     * Create gradient for VFX EnemyDeathEffect.
+     */
     public Gradient NiceGradientForEnemyDeathEffect(Material material)
     {
         Texture texture = GetMaterialMainTexture(material);
@@ -87,18 +97,21 @@ public class MaterialsColorManager : MonoBehaviour
             return new Color();
 
         float r = 0f, g = 0f, b = 0f;
+
         if (!colorA.Equals(new Color()))
         {
             r += colorA.r * colorAWeight / 2f;
             g += colorA.g * colorAWeight / 2f;
             b += colorA.b * colorAWeight / 2f;
         }
+
         if(!b.Equals(new Color()))
         {
             r += colorB.r * colorBWeight / 2f;
             g += colorB.g * colorBWeight / 2f;
             b += colorB.b * colorBWeight / 2f;
         }
+
         return new Color(r, g, b);
     }
 
@@ -106,6 +119,7 @@ public class MaterialsColorManager : MonoBehaviour
     {
         if (material == null)
             return new Color();
+
         return material.GetColor("_BaseColor");
     }
 
@@ -113,6 +127,7 @@ public class MaterialsColorManager : MonoBehaviour
     {
         if (material == null)
             return null;
+
         return material.GetTexture("_MainTex");
     }
 
@@ -139,12 +154,14 @@ public class MaterialsColorManager : MonoBehaviour
 
         int pixelsCount = texture2D.width * texture2D.height;
         float r = 0f, g = 0f, b = 0f;
+
         foreach(Color pixel in texture2D.GetPixels())
         {
             r += pixel.r;
             g += pixel.g;
             b += pixel.b;
         }
+
         r /= pixelsCount;
         g /= pixelsCount;
         b /= pixelsCount;

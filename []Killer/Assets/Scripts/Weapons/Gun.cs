@@ -1,6 +1,7 @@
 ﻿using UnityEngine.VFX;
 using UnityEngine;
 
+[RequireComponent(typeof(VisualEffect))]
 public class Gun : MonoBehaviour
 {
     [SerializeField] private GunPattern gunPattern;
@@ -11,15 +12,18 @@ public class Gun : MonoBehaviour
     private float impactForce = 60f;
     private int bulletsCount = 1;
     private float shotInacurracy = .5f;
-    private string shotSoundName = "RifleShot";
-    [HideInInspector] public GameObject impactEffectPrefab;
-    public VisualEffect shotEffect;
-    public Transform raycastFrom;
-    public Animator animator;
     private float nextTimeToFire = 0f;
+    private Transform raycastFrom;
+
+    private GameObject impactEffectPrefab;
+    private VisualEffect shotEffect;
+    private Animator animator;
+
+    private string shotSoundName = "RifleShot";
     private SoundManager soundManager;
 
-    private void Awake()
+    // Set up weapon stats from ScriptableObject
+    private void SetUpGun()
     {
         damage = gunPattern.damage;
         range = gunPattern.range;
@@ -29,18 +33,27 @@ public class Gun : MonoBehaviour
         shotInacurracy = gunPattern.shotInacurracy;
         shotSoundName = gunPattern.shotSoundName;
         impactEffectPrefab = gunPattern.impactEffectPrefab;
-        //shotEffect = gunPattern.shotEffect;
     }
 
     private void Start()
     {
         soundManager = SoundManager.instance;
+
+        SetUpGun();
+        shotEffect = GetComponent<VisualEffect>();
+
+        raycastFrom = PlayerManager.instance.player.GetComponentInChildren<Camera>().transform;
+        if (raycastFrom == null)
+            Debug.LogError("No raycastFrom in gun!");
+
+        animator = GetComponent<Animator>();
+        if (animator == null)
+            Debug.LogError("No animator in gun!");
     }
 
     private void Update()
     {
-        if (!PauseManager.gameIsPaused && 
-            PlayerManager.instance.player.GetComponent<Player>().IsAlive)
+        if (!PauseManager.gameIsPaused && PlayerManager.instance.player.GetComponent<Player>().IsAlive)
         {
             if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
             {
@@ -63,11 +76,10 @@ public class Gun : MonoBehaviour
             animator.SetTrigger("Shot");
             for (int i = 0; i < bulletsCount; i++)
             {
-                RaycastHit hitInfo;
                 Vector3 shotInacurracyVector = new Vector3(Random.Range(-shotInacurracy, shotInacurracy), Random.Range(-shotInacurracy, shotInacurracy), Random.Range(-shotInacurracy, shotInacurracy));
                 Vector3 direction = raycastFrom.forward * range + shotInacurracyVector;
 
-                if (Physics.Raycast(raycastFrom.position, direction, out hitInfo, range))
+                if (Physics.Raycast(raycastFrom.position, direction, out RaycastHit hitInfo, range))
                 {
                     if (hitInfo.rigidbody != null)
                         hitInfo.rigidbody.AddForce(-hitInfo.normal * impactForce / bulletsCount);

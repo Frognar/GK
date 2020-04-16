@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int health = 100;
     [SerializeField] int maxPixels = 100;
     [SerializeField] int pixels = 100;
+
     public int Pixels {
         get {
             return pixels;
@@ -14,8 +15,10 @@ public class Player : MonoBehaviour
         set {
             if (value > maxPixels)
                 pixels = maxPixels;
+
             else if (value < 0)
                 pixels = 0;
+
             else
                 pixels = value;
 
