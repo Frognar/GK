@@ -44,7 +44,6 @@ public class Enemy : MonoBehaviour, ITakeDamage<int>, IHavePiksels
 
     public void Die()
     {
-        soundManager.PlaySound("EnemyDie");
         GameObject deathEffect = Instantiate(deathEffectGO, gameObject.transform.position + new Vector3(0f, .5f, 0f), Quaternion.LookRotation(new Vector3(0f, 0f, 0f)));
         VisualEffect death = deathEffect.GetComponent<VisualEffect>();
 
@@ -60,6 +59,7 @@ public class Enemy : MonoBehaviour, ITakeDamage<int>, IHavePiksels
         gameObject.transform.position = new Vector3(0f, 0f, 0f);
         Destroy(gameObject, .1f);
         DropPixels();
+        soundManager.PlaySound("EnemyDie");
     }
 
     public int DropPixels()
