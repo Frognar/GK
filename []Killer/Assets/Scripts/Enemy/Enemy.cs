@@ -33,13 +33,13 @@ public class Enemy : MonoBehaviour, ITakeDamage<int>, IHavePiksels
     public void TakeDamage(int damage)
     {
         health -= damage;
+        healthBar.SetHealth(health);
 
         if (health <= 0)
             Die();
         else
             soundManager.PlaySound("EnemyTakeDamage");
 
-        healthBar.SetHealth(health);
     }
 
     public void Die()
