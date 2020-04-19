@@ -2,77 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
-using UnityEngine.AI;
 
-[RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : MonoBehaviour, ITakeDamage<int>, IHavePiksels
 {
     [Header("Health")]
-    [SerializeField] private int maxHealth = 100;
-    [SerializeField] private int health = 100;
+    [SerializeField] protected int maxHealth = 100;
+    [SerializeField] protected int health = 100;
     public int MaxHealth { get { return maxHealth; } }
     public int Health { get { return health; } }
-
-    [Header("Attack")]
-    [SerializeField] private float attackRadius = 25f;
-    [SerializeField] private float attacksPerSecond = 0.5f;
-    private float nextTimeToAttack = 0f;
-    private Transform target;
-    public GameObject fireball;
-    [SerializeField] private float fireballSpeed = 20f;
-
-    [SerializeField] private float lookRadius = 60f;
-    private NavMeshAgent agent;
 
     [Header("Other")]
     public GameObject deathEffectGO;
     public HealthBar healthBar;
 
-    private SoundManager soundManager;
+    protected SoundManager soundManager;
 
     [Header("Drop")]
-    [SerializeField] private int minPixelsDrop = 5;
-    [SerializeField] private int maxPixelsDrop = 15;
+    [SerializeField] protected int minPixelsDrop = 5;
+    [SerializeField] protected int maxPixelsDrop = 15;
     public int MinPixelsDrop { get { return minPixelsDrop; } }
     public int MaxPixelsDrop { get { return maxPixelsDrop; } }
 
     void Start()
     {
         health = maxHealth;
-        target = PlayerManager.instance.player.transform;
-        agent = GetComponent<NavMeshAgent>();
-        agent.stoppingDistance = attackRadius;
         healthBar.SetMaxHealth(maxHealth);
         soundManager = SoundManager.instance;
-    }
-
-    void Update()
-    {
-        float distance = Vector3.Distance(target.position, transform.position);
-
-        if(distance <= lookRadius)
-        {
-            if (distance <= attackRadius)
-            {
-                FaceTarget();
-
-                if (Time.time >= nextTimeToAttack && Time.timeScale > 0f)
-                {
-                    nextTimeToAttack = Time.time + 1f / attacksPerSecond;
-                    AttackTarget();
-                }
-            }
-            agent.SetDestination(target.position);
-        }
-    }
-
-    public void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRadius);
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
 
     public void TakeDamage(int damage)
@@ -112,23 +67,5 @@ public class Enemy : MonoBehaviour, ITakeDamage<int>, IHavePiksels
         int Pixels = Random.Range(MinPixelsDrop, MaxPixelsDrop);
         PlayerManager.instance.player.GetComponent<Player>().Pixels += Pixels;
         return Pixels;
-    }
-
-    public void FaceTarget()
-    {
-        Vector3 direction = (target.transform.position - transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
-    }
-
-    public void AttackTarget()
-    {
-        GameObject fireBall = Instantiate(fireball, transform.position, transform.rotation);
-        Rigidbody rb = fireBall.GetComponent<Rigidbody>();
-        
-        if(rb != null)
-            rb.velocity = (target.transform.position - transform.position).normalized * fireballSpeed;
-        
-        Destroy(fireBall, 5f);
     }
 }

@@ -383,6 +383,7 @@ GameObject:
   - component: {fileID: 7114045847996367469}
   - component: {fileID: 5442746850959479635}
   - component: {fileID: 5452773214246228603}
+  - component: {fileID: 6424398760950874748}
   m_Layer: 13
   m_Name: Enemy
   m_TagString: Enemy
@@ -399,7 +400,7 @@ Transform:
   m_GameObject: {fileID: 7114045847996367382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 7114045847811517802}
   - {fileID: 7114045846982954101}
@@ -420,12 +421,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   health: 100
-  attackRadius: 25
-  attacksPerSecond: 0.5
-  fireball: {fileID: 4333735131589390889, guid: de3ea7acde6b0604c9d09cfbba70268b,
-    type: 3}
-  fireballSpeed: 20
-  lookRadius: 60
   deathEffectGO: {fileID: 1244048475266233037, guid: 8b2463b2545d6864d867d2cf1dc9ff83,
     type: 3}
   healthBar: {fileID: 7114045847021111411}
@@ -464,8 +459,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 0.061932594}
+  m_Center: {x: 0, y: 0, z: -0.0029800565}
 --- !u!54 &7114045847996367469
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -477,7 +472,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 6
   m_AngularDrag: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
@@ -557,6 +552,18 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
+--- !u!114 &6424398760950874748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7114045847996367382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac020d5e10e95446a6217c547b22ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7114045848691001710
 GameObject:
   m_ObjectHideFlags: 0
