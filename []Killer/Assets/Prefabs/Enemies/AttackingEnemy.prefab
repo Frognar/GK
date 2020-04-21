@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: -5290917358942452918}
   m_Layer: 13
   m_Name: AttackingEnemy
-  m_TagString: Enemy
+  m_TagString: AttackingEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

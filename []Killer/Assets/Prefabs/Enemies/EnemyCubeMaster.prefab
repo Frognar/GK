@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: -5251783140651014009}
   m_Layer: 13
   m_Name: EnemyCubeMaster
-  m_TagString: Enemy
+  m_TagString: EnemyCubeMaster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,6 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac020d5e10e95446a6217c547b22ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 0
 --- !u!65 &2482876341755288949
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -283,6 +284,11 @@ MonoBehaviour:
   healthBar: {fileID: 6341320123201034623}
   minPixelsDrop: 5
   maxPixelsDrop: 15
+  enemyUp: {fileID: 0}
+  enemyDown: {fileID: 0}
+  enemyLeft: {fileID: 0}
+  enemyRight: {fileID: 0}
+  enemyBack: {fileID: 0}
 --- !u!1 &6341320122946534503
 GameObject:
   m_ObjectHideFlags: 0

@@ -43,7 +43,7 @@ public class MoveAround : MonoBehaviour
             System.Random rnd = new System.Random((int)(transform.position.x + transform.position.y + transform.position.z + Time.time));
             int fate = rnd.Next(0, 100);
 
-            if (fate > 30)
+            if (fate > 10)
             {
                 if (fate < 35)
                 {
@@ -52,7 +52,7 @@ public class MoveAround : MonoBehaviour
                 }
                 if (fate > 60)
                 {
-                    if (fate < 65)
+                    if (fate < 90)
                     {
                         movementTimeRemaining = rnd.Next(2, 5);
                         return;

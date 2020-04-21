@@ -11,6 +11,9 @@ public class Enemy : MonoBehaviour, ITakeDamage<int>, IHavePiksels
     public int MaxHealth { get { return maxHealth; } }
     public int Health { get { return health; } }
 
+    private bool unmobilzed = false;
+    public bool Unmobilized { get { return unmobilzed; } set { unmobilzed = value; } }
+
     [Header("Other")]
     public GameObject deathEffectGO;
     public HealthBar healthBar;
