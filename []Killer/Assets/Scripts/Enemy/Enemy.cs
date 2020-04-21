@@ -46,15 +46,19 @@ public class Enemy : MonoBehaviour, ITakeDamage<int>, IHavePiksels
     {
         GameObject deathEffect = Instantiate(deathEffectGO, gameObject.transform.position + new Vector3(0f, .5f, 0f), Quaternion.LookRotation(new Vector3(0f, 0f, 0f)));
         VisualEffect death = deathEffect.GetComponent<VisualEffect>();
-
-        MeshRenderer myRenderer = gameObject.GetComponentInChildren<MeshRenderer>();
-        if (myRenderer != null)
+        if (death != null)
         {
-            Gradient gradient = MaterialsColorManager.instance.NiceGradientForEnemyDeathEffect(myRenderer.material);
-            death.SetGradient("Color", gradient);
-        }
+            MeshRenderer myRenderer = gameObject.GetComponentInChildren<MeshRenderer>();
+            if (myRenderer != null)
+            {
+                Gradient gradient = MaterialsColorManager.instance.NiceGradientForEnemyDeathEffect(myRenderer.material);
+                death.SetGradient("Color", gradient);
+            }
 
-        death.Play();
+            death.SetVector3("Scale", transform.localScale);
+
+            death.Play();
+        }
         Destroy(deathEffect, 15f);
         gameObject.transform.position = new Vector3(0f, 0f, 0f);
         Destroy(gameObject, .1f);

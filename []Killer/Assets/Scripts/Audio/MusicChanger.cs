@@ -23,7 +23,11 @@ public class MusicChanger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
-            inCollider.Add(other);
+        {
+            AttackingEnemy aggressiveEnemy = other.GetComponent<AttackingEnemy>();
+            if(aggressiveEnemy != null)
+                inCollider.Add(other);
+        }
     }
 
     private void OnTriggerExit(Collider other)

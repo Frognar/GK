@@ -754,7 +754,7 @@ VisualEffectResource:
       with strip\r\n#endif\r\n        \r\n        {\n            SetAttribute_F01429A3(
       /*inout */attributes.lifetime,  /*inout */attributes.seed, (float)50, (float)100);\n       
       }\n        {\n            float tmp_ba = Rand(attributes.seed);\n           
-      float tmp_bc = tmp_ba * (float)-5;\n            float tmp_bd = (float)-10 +
+      float tmp_bc = tmp_ba * (float)-5;\n            float tmp_bd = (float)-20 +
       tmp_bc;\n            float4 tmp_be = float4(tmp_bd, tmp_bd, tmp_bd, tmp_bd);\n           
       uint tmp_bf = attributes.particleId ^ asuint(uniform_b);\n            float
       tmp_bg = FixedRand(tmp_bf);\n            float tmp_bh = round(tmp_bg);\n           
@@ -1077,7 +1077,7 @@ VisualEffectResource:
         - m_ExpressionIndex: 13
           m_Value: 1
         - m_ExpressionIndex: 14
-          m_Value: -10
+          m_Value: -20
         - m_ExpressionIndex: 15
           m_Value: 0.7
         - m_ExpressionIndex: 16
@@ -5810,7 +5810,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: -10
+      m_SerializableObject: -20
     m_Space: 2147483647
   m_Property:
     name: min
@@ -5850,7 +5850,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: -15
+      m_SerializableObject: -25
     m_Space: 2147483647
   m_Property:
     name: max

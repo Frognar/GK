@@ -21,6 +21,7 @@ public class AttackingEnemy : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        soundManager = SoundManager.instance;
         agent = GetComponent<NavMeshAgent>();
         target = PlayerManager.instance.player.transform;
         agent.stoppingDistance = attackRadius;
