@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MoveAround : MonoBehaviour
 {
-    float movementSpeed;
-    float movementTimeRemaining;
+    [SerializeField] float movementSpeed;
+    private float movementTimeRemaining;
 
     private void Start()
     {
@@ -29,6 +29,11 @@ public class MoveAround : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameObject.GetComponent<Enemy>().Unmobilized == true)
+        {
+            //Debug.Log("Daj mi się ruszyć");
+            return;
+        }
         if (movementTimeRemaining > 0)
         {
             Move();
