@@ -13,7 +13,7 @@ public class Fireball : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Enemy") && !other.CompareTag("Ignore"))
+        if (!other.gameObject.layer.Equals(13) && !other.CompareTag("Ignore")) // layer 13 is "Enemy"
         {
             if (other.CompareTag("Player"))
             {

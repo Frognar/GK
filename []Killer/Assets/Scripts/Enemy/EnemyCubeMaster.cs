@@ -86,7 +86,7 @@ public class EnemyCubeMaster : Enemy
         {
             //Disable collider so we stop checking it when EnemyCubeMaster is hurt
             //(EnemyCubeMaster still have second collider)
-            other.enabled = false;
+            this.enabled = false;
             return;
         }
 
