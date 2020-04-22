@@ -1,21 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MoveAround : MonoBehaviour
 {
     [SerializeField] float movementSpeed;
     private float movementTimeRemaining;
+    private NavMeshAgent navMeshAgent;
 
     private void Start()
     {
         movementSpeed = 5f;
         movementTimeRemaining = 0;
+        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     void Move()
     {
-        transform.position += transform.forward * Time.deltaTime * movementSpeed;
+        //transform.position += transform.forward * Time.deltaTime * movementSpeed;
+        navMeshAgent.Move(transform.forward * Time.deltaTime * movementSpeed);
 
         movementTimeRemaining -= Time.deltaTime;
     }
