@@ -43,6 +43,8 @@ public class Enemy : MonoBehaviour, ITakeDamage<int>, IHavePiksels
         else
             soundManager.PlaySound("EnemyTakeDamage");
 
+        if (gameObject.tag == "EnemyCubeMaster")
+            GetComponent<EnemyCubeMaster>().DestroyCube();
     }
 
     public void Die()

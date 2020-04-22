@@ -21,6 +21,8 @@ public class AttackingEnemy : Enemy
     // Start is called before the first frame update
     void Start()
     {
+        health = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
         soundManager = SoundManager.instance;
         agent = GetComponent<NavMeshAgent>();
         target = PlayerManager.instance.player.transform;
@@ -71,6 +73,6 @@ public class AttackingEnemy : Enemy
         if (rb != null)
             rb.velocity = (target.transform.position - transform.position).normalized * fireballSpeed;
 
-        Destroy(fireBall, 5f);
+        Destroy(fireBall, 15f);
     }
 }

@@ -11,15 +11,13 @@ public class MoveAround : MonoBehaviour
 
     private void Start()
     {
-        movementSpeed = 5f;
         movementTimeRemaining = 0;
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
     void Move()
     {
-        //transform.position += transform.forward * Time.deltaTime * movementSpeed;
-        navMeshAgent.Move(transform.forward * Time.deltaTime * movementSpeed);
+        navMeshAgent.Move(transform.forward * Time.deltaTime * navMeshAgent.speed);
 
         movementTimeRemaining -= Time.deltaTime;
     }
@@ -58,7 +56,7 @@ public class MoveAround : MonoBehaviour
                 {
                     if (fate < 90)
                     {
-                        movementTimeRemaining = rnd.Next(2, 5);
+                        movementTimeRemaining = rnd.Next(2, 4);
                         return;
                     }
                 }

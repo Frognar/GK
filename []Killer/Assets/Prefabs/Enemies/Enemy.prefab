@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  health: 100
+  health: 50
   deathEffectGO: {fileID: 1244048475266233037, guid: 8b2463b2545d6864d867d2cf1dc9ff83,
     type: 3}
   healthBar: {fileID: 7114045847021111411}
@@ -472,7 +472,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 6
   m_AngularDrag: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
@@ -564,6 +564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac020d5e10e95446a6217c547b22ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 0
 --- !u!1 &7114045848691001710
 GameObject:
   m_ObjectHideFlags: 0
