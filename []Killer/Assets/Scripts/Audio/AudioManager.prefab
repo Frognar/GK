@@ -519,7 +519,7 @@ GameObject:
   - component: {fileID: 6634846808788399133}
   - component: {fileID: 6634846808788399131}
   m_Layer: 0
-  m_Name: AudioManager_v2
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -760,6 +760,25 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 457e6640b59769042b8eaa375e233d2f, type: 3}
     - {fileID: 8300000, guid: d4699176f9079014c9a9127d7b64592b, type: 3}
     - {fileID: 8300000, guid: 1d5fd0ce9ee6e00478cdfe269f646042, type: 3}
+    output: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68, type: 2}
+    minVolume: 1
+    maxVolume: 1
+    minPitch: 1
+    maxPitch: 1
+    stereoPan: 0
+    delayTime: 0
+    randomizeDelay: 0
+    avoidRepeat: 1
+    delay: 0
+    randomizeLoop: 0
+    loop: 1
+    mute: 0
+    playOnAwake: 0
+    playCalled: 0
+  - name: DestroyObj
+    audioSource: {fileID: 0}
+    audioClips:
+    - {fileID: 8300000, guid: c78b786377e2549429991124e26fd4fb, type: 3}
     output: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68, type: 2}
     minVolume: 1
     maxVolume: 1
