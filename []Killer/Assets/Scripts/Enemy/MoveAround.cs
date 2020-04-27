@@ -5,19 +5,22 @@ using UnityEngine.AI;
 
 public class MoveAround : MonoBehaviour
 {
-    [SerializeField] float movementSpeed;
+    [SerializeField] float movementSpeed = 50f;
     private float movementTimeRemaining;
-    private NavMeshAgent navMeshAgent;
+    private Rigidbody rigidBody;
 
     private void Start()
     {
         movementTimeRemaining = 0;
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        rigidBody = GetComponent<Rigidbody>();
+        rigidBody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
     void Move()
     {
-        navMeshAgent.Move(transform.forward * Time.deltaTime * navMeshAgent.speed);
+        Vector3 direction = transform.forward;
+        direction.y = 0f;
+        rigidBody.AddForce(direction * movementSpeed);
 
         movementTimeRemaining -= Time.deltaTime;
     }
@@ -28,19 +31,15 @@ public class MoveAround : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (gameObject.GetComponent<Enemy>().Unmobilized == true)
         {
             //Debug.Log("Daj mi się ruszyć");
             return;
         }
-        if (movementTimeRemaining > 0)
-        {
-            Move();
-        }
-        else
+
+        if (movementTimeRemaining <= 0)
         {
             System.Random rnd = new System.Random((int)(transform.position.x + transform.position.y + transform.position.z + Time.time));
             int fate = rnd.Next(0, 100);
@@ -52,6 +51,7 @@ public class MoveAround : MonoBehaviour
                     Rotate(rnd.Next(-10, 10), rnd.Next(-10, 10));
                     return;
                 }
+
                 if (fate > 60)
                 {
                     if (fate < 90)
@@ -62,5 +62,11 @@ public class MoveAround : MonoBehaviour
                 }
             }
         }
+    }
+
+    void FixedUpdate()
+    {
+        if (movementTimeRemaining > 0)
+            Move();
     }
 }

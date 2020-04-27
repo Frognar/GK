@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(NavMeshAgent))]
 public class AttackingEnemy : Enemy
 {
     [Header("Attack")]
@@ -15,8 +14,9 @@ public class AttackingEnemy : Enemy
     public GameObject fireball;
     [SerializeField] private float fireballSpeed = 20f;
 
-    private NavMeshAgent agent;
+    private Rigidbody rigidBody;
     [SerializeField] private float lookRadius = 60f;
+    [SerializeField] private float movementSpeed = 50f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,29 +24,34 @@ public class AttackingEnemy : Enemy
         health = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         soundManager = SoundManager.instance;
-        agent = GetComponent<NavMeshAgent>();
         target = PlayerManager.instance.player.transform;
-        agent.stoppingDistance = attackRadius;
+        rigidBody = GetComponent<Rigidbody>();
+        rigidBody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        float distance = Vector3.Distance(target.position, transform.position);
+        Vector3 direction = target.position - transform.position;
+        float distance = direction.magnitude;//Vector3.Distance(target.position, transform.position);
 
         if (distance <= lookRadius)
         {
+            FaceTarget();
             if (distance <= attackRadius)
             {
-                FaceTarget();
-
                 if (Time.time >= nextTimeToAttack && Time.timeScale > 0f)
                 {
                     nextTimeToAttack = Time.time + 1f / attacksPerSecond;
                     AttackTarget();
                 }
             }
-            agent.SetDestination(target.position);
+            else
+            {
+                direction.Normalize();
+                direction.y = 0f;
+                rigidBody.AddForce(direction.normalized * movementSpeed);
+            }
         }
     }
 

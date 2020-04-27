@@ -6,14 +6,23 @@ using UnityEngine.AI;
 public class EnemyCubeMaster : Enemy
 {
     private float cubeSize = 1f;
+    public BoxCollider mainCollider;
 
-    public Enemy enemyUp;
-    public Enemy enemyDown;
-    public Enemy enemyLeft;
-    public Enemy enemyRight;
-    public Enemy enemyBack;
+    private List<Vector3> cubesPosition = new List<Vector3> {
+        new Vector3( 0.5f, 0f, -0.5f),  // LEFT
+        new Vector3( -0.5f, 0f, -0.5f), // RIGHT
+        new Vector3( 0f, 0f, -1f),      // BACK
+        new Vector3( 0f, 0.5f, -0.5f),  // UP
+    };
 
-    private bool weHaveFullSquad = false;
+    private List<Vector3> cubesRotation = new List<Vector3> {
+        new Vector3(0f,90f,0f),   // LEFT
+        new Vector3(0f,90f,0f),   // RIGHT
+        new Vector3(0f,0f,0f),    // BACK
+        new Vector3(90f,0f,0f),   // UP
+    };
+
+    public List<Enemy> enemySquad = new List<Enemy>();
 
     private void Start()
     {
@@ -21,65 +30,49 @@ public class EnemyCubeMaster : Enemy
         healthBar.SetMaxHealth(maxHealth);
         soundManager = SoundManager.instance;
 
-        enemyUp = null;
-        enemyDown = null;
-        enemyLeft = null;
-        enemyRight = null;
-        enemyBack = null;
-        
     }
 
     public void DestroyCube()
     {
         //Kwadraty przestają należeć do cube
-        if (enemyLeft != null)
-        {
-            enemyLeft.transform.parent = gameObject.transform.parent;
-            enemyLeft.GetComponent<NavMeshAgent>().enabled = true;
-            enemyLeft.Unmobilized = false;
-            enemyLeft = null;
+        foreach(Enemy enemy in enemySquad)
+            resetEnemy(enemy);
 
-            if (enemyRight != null)
-            {
-                enemyRight.transform.parent = gameObject.transform.parent;
-                enemyRight.GetComponent<NavMeshAgent>().enabled = true;
-                enemyRight.Unmobilized = false;
-                enemyRight = null;
+        enemySquad.Clear();
 
-                if (enemyBack != null)
-                {
-                    enemyBack.transform.parent = gameObject.transform.parent;
-                    enemyBack.GetComponent<NavMeshAgent>().enabled = true;
-                    enemyBack.Unmobilized = false;
-                    enemyBack = null;
-
-                    if (enemyUp != null)
-                    {
-                        enemyUp.transform.parent = gameObject.transform.parent;
-                        enemyUp.GetComponent<NavMeshAgent>().enabled = true;
-                        enemyUp.Unmobilized = false;
-                        enemyUp = null;
-
-                        if (enemyDown != null)
-                        {
-                            enemyDown.transform.parent = gameObject.transform.parent;
-                            enemyDown.GetComponent<NavMeshAgent>().enabled = true;
-                            enemyDown.Unmobilized = false;
-                            enemyDown = null;
-                        }
-                    }
-                }
-            }
-        }
+        mainCollider.center = new Vector3(0f, 0f, 0f);
+        mainCollider.size = new Vector3(1f, 1f, 0.05f);
     }
 
-    /*
-    private void Update()
+    void setEnemy(Enemy enemy, int index)
     {
-        if (health < maxHealth)
-            destroyCube();
+        enemy.GetComponent<MoveAround>().enabled = false;
+        enemy.GetComponent<BoxCollider>().enabled = false;
+        enemy.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        enemy.Unmobilized = true;
+
+        //gameObject is now EnemyCubeMaster child and move with him
+        enemy.transform.parent = this.transform;
+
+        //Set rotation to parent rotation
+        enemy.transform.rotation = this.transform.rotation;
+        //rotate by cubesRotation[index]
+        enemy.transform.rotation *= Quaternion.Euler(cubesRotation[index]);
+        enemy.transform.localPosition = cubesPosition[index];
     }
-    */
+
+    void resetEnemy(Enemy enemy)
+    {
+        enemy.transform.parent = this.transform.parent;
+
+        enemy.GetComponent<MoveAround>().enabled = true;
+        enemy.GetComponent<BoxCollider>().enabled = true;
+        enemy.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+
+        enemy.Unmobilized = false;
+
+    } 
+
     void OnTriggerEnter(Collider other)
     {
         if(health < maxHealth)
@@ -91,95 +84,16 @@ public class EnemyCubeMaster : Enemy
         }
 
         //We don't take AttackingEnemy or EnemyCubeMaster to cube
-        if (other.tag == "Enemy")
+        if (other.CompareTag("Enemy"))
         {
             Debug.Log("Dotknął mnie!");
-            if(weHaveFullSquad == false)
+            if (enemySquad.Count < 4)
             {
-                if(enemyLeft == null)
-                {
-                    enemyLeft = other.GetComponent<Enemy>();
-                    enemyLeft.Unmobilized = true;
-                    //gameObject is now EnemyCubeMaster child and move with him
-                    enemyLeft.transform.parent = gameObject.transform;
-                    enemyLeft.GetComponent<NavMeshAgent>().enabled = false;
-
-                    Vector3 rot = enemyLeft.transform.localRotation.eulerAngles;
-                    rot.y = - rot.y + 90;
-                    rot.x = 0;
-                    rot.z = 0;
-                    enemyLeft.transform.Rotate(rot);
-
-                    enemyLeft.transform.localPosition = new Vector3(cubeSize / 2, 0, -cubeSize / 2);
-
-                }
-                else if(enemyRight == null)
-                {
-                    enemyRight = other.GetComponent<Enemy>();
-                    enemyRight.Unmobilized = true;
-                    enemyRight.transform.parent = gameObject.transform;
-                    enemyRight.GetComponent<NavMeshAgent>().enabled = false;
-
-                    Vector3 rot = enemyRight.transform.localRotation.eulerAngles;
-                    rot.y = - rot.y + 90;
-                    rot.x = 0;
-                    rot.z = 0;
-                    enemyRight.transform.Rotate(rot);
-
-                    enemyRight.transform.localPosition = new Vector3(-cubeSize / 2, 0, -cubeSize / 2);
-                }
-                else if (enemyBack == null)
-                {
-                    enemyBack = other.GetComponent<Enemy>();
-                    enemyBack.Unmobilized = true;
-                    enemyBack.transform.parent = gameObject.transform;
-                    enemyBack.GetComponent<NavMeshAgent>().enabled = false;
-
-                    Vector3 rot = enemyBack.transform.localRotation.eulerAngles;
-                    rot.y = -rot.y;
-                    rot.x = -rot.x;
-                    rot.z = -rot.z;
-                    enemyBack.transform.Rotate(rot);
-
-                    enemyBack.transform.localPosition = new Vector3(0, 0, -cubeSize);
-
-                }
-                else if (enemyUp == null)
-                {
-                    weHaveFullSquad = true;
-
-                    enemyUp = other.GetComponent<Enemy>();
-                    enemyUp.Unmobilized = true;
-                    enemyUp.transform.parent = gameObject.transform;
-                    enemyUp.GetComponent<NavMeshAgent>().enabled = false;
-
-                    //Obrót równolegle do Mastera
-                    Vector3 rot = enemyUp.transform.localRotation.eulerAngles;
-                    rot.y = -rot.y;
-                    rot.x = -rot.x;
-                    rot.z = (-rot.z) + 90;
-                    enemyUp.transform.Rotate(rot);
-
-                    enemyUp.transform.localPosition = new Vector3(0, cubeSize , -cubeSize/2);
-                }
-                /*else if (enemyDown == null)
-                {
-                    weHaveFullSquad = true;
-
-                    enemyDown = other.GetComponent<Enemy>();
-                    enemyDown.Unmobilized = true;
-                    enemyDown.transform.parent = gameObject.transform;
-
-                    //Obrót równolegle do Mastera
-                    Vector3 rot = enemyDown.transform.localRotation.eulerAngles;
-                    rot.y = -rot.y;
-                    rot.x = -rot.x;
-                    rot.z = -rot.z + 90;
-                    enemyDown.transform.Rotate(rot);
-
-                    //enemyDown.transform.localPosition = new Vector3(GetComponent<Collider>().bounds.size.x, 0, 0);
-                }*/
-
+                Enemy otherEnemy = other.GetComponent<Enemy>();
+                setEnemy(otherEnemy, enemySquad.Count);
+                enemySquad.Add(otherEnemy);
+                mainCollider.center = new Vector3(0f, 0f, -.5f);
+                mainCollider.size = new Vector3(1.2f, 1f, 1.2f);
             }
         }
     }

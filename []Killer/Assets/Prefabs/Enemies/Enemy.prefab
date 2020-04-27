@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7114045846982954102}
   - component: {fileID: 7114045846982954103}
   - component: {fileID: 7114045846982954100}
-  m_Layer: 13
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 7114045847008872103}
   - component: {fileID: 7114045847008872097}
   - component: {fileID: 7114045847008872102}
-  m_Layer: 13
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 7114045847021111408}
   - component: {fileID: 7114045847021111410}
   - component: {fileID: 7114045847021111411}
-  m_Layer: 13
+  m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +378,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7114045847996367377}
   - component: {fileID: 7114045847996367376}
-  - component: {fileID: 7114045847996367379}
   - component: {fileID: 7114045847996367378}
   - component: {fileID: 7114045847996367469}
   - component: {fileID: 5442746850959479635}
@@ -426,28 +425,6 @@ MonoBehaviour:
   healthBar: {fileID: 7114045847021111411}
   minPixelsDrop: 8
   maxPixelsDrop: 15
---- !u!195 &7114045847996367379
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7114045847996367382}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 7
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!65 &7114045847996367378
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -459,8 +436,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.061932594}
-  m_Center: {x: 0, y: 0, z: -0.0029800565}
+  m_Size: {x: 1, y: 1, z: 0.05}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &7114045847996367469
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -472,7 +449,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 6
   m_AngularDrag: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
@@ -576,7 +553,7 @@ GameObject:
   - component: {fileID: 7114045848691001705}
   - component: {fileID: 7114045848691001707}
   - component: {fileID: 7114045848691001704}
-  m_Layer: 13
+  m_Layer: 5
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
