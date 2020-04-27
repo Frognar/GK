@@ -7,6 +7,9 @@ public class Player : MonoBehaviour
     [SerializeField] private int health = 100;
     [SerializeField] int maxPixels = 100;
     [SerializeField] int pixels = 100;
+    [SerializeField] private int expToNextLevel = 100;
+    [SerializeField] private int exp = 0;
+    [SerializeField] private int level = 1;
 
     public int Pixels {
         get {
@@ -78,4 +81,21 @@ public class Player : MonoBehaviour
         isAlive = true;
     }
 
+    public void AddExp(int newExp)
+    {
+        exp += newExp;
+        if (exp >= expToNextLevel)
+        {
+            exp -= expToNextLevel;
+            LevelUp();
+            //LevelUpSound();
+        }
+    }
+
+    private void LevelUp()
+    {
+        level++;
+        health = maxHealth = (int)(1.2 * maxHealth);
+        maxPixels = (int)(1.1 * maxPixels);
+    }
 }
