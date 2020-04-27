@@ -790,7 +790,7 @@ MonoBehaviour:
     avoidRepeat: 1
     delay: 0
     randomizeLoop: 0
-    loop: 1
+    loop: 0
     mute: 0
     playOnAwake: 0
     playCalled: 0
