@@ -355,6 +355,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.27058825, g: 0, b: 0.015686275, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -428,6 +429,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -455,6 +457,9 @@ GameObject:
   - component: {fileID: 6429420746186952839}
   - component: {fileID: 6421364712104628655}
   - component: {fileID: -5290917358942452918}
+  - component: {fileID: -4903035427623107676}
+  - component: {fileID: 8034761573943312459}
+  - component: {fileID: 2732338863343177278}
   m_Layer: 13
   m_Name: AttackingEnemy
   m_TagString: AttackingEnemy
@@ -607,4 +612,42 @@ MonoBehaviour:
     type: 3}
   fireballSpeed: 20
   lookRadius: 60
-  movementSpeed: 50
+--- !u!114 &-4903035427623107676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8073628635719418306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a44b6eff1500704f85057ce0e29ea00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastDistance: 10
+  rayCount: 5
+--- !u!114 &8034761573943312459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8073628635719418306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ea9b587f9f8284b933f15c3feab9ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 15
+--- !u!114 &2732338863343177278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8073628635719418306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33318ddc6282d1744b8abca4506999b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

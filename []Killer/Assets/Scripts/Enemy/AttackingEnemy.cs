@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(Rigidbody))]
 public class AttackingEnemy : Enemy
 {
     [Header("Attack")]
@@ -14,9 +13,9 @@ public class AttackingEnemy : Enemy
     public GameObject fireball;
     [SerializeField] private float fireballSpeed = 20f;
 
-    private Rigidbody rigidBody;
     [SerializeField] private float lookRadius = 60f;
-    [SerializeField] private float movementSpeed = 50f;
+
+    private AttackingMoveAround attackingMoveAround;
 
     // Start is called before the first frame update
     void Start()
@@ -25,15 +24,15 @@ public class AttackingEnemy : Enemy
         healthBar.SetMaxHealth(maxHealth);
         soundManager = SoundManager.instance;
         target = PlayerManager.instance.player.transform;
-        rigidBody = GetComponent<Rigidbody>();
-        rigidBody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        attackingMoveAround = GetComponent<AttackingMoveAround>();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         Vector3 direction = target.position - transform.position;
         float distance = direction.magnitude;//Vector3.Distance(target.position, transform.position);
+        attackingMoveAround.SetTargerPosition(Vector3.zero);
 
         if (distance <= lookRadius)
         {
@@ -47,11 +46,7 @@ public class AttackingEnemy : Enemy
                 }
             }
             else
-            {
-                direction.Normalize();
-                direction.y = 0f;
-                rigidBody.AddForce(direction.normalized * movementSpeed);
-            }
+                attackingMoveAround.SetTargerPosition(target.position);
         }
     }
 

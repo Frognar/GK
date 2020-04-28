@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -89,6 +90,8 @@ GameObject:
   - component: {fileID: 7175011213028987760}
   - component: {fileID: 2482876341755288949}
   - component: {fileID: -5251783140651014009}
+  - component: {fileID: -5606459770397663340}
+  - component: {fileID: 8308463228685391486}
   m_Layer: 13
   m_Name: EnemyCubeMaster
   m_TagString: EnemyCubeMaster
@@ -228,7 +231,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac020d5e10e95446a6217c547b22ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0
 --- !u!65 &2482876341755288949
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -263,6 +265,33 @@ MonoBehaviour:
   maxPixelsDrop: 15
   mainCollider: {fileID: 6341320122158600990}
   enemySquad: []
+--- !u!114 &-5606459770397663340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6341320122158600986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ea9b587f9f8284b933f15c3feab9ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 15
+--- !u!114 &8308463228685391486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6341320122158600986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a44b6eff1500704f85057ce0e29ea00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastDistance: 10
+  rayCount: 5
 --- !u!1 &6341320122946534503
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,6 +647,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.27058825, g: 0, b: 0.015686275, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

@@ -174,6 +174,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.27058825, g: 0, b: 0.015686275, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -383,6 +384,8 @@ GameObject:
   - component: {fileID: 5442746850959479635}
   - component: {fileID: 5452773214246228603}
   - component: {fileID: 6424398760950874748}
+  - component: {fileID: -3813521820000831300}
+  - component: {fileID: -5290609384402240233}
   m_Layer: 13
   m_Name: Enemy
   m_TagString: Enemy
@@ -541,7 +544,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac020d5e10e95446a6217c547b22ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0
+--- !u!114 &-3813521820000831300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7114045847996367382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ea9b587f9f8284b933f15c3feab9ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 15
+--- !u!114 &-5290609384402240233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7114045847996367382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a44b6eff1500704f85057ce0e29ea00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastDistance: 12
+  rayCount: 10
 --- !u!1 &7114045848691001710
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,6 +631,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
