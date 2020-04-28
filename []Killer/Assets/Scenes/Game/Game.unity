@@ -735,6 +735,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33318ddc6282d1744b8abca4506999b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rayCastDistance: 10
+  rayCount: 5
+  angularSpeed: 10
+  allowJump: 0
+  timeBeetwenJumps: 5
+  jumpProbability: 0.5
 --- !u!114 &74280778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -748,6 +754,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 15
+  directionVector: {x: 0, y: 0, z: 0}
+  rigidBody: {fileID: 0}
 --- !u!1001 &81747076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10856,7 +10864,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08bc32f4bc88c274197d43ae08c28d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedWeapon: 0
 --- !u!1 &1829333093
 GameObject:
   m_ObjectHideFlags: 0
@@ -18756,11 +18763,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8360723347067479947}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a12ccf2adfff873419dbfdfa8a4b7afa, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a5a7488ac9568b4c8c7f47207ad828a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
-  playerBody: {fileID: 8360723347472737916}
 --- !u!4 &8360723347374378793
 Transform:
   m_ObjectHideFlags: 0
@@ -18887,8 +18892,11 @@ GameObject:
   - component: {fileID: 8360723347472737916}
   - component: {fileID: 8360723347472737891}
   - component: {fileID: 3339042921305431646}
-  - component: {fileID: 8360723347472737918}
   - component: {fileID: 8360723347472737920}
+  - component: {fileID: 8360723347472737921}
+  - component: {fileID: 8360723347472737919}
+  - component: {fileID: 8360723347472737918}
+  - component: {fileID: 8360723347472737922}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -18905,17 +18913,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 8360723347472737917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3d329be41da99646a48157d86de5418, type: 3}
+  m_Script: {fileID: 11500000, guid: dad13acbb65063a4abe598b7ec5ed0f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
-  gravityForce: -30
-  jumpHight: 3
-  groundDistance: 0.5
-  groundCheck: {fileID: 8360723345948074434}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 256
+  speed: 15
+--- !u!114 &8360723347472737919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8360723347472737917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f20669538b763f4d99e13880eda99bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8360723347472737920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18931,6 +18944,38 @@ MonoBehaviour:
   soundNames:
   - PlayerTakeDamage
   - PlayerDie
+--- !u!114 &8360723347472737921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8360723347472737917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b4bfb68218e18b468950115acc915ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSensitivity: 100
+--- !u!114 &8360723347472737922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8360723347472737917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842e5448278b9134a8a7b657d6668d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 3
+  gravityForce: -30
+  groundDistance: 0.4
+  groundCheck: {fileID: 8360723345948074434}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!4 &8768482532467353663 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2985019256255057608, guid: c364c28b7f068914b9967742e0a0521b,

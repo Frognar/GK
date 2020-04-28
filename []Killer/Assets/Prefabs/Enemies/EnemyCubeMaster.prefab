@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2860123831553917854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7980538046591152591}
+  m_Layer: 13
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7980538046591152591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2860123831553917854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6341320122158600989}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6341320121532258402
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,8 +120,8 @@ GameObject:
   - component: {fileID: 7175011213028987760}
   - component: {fileID: 2482876341755288949}
   - component: {fileID: -5251783140651014009}
-  - component: {fileID: -5606459770397663340}
-  - component: {fileID: 8308463228685391486}
+  - component: {fileID: 8342568843050110453}
+  - component: {fileID: 8635396989978370719}
   m_Layer: 13
   m_Name: EnemyCubeMaster
   m_TagString: EnemyCubeMaster
@@ -106,15 +136,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6341320122158600986}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -104.40001, y: 120.65, z: -323.37122}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 6341320122946534502}
   - {fileID: 6341320123171036537}
+  - {fileID: 7980538046591152591}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &6341320122158600990
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -231,6 +262,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac020d5e10e95446a6217c547b22ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rayCastDistance: 10
+  rayCount: 5
+  angularSpeed: 10
+  allowJump: 0
+  timeBeetwenJumps: 5
+  jumpProbability: 0.5
 --- !u!65 &2482876341755288949
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -256,16 +293,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fab259cfa18b3247bfe34e86d7e70f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 500
   health: 50
   deathEffectGO: {fileID: 1244048475266233037, guid: 8b2463b2545d6864d867d2cf1dc9ff83,
     type: 3}
   healthBar: {fileID: 6341320123201034623}
-  minPixelsDrop: 5
-  maxPixelsDrop: 15
+  minPixelsDrop: 16
+  maxPixelsDrop: 35
   mainCollider: {fileID: 6341320122158600990}
   enemySquad: []
---- !u!114 &-5606459770397663340
+--- !u!114 &8342568843050110453
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -274,11 +311,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6341320122158600986}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40ea9b587f9f8284b933f15c3feab9ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e780111e85c8104ca07a7211de9d439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 15
---- !u!114 &8308463228685391486
+  speed: 15
+--- !u!114 &8635396989978370719
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -287,11 +324,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6341320122158600986}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a44b6eff1500704f85057ce0e29ea00, type: 3}
+  m_Script: {fileID: 11500000, guid: 842e5448278b9134a8a7b657d6668d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastDistance: 10
-  rayCount: 5
+  jumpForce: 3
+  gravityForce: -30
+  groundDistance: 0.4
+  groundCheck: {fileID: 7980538046591152591}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &6341320122946534503
 GameObject:
   m_ObjectHideFlags: 0

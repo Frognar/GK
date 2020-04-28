@@ -1,9 +1,5 @@
-﻿public interface ITakeDamage<T>
+﻿public interface ITakeDamage
 {
-    T MaxHealth { get; }
-    T Health { get; }
-
-    void TakeDamage(T damage);
-    void Die();
+    void TakeDamage(int damage);
 
 }

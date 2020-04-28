@@ -203,11 +203,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5251673704868909278}
-  - component: {fileID: 4288167068818069568}
   - component: {fileID: 8260627902919501867}
   - component: {fileID: 7770536090988239129}
   - component: {fileID: 853194242}
   - component: {fileID: 853194243}
+  - component: {fileID: 2045106370}
   m_Layer: 2
   m_Name: Rifle
   m_TagString: Ignore
@@ -230,19 +230,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4288167068818069568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5802546521679844114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b365112c3c8d6a4a80c9e8b010c4645, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunPattern: {fileID: 11400000, guid: cf033de24e6b8d847a79a2d60e49e3e4, type: 2}
 --- !u!114 &8260627902919501867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,3 +422,16 @@ VisualEffect:
         m_Overridden: 1
     m_Bool:
       m_Array: []
+--- !u!114 &2045106370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5802546521679844114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92e5349b9878c8045a0c0d50d5938800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunPattern: {fileID: 11400000, guid: cf033de24e6b8d847a79a2d60e49e3e4, type: 2}

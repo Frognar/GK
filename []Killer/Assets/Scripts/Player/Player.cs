@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(SoundPlayer))]
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, ITakeDamage
 {
+    private MouseInput mouseInput;
+    private KeyboardInput keyboardInput;
+
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int health = 100;
     [SerializeField] int maxPixels = 100;
@@ -18,14 +21,26 @@ public class Player : MonoBehaviour
         set {
             if (value > maxPixels)
                 pixels = maxPixels;
-
             else if (value < 0)
                 pixels = 0;
-
             else
                 pixels = value;
 
             pixelsBar.SetHealth(pixels);
+        }
+    }
+
+    public int Health {
+        get {
+            return health;
+        }
+        set {
+            if (value > maxHealth)
+                health = maxHealth;
+            else
+                health = value;
+
+            healthBar.SetHealth (health);
         }
     }
 
@@ -35,30 +50,30 @@ public class Player : MonoBehaviour
     public HealthBar healthBar;
     public HealthBar pixelsBar;
 
-    void Start()
-    {
-        ResetPlayer();
+    private void Awake () {
+        mouseInput = GetComponent<MouseInput> ();
+        keyboardInput = GetComponent<KeyboardInput> ();
     }
 
-    public void TakeDamage(int damage)
-    {
-        if (IsAlive)
-        {
+    void Start () {
+        ResetPlayer ();
+    }
+
+    public void TakeDamage (int damage) {
+        if (IsAlive) {
             health -= damage;
 
             if (health <= 0)
-                Die();
+                Die ();
             else
-                GetComponent<SoundPlayer>().PlaySoundEvent("PlayerTakeDamage");
+                GetComponent<SoundPlayer> ().PlaySoundEvent ("PlayerTakeDamage");
 
-            healthBar.SetHealth(health);
+            healthBar.SetHealth (health);
         }
     }
 
-    public bool UsePixels(int noOfPixelsUsed)
-    {
-        if (Pixels < noOfPixelsUsed)
-        {
+    public bool UsePixels (int noOfPixelsUsed) {
+        if (Pixels < noOfPixelsUsed) {
             return false;
         }
 
@@ -69,6 +84,8 @@ public class Player : MonoBehaviour
     private void Die()
     {
         GetComponent<SoundPlayer>().PlaySoundEvent("PlayerDie");
+        mouseInput.enabled = false;
+        keyboardInput.enabled = false;
         isAlive = false;
     }
 
@@ -78,6 +95,8 @@ public class Player : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
         pixels = maxPixels;
         pixelsBar.SetMaxHealth(maxPixels);
+        mouseInput.enabled = true;
+        keyboardInput.enabled = true;
         isAlive = true;
     }
 
