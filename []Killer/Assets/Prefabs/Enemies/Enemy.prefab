@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2660952044795331846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.4, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7114045847996367377}
@@ -607,12 +607,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 3
-  gravityForce: -30
-  groundDistance: 0.4
+  gravityForce: -60
   groundCheck: {fileID: 4978410182068398028}
   groundMask:
     serializedVersion: 2
     m_Bits: 1281
+  checkSphere: 0
 --- !u!1 &7114045848691001710
 GameObject:
   m_ObjectHideFlags: 0

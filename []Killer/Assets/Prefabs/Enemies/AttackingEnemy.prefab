@@ -628,12 +628,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 3
-  gravityForce: -30
-  groundDistance: 0.4
+  gravityForce: -60
   groundCheck: {fileID: 1027095541354895279}
   groundMask:
     serializedVersion: 2
     m_Bits: 1281
+  checkSphere: 0
 --- !u!114 &2732338863343177278
 MonoBehaviour:
   m_ObjectHideFlags: 0

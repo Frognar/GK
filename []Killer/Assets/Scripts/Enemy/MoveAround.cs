@@ -64,22 +64,22 @@ public class MoveAround : MonoBehaviour {
         }
     }
 
-    protected void Jump () {
+    protected void ControllHeight () {
+        Vector3 jump = jumpController.jump (false);
+        jump.x = jump.z = 0f;
         if (allowJump) {
-
             if (Time.time >= lastJampTime) {
                 jumpNow = Random.Range (0f, 1f) < jumpProbability;
                 lastJampTime = Time.time + timeBeetwenJumps;
             } else
                 jumpNow = false;
-            Vector3 jump = jumpController.jump (jumpNow);
-            move.SetJumpVector (jump);
-        } else
-            move.SetJumpVector (-Vector3.up);
+            jump = jumpController.jump (jumpNow);
+        }
+        move.SetJumpVector (jump);
     }
 
     protected virtual void Update () {
         RandomMovement ();
-        Jump ();
+        ControllHeight ();
     }
 }

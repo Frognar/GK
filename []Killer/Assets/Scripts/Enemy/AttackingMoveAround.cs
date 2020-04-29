@@ -31,10 +31,10 @@ public class AttackingMoveAround : MoveAround {
                 direction.y = 0f;
                 move.SetMoveVector (direction);
             }
-        } else {
+        } else
             RandomMovement ();
-            Jump ();
-        }
+
+        ControllHeight ();
     }
     public void OnDrawGizmosSelected () {
         Gizmos.color = Color.red;
