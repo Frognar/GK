@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
 public class MoveAround : MonoBehaviour {
-    private IMove move;
+    protected IMove move;
     [SerializeField] private float rayCastDistance = 10f;
-    [SerializeField] int rayCount = 5;
+    [SerializeField] private int rayCount = 5;
 
     [SerializeField] private float angularSpeed = 10f;
     private float movementTimeRemaining = 0f;
@@ -15,8 +15,7 @@ public class MoveAround : MonoBehaviour {
     [SerializeField] private float jumpProbability = 0.5f;
     private float lastJampTime = 0f;
 
-
-    private void Awake () {
+    protected virtual void Awake () {
         move = GetComponent<IMove> ();
         if (move == null)
             Debug.LogError ("No moveVelocity script on NPC [" + this.name + "]");
@@ -26,7 +25,7 @@ public class MoveAround : MonoBehaviour {
             Debug.LogError ("No jumpController script on NPC [" + this.name + "]");
     }
 
-    private bool ChangePath () {
+    protected bool ChangePath () {
         for (float i = -5; i <= 5; i += 10f / (rayCount - 1)) {
             Ray ray = new Ray (transform.position - transform.right * i, transform.forward);
             RaycastHit hit;
@@ -39,12 +38,12 @@ public class MoveAround : MonoBehaviour {
         return false;
     }
 
-    private void Rotate (float xRotation, float zRotation) {
-        Quaternion lookRotation = Quaternion.LookRotation (new Vector3 (xRotation, 0, zRotation) * angularSpeed);
-        transform.rotation = Quaternion.Slerp (transform.rotation, lookRotation, Time.deltaTime * 5f);
+    protected void Rotate (float xRotation, float zRotation) {
+        Quaternion lookRotation = Quaternion.LookRotation (new Vector3 (xRotation, 0, zRotation));
+        transform.rotation = Quaternion.Slerp (transform.rotation, lookRotation, Time.deltaTime * angularSpeed);
     }
 
-    private void RandomMovement () {
+    protected void RandomMovement () {
         if (movementTimeRemaining <= 0f) {
             move.SetMoveVector (Vector3.zero);
             System.Random rnd = new System.Random ((int) (transform.position.x + transform.position.y + transform.position.z + Time.time));
@@ -65,7 +64,7 @@ public class MoveAround : MonoBehaviour {
         }
     }
 
-    private void Jump () {
+    protected void Jump () {
         if (allowJump) {
 
             if (Time.time >= lastJampTime) {
@@ -79,7 +78,7 @@ public class MoveAround : MonoBehaviour {
             move.SetJumpVector (-Vector3.up);
     }
 
-    void Update () {
+    protected virtual void Update () {
         RandomMovement ();
         Jump ();
     }

@@ -1,33 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.VFX;
 
-public class Enemy : MonoBehaviour, ITakeDamage, IHavePiksels
-{
-    [Header("Health")]
+public class Enemy : MonoBehaviour, ITakeDamage, IHavePiksels {
+    [Header ("Health")]
     [SerializeField] protected int maxHealth = 100;
     [SerializeField] protected int health = 100;
 
-    private bool unmobilzed = false;
-    public bool Unmobilized { get { return unmobilzed; } set { unmobilzed = value; } }
-
-    [Header("Other")]
+    [Header ("Other")]
     public GameObject deathEffectGO;
     public HealthBar healthBar;
 
-    protected SoundManager soundManager;
-
-    [Header("Drop")]
+    [Header ("Drop")]
     [SerializeField] protected int minPixelsDrop = 5;
     [SerializeField] protected int maxPixelsDrop = 15;
 
-    void Start()
-    {
+    protected SoundManager soundManager;
+
+    protected virtual void Start () {
         health = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetMaxHealth (maxHealth);
         soundManager = SoundManager.instance;
-        if(soundManager == null)
+        if (soundManager == null)
             Debug.LogWarning ("No soundManager in enemy!");
     }
 
@@ -40,7 +33,7 @@ public class Enemy : MonoBehaviour, ITakeDamage, IHavePiksels
         else
             soundManager?.PlaySound ("EnemyTakeDamage");
 
-        if (gameObject.CompareTag("EnemyCubeMaster"))
+        if (gameObject.CompareTag ("EnemyCubeMaster"))
             GetComponent<EnemyCubeMaster> ().DestroyCube ();
     }
 

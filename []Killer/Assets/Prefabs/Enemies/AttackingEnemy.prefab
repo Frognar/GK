@@ -485,11 +485,12 @@ GameObject:
   - component: {fileID: 8073628635719418310}
   - component: {fileID: 8073628635719418297}
   - component: {fileID: 6429420746186952839}
-  - component: {fileID: 6421364712104628655}
-  - component: {fileID: -5290917358942452918}
-  - component: {fileID: 2732338863343177278}
+  - component: {fileID: 2453217708954675609}
   - component: {fileID: 3117108249083064540}
   - component: {fileID: 3071692926801302120}
+  - component: {fileID: 2732338863343177278}
+  - component: {fileID: 3521611597825424821}
+  - component: {fileID: 6421364712104628655}
   m_Layer: 13
   m_Name: AttackingEnemy
   m_TagString: AttackingEnemy
@@ -582,6 +583,92 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &2453217708954675609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8073628635719418306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 859e278d3e423a04aa4a04c7e056ee5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 250
+  health: 100
+  deathEffectGO: {fileID: 1244048475266233037, guid: 8b2463b2545d6864d867d2cf1dc9ff83,
+    type: 3}
+  healthBar: {fileID: 8073628634878413735}
+  minPixelsDrop: 16
+  maxPixelsDrop: 25
+--- !u!114 &3117108249083064540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8073628635719418306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e780111e85c8104ca07a7211de9d439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 15
+--- !u!114 &3071692926801302120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8073628635719418306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842e5448278b9134a8a7b657d6668d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 3
+  gravityForce: -30
+  groundDistance: 0.4
+  groundCheck: {fileID: 1027095541354895279}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &2732338863343177278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8073628635719418306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33318ddc6282d1744b8abca4506999b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayCastDistance: 10
+  rayCount: 5
+  angularSpeed: 10
+  allowJump: 0
+  timeBeetwenJumps: 5
+  jumpProbability: 0.5
+  lookRadius: 60
+--- !u!114 &3521611597825424821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8073628635719418306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e883b35cb76ef4249a8a1fcc6ce5c9e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRadius: 25
+  attackRate: 2
+  missle: {fileID: 4333735131589390889, guid: de3ea7acde6b0604c9d09cfbba70268b, type: 3}
+  missleSpeed: 20
 --- !u!2083052967 &6421364712104628655
 VisualEffect:
   m_ObjectHideFlags: 0
@@ -618,78 +705,3 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
---- !u!114 &-5290917358942452918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8073628635719418306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cddd1889d8e670449b6eee5404bfbcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 300
-  health: 50
-  deathEffectGO: {fileID: 1244048475266233037, guid: 8b2463b2545d6864d867d2cf1dc9ff83,
-    type: 3}
-  healthBar: {fileID: 8073628634878413735}
-  minPixelsDrop: 16
-  maxPixelsDrop: 25
-  attackRadius: 30
-  attacksPerSecond: 0.8
-  fireball: {fileID: 4333735131589390889, guid: de3ea7acde6b0604c9d09cfbba70268b,
-    type: 3}
-  fireballSpeed: 30
-  lookRadius: 60
---- !u!114 &2732338863343177278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8073628635719418306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33318ddc6282d1744b8abca4506999b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rayCastDistance: 10
-  rayCount: 5
-  angularSpeed: 10
-  allowJump: 0
-  timeBeetwenJumps: 5
-  jumpProbability: 0.5
---- !u!114 &3117108249083064540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8073628635719418306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e780111e85c8104ca07a7211de9d439, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 15
---- !u!114 &3071692926801302120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8073628635719418306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 842e5448278b9134a8a7b657d6668d62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 3
-  gravityForce: -30
-  groundDistance: 0.4
-  groundCheck: {fileID: 1027095541354895279}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 256
