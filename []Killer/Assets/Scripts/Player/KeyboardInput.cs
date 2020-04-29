@@ -4,6 +4,11 @@ public class KeyboardInput : MonoBehaviour {
     private IMove move;
     private JumpController jumpController;
 
+    private void OnDisable () {
+        move.SetMoveVector (Vector3.zero);
+        move.SetJumpVector (Vector3.zero);
+    }
+
     private void Awake () {
         move = GetComponent<IMove> ();
         if (move == null)

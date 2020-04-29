@@ -153,4 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionVFX: {fileID: 5577325567762440293, guid: e9ff6e27e734b2f429d9aa682f079bd2,
     type: 3}
-  m_damage: 35
+  damage: 35
+  ignoreList:
+  - serializedVersion: 2
+    m_Bits: 8192

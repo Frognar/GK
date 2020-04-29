@@ -54,7 +54,7 @@ public class Shoot_Gun: MonoBehaviour, IShoot
         if (shotEffect == null)
             Debug.LogWarning ("No shotEffect in gun!");
 
-        raycastFrom = PlayerManager.instance.player.GetComponentInChildren<Camera> ().transform;
+        raycastFrom = GetComponentInParent<Camera> ().transform;
         if (raycastFrom == null)
             Debug.LogWarning ("No raycastFrom in gun!");
 

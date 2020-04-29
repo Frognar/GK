@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: -5251783140651014009}
   - component: {fileID: 8342568843050110453}
   - component: {fileID: 8635396989978370719}
-  m_Layer: 13
+  m_Layer: 11
   m_Name: EnemyCubeMaster
   m_TagString: EnemyCubeMaster
   m_Icon: {fileID: 0}
@@ -333,7 +333,7 @@ MonoBehaviour:
   groundCheck: {fileID: 7980538046591152591}
   groundMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1281
 --- !u!1 &6341320122946534503
 GameObject:
   m_ObjectHideFlags: 0

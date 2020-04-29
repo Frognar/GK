@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour {
     [Header ("Attack")]
     [SerializeField] private float attackRadius = 25f;
+    [SerializeField] private LayerMask targetList;
     public float AttackRadius {
         get {
             return attackRadius;
@@ -29,12 +31,16 @@ public class EnemyAttack : MonoBehaviour {
     }
 
     public void AttackTarget () {
-        GameObject fireBall = Instantiate (missle, transform.position, transform.rotation);
-        Rigidbody rb = fireBall.GetComponent<Rigidbody> ();
+        GameObject missleGO = Instantiate (missle, transform.position + transform.forward, transform.rotation);
+        Fireball fireball = missleGO.GetComponent<Fireball> ();
+        if (fireball != null) {
+            fireball.SetTargetList (targetList);
+        }
+        Rigidbody rb = missleGO.GetComponent<Rigidbody> ();
 
         if (rb != null)
             rb.velocity = (target.transform.position - transform.position).normalized * missleSpeed;
 
-        Destroy (fireBall, 15f);
+        Destroy (missleGO, 15f);
     }
 }

@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 6424398760950874748}
   - component: {fileID: 5117825815223774686}
   - component: {fileID: 401284237202078136}
-  m_Layer: 13
+  m_Layer: 11
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -612,7 +612,7 @@ MonoBehaviour:
   groundCheck: {fileID: 4978410182068398028}
   groundMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1281
 --- !u!1 &7114045848691001710
 GameObject:
   m_ObjectHideFlags: 0

@@ -96,6 +96,7 @@
     <Compile Include="Assets\Scripts\Weapons\GunPattern.cs" />
     <Compile Include="Assets\Scripts\Weapons\IShoot.cs" />
     <Compile Include="Assets\Scripts\Weapons\Shoot_Gun.cs" />
+    <Compile Include="Assets\Scripts\Weapons\Shoot_Missle.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponSwitching.cs" />
     <None Include="Assets\_Packages\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\_Packages\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />

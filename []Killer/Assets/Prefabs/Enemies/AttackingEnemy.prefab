@@ -491,7 +491,7 @@ GameObject:
   - component: {fileID: 2732338863343177278}
   - component: {fileID: 3521611597825424821}
   - component: {fileID: 6421364712104628655}
-  m_Layer: 13
+  m_Layer: 11
   m_Name: AttackingEnemy
   m_TagString: AttackingEnemy
   m_Icon: {fileID: 0}
@@ -633,7 +633,7 @@ MonoBehaviour:
   groundCheck: {fileID: 1027095541354895279}
   groundMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1281
 --- !u!114 &2732338863343177278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,6 +666,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRadius: 25
+  targetList:
+    serializedVersion: 2
+    m_Bits: 5377
   attackRate: 2
   missle: {fileID: 4333735131589390889, guid: de3ea7acde6b0604c9d09cfbba70268b, type: 3}
   missleSpeed: 20
