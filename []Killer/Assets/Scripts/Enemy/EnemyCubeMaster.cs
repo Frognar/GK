@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EnemyCubeMaster : Enemy
 {
@@ -13,10 +11,10 @@ public class EnemyCubeMaster : Enemy
         new Vector3( 0f, 0.5f, -0.5f),  // UP
     };
     private List<Vector3> cubesRotation = new List<Vector3> {
-        new Vector3(0f,90f,0f),   // LEFT
-        new Vector3(0f,90f,0f),   // RIGHT
-        new Vector3(0f,0f,0f),    // BACK
-        new Vector3(90f,0f,0f),   // UP
+        new Vector3(0f,90f,0f),     // LEFT
+        new Vector3(0f,-90f,0f),    // RIGHT
+        new Vector3(0f,180f,0f),    // BACK
+        new Vector3(-90f,0f,0f),    // UP
     };
     [SerializeField] private List<Enemy> enemySquad = new List<Enemy>();
 
@@ -34,7 +32,10 @@ public class EnemyCubeMaster : Enemy
     void setEnemy (Enemy enemy, int index) {
         enemy.GetComponent<MoveAround> ().enabled = false;
         enemy.GetComponent<BoxCollider> ().enabled = false;
-        enemy.GetComponent<Rigidbody> ().constraints = RigidbodyConstraints.FreezeAll;
+        Rigidbody rb = enemy.GetComponent<Rigidbody> ();
+        rb.velocity = Vector3.zero;
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+        rb.interpolation = RigidbodyInterpolation.None;
 
         //gameObject is now EnemyCubeMaster child and move with him
         enemy.transform.parent = this.transform;
@@ -51,7 +52,10 @@ public class EnemyCubeMaster : Enemy
 
         enemy.GetComponent<MoveAround> ().enabled = true;
         enemy.GetComponent<BoxCollider> ().enabled = true;
-        enemy.GetComponent<Rigidbody> ().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        Rigidbody rb = enemy.GetComponent<Rigidbody> ();
+        rb.velocity = Vector3.zero;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
     }
 
     void OnTriggerEnter (Collider other) {
@@ -63,15 +67,13 @@ public class EnemyCubeMaster : Enemy
         }
 
         //We don't take AttackingEnemy or EnemyCubeMaster to cube
-        if (other.CompareTag ("Enemy")) {
+        if (other.CompareTag ("Enemy") && enemySquad.Count < 4) {
             Debug.Log ("Dotknął mnie!");
-            if (enemySquad.Count < 4) {
-                Enemy otherEnemy = other.GetComponent<Enemy> ();
-                setEnemy (otherEnemy, enemySquad.Count);
-                enemySquad.Add (otherEnemy);
-                mainCollider.center = new Vector3 (0f, 0f, -.5f);
-                mainCollider.size = new Vector3 (1.2f, 1f, 1.2f);
-            }
+            Enemy otherEnemy = other.GetComponent<Enemy> ();
+            setEnemy (otherEnemy, enemySquad.Count);
+            enemySquad.Add (otherEnemy);
+            mainCollider.center = new Vector3 (0f, 0f, -.5f);
+            mainCollider.size = new Vector3 (1f, 1f, 1f);
         }
     }
 }

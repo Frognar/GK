@@ -8,13 +8,14 @@ public class JumpController : MonoBehaviour {
     public LayerMask groundMask;
     private Vector3 velocity = new Vector3 ();
 
-    public bool checkSphere = true;
 
     private float sphereRadius = 0.5f;
-    private Vector3 halfExtents = new Vector3 (5f, .5f, .5f);
+    [Header("For Enemy")]
+    public bool enemy = true;
+    [SerializeField] private Vector3 halfExtents = new Vector3 (5f, .5f, .5f);
 
     public Vector3 jump (bool spacePressed) {
-        if (checkSphere)
+        if (enemy)
             isGrounded = Physics.CheckSphere (groundCheck.position, sphereRadius, groundMask);
         else
             isGrounded = Physics.CheckBox (groundCheck.position, halfExtents, transform.rotation, groundMask);
