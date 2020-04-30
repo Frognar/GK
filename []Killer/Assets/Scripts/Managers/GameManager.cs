@@ -1,18 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour {
     #region Singleton
     public static GameManager instance;
 
-    void Awake()
-    {
+    void Awake () {
         if (instance == null)
             instance = this;
-        else
-        {
-            Destroy(gameObject);
+        else {
+            Destroy (gameObject);
             return;
         }
 
@@ -21,48 +18,51 @@ public class GameManager : MonoBehaviour
 
     public GameObject deathPanel;
     [SerializeField] private Transform playerSpawn;
-    private GameObject player;
+    private GameObject playerGO;
+    private Player player;
     private bool respawning = false;
 
     //MusicChanger
     public static bool inBattle = false;
 
-
-    void Start()
-    {
-        player = PlayerManager.instance.player;
-        player.transform.position = playerSpawn.position;
+    void Start () {
+        playerGO = PlayerManager.instance.player;
+        playerGO.transform.position = playerSpawn.position;
+        player = playerGO.GetComponent<Player> ();
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        // SoundManager.instance.StopSound("BattleTheme");
     }
 
-    void Update()
-    {
-        if (!player.GetComponent<Player>().IsAlive && !respawning)
-        {
-            StartCoroutine(PlayerRespawn());
-            respawning = true;
-        }
+    void Update () {
+        HandleMusicTheme ();
 
-        bool battleMusic = SoundManager.instance.IsSoundPlaying("BattleTheme");
+        if (!player.IsAlive && !respawning)
+            Respawn ();
+    }
+
+    void HandleMusicTheme () {
+        bool battleMusic = SoundManager.instance.IsSoundPlaying ("BattleTheme");
 
         if (inBattle && !battleMusic)
-            SoundManager.instance.ChangeMusicInicjalizeCoroution("GameTheme", "BattleTheme");
+            SoundManager.instance.ChangeMusicInicjalizeCoroution ("GameTheme", "BattleTheme");
 
         if (!inBattle && battleMusic)
-            SoundManager.instance.ChangeMusicInicjalizeCoroution("BattleTheme", "GameTheme");
+            SoundManager.instance.ChangeMusicInicjalizeCoroution ("BattleTheme", "GameTheme");
     }
 
-    IEnumerator PlayerRespawn()
-    {
-        deathPanel.SetActive(true);
-        yield return new WaitForSeconds(2f);
-        player.transform.position = playerSpawn.position;
-        yield return new WaitForSeconds(.2f);
-        player.GetComponent<Player>().ResetPlayer();
-        deathPanel.SetActive(false);
+    void Respawn () {
+        StartCoroutine (PlayerRespawn ());
+        respawning = true;
+    }
+
+    IEnumerator PlayerRespawn () {
+        deathPanel.SetActive (true);
+        yield return new WaitForSeconds (2f);
+        playerGO.transform.position = playerSpawn.position;
+        yield return new WaitForSeconds (.2f);
+        player.ResetPlayer ();
+        deathPanel.SetActive (false);
         respawning = false;
     }
 

@@ -12,16 +12,21 @@ public class DestructibleObject : MonoBehaviour, ITakeDamage, IHavePiksels
 
     [Header("Destroy VFX")]
     public GameObject destroyEffectPrefab;
-    private SoundManager soundManager;
+    private SoundPlayer soundPlayer;
 
     private void Start () {
-        soundManager = SoundManager.instance;
+        soundPlayer = GetComponent<SoundPlayer> ();
     }
 
-    public void Die () {
+    private void DestroyObject () {
         int pixels = DropPixels ();
         Debug.Log ("I drop " + pixels + " pixels!");
 
+        CreateDestroyEffect ();
+        Destroy (gameObject, .1f);
+    }
+
+    private void CreateDestroyEffect () {
         GameObject destroyEffectGO = Instantiate (destroyEffectPrefab, transform.position, Quaternion.identity);
         VisualEffect destroyEffect = destroyEffectGO.GetComponent<VisualEffect> ();
         if (destroyEffect != null) {
@@ -35,15 +40,14 @@ public class DestructibleObject : MonoBehaviour, ITakeDamage, IHavePiksels
         }
 
         Destroy (destroyEffectGO, 3f);
-        soundManager.PlaySound ("DestroyObj");
-        Destroy (gameObject, .1f);
+        soundPlayer.PlaySoundEvent ("DestroyObj");
     }
 
     public void TakeDamage (int damage) {
         health -= damage;
 
         if (health <= 0)
-            Die ();
+            DestroyObject ();
     }
 
     public int DropPixels () {

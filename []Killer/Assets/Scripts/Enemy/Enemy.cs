@@ -14,14 +14,14 @@ public class Enemy : MonoBehaviour, ITakeDamage, IHavePiksels {
     [SerializeField] protected int minPixelsDrop = 5;
     [SerializeField] protected int maxPixelsDrop = 15;
 
-    protected SoundManager soundManager;
+    protected SoundPlayer soundPlayer;
 
     protected virtual void Start () {
         health = maxHealth;
         healthBar.SetMaxHealth (maxHealth);
-        soundManager = SoundManager.instance;
-        if (soundManager == null)
-            Debug.LogWarning ("No soundManager in enemy!");
+        soundPlayer = GetComponent<SoundPlayer> ();
+        if (soundPlayer == null)
+            Debug.LogWarning ("No soundPlayer in NPC [" + this.name + "]");
     }
 
     public void TakeDamage (int damage) {
@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour, ITakeDamage, IHavePiksels {
         if (health <= 0)
             Die ();
         else
-            soundManager?.PlaySound ("EnemyTakeDamage");
+            soundPlayer?.PlaySoundEvent ("EnemyTakeDamage");
 
         if (gameObject.CompareTag ("EnemyCubeMaster"))
             GetComponent<EnemyCubeMaster> ().DestroyCube ();
@@ -40,10 +40,10 @@ public class Enemy : MonoBehaviour, ITakeDamage, IHavePiksels {
     public void Die () {
         CreateDeathEffect ();
         gameObject.transform.position = new Vector3 (0f, 0f, 0f);
-        Destroy (gameObject, .1f);
         DropPixels ();
 
-        soundManager?.PlaySound ("EnemyDie");
+        soundPlayer?.PlaySoundEvent ("EnemyDie");
+        Destroy (gameObject, .1f);
     }
 
     private void CreateDeathEffect () {

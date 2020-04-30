@@ -1,29 +1,49 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundPlayer : MonoBehaviour
-{
+public class SoundPlayer : MonoBehaviour {
 
     SoundManager soundManager;
+    AudioSource audioSource;
+    Transform player;
 
-    public string[] soundNames;
-
-    public string[] SoundNames { get { return soundNames; } set { soundNames = value; } }
-
-    private void Start()
-    {
+    private void Start () {
         soundManager = SoundManager.instance;
+        audioSource = GetComponent<AudioSource> ();
+        player = PlayerManager.instance.player.transform;
     }
 
-    public void PlaySoundEvent(string soundName)
-    {
-        soundManager.PlaySound(soundName);
+    private void Update () {
+        if (audioSource != null) {
+            float distance = (transform.position - player.position).magnitude;
+            if (distance >= 80f)
+                audioSource.volume = 0;
+            else
+                audioSource.volume = 5 / distance;
+        }
     }
 
-    public void StopSoundEvent(string soundName)
-    {
-        soundManager.StopSound(soundName);
+    // If GameObject have audio source, use it instead of the default audio source
+    public void PlaySoundEvent (string soundName) {
+        if (audioSource != null)
+            soundManager.PlaySoundOnSpecifiedSource (soundName, audioSource);
+        else
+            soundManager.PlaySoundOnDefaultSource (soundName);
     }
 
+    public void StopSoundEvent (string soundName) {
+        if (audioSource != null)
+            soundManager.StopSoundOnSpecifiedSource (soundName, audioSource);
+        else
+            soundManager.StopSoundOnDefaultSource (soundName);
+    }
+
+    // Force using default audio source
+    public void PlaySoundEventOnDefaultSource (string soundName) {
+        soundManager.PlaySoundOnDefaultSource (soundName);
+    }
+
+    public void StopSoundEventOnDefaultSource (string soundName) {
+        soundManager.StopSoundOnDefaultSource (soundName);
+    }
 }

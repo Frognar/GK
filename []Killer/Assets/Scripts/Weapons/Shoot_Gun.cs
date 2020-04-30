@@ -28,7 +28,7 @@ public class Shoot_Gun: MonoBehaviour, IShoot
     private Animator animator;
 
     private string shotSoundName = "RifleShot";
-    private SoundManager soundManager;
+    private SoundPlayer soundPlayer;
 
     // Set up weapon stats from ScriptableObject
     private void SetUpGun()
@@ -46,9 +46,9 @@ public class Shoot_Gun: MonoBehaviour, IShoot
     private void Start () {
         SetUpGun ();
 
-        soundManager = SoundManager.instance;
-        if (soundManager == null)
-            Debug.LogWarning ("No soundManager in gun!");
+        soundPlayer = GetComponent<SoundPlayer> ();
+        if (soundPlayer == null)
+            Debug.LogWarning ("No soundPlayer in gun!");
 
         shotEffect = GetComponent<VisualEffect> ();
         if (shotEffect == null)
@@ -64,12 +64,13 @@ public class Shoot_Gun: MonoBehaviour, IShoot
     }
 
     private void ShotEffectPlay () {
+        animator?.SetTrigger ("Shot");
         shotEffect?.SendEvent ("OnPlay");
-        soundManager?.PlaySound (shotSoundName);
+        soundPlayer?.PlaySoundEvent(shotSoundName);
     }
 
     public void Shoot () {
-        animator?.SetTrigger ("Shot");
+        ShotEffectPlay ();
 
         for (int i = 0; i < bulletsCount; i++) {
             Vector3 shotInacurracyVector = new Vector3 (Random.Range (-shotInacurracy, shotInacurracy),
@@ -85,7 +86,7 @@ public class Shoot_Gun: MonoBehaviour, IShoot
                 SpawnImpactEffect (hitInfo);
 
                 ITakeDamage hittedObject = hitInfo.transform.GetComponent<ITakeDamage> ();
-                if (hittedObject != null)
+                if (hittedObject != null && !hitInfo.transform.CompareTag("Player"))
                     hittedObject.TakeDamage (damage / bulletsCount);
 
             }

@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 853194242}
   - component: {fileID: 853194243}
   - component: {fileID: 2045106370}
+  - component: {fileID: -3070108020414771387}
   m_Layer: 2
   m_Name: Rifle
   m_TagString: Ignore
@@ -242,8 +243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a31e9119a97e60943a29227954c68523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundNames:
-  - RifleShot
 --- !u!95 &7770536090988239129
 Animator:
   serializedVersion: 3
@@ -435,3 +434,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunPattern: {fileID: 11400000, guid: cf033de24e6b8d847a79a2d60e49e3e4, type: 2}
+--- !u!114 &-3070108020414771387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5802546521679844114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a31e9119a97e60943a29227954c68523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

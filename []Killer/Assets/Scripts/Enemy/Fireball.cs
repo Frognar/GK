@@ -1,16 +1,36 @@
 ﻿using UnityEngine;
 using UnityEngine.VFX;
+using System.Collections;
 
 public class Fireball : MonoBehaviour {
     public GameObject explosionVFX;
     [SerializeField] private int damage;
     private LayerMask targetList;
+    private SoundPlayer soundPlayer;
+
+    private void Awake () {
+        soundPlayer = GetComponent<SoundPlayer> ();
+        if (soundPlayer == null)
+            Debug.LogWarning ("No soundPlayer on " + this.name);
+    }
+
+    private void Start () {
+        StartCoroutine (LateStart());
+    }
+
+    IEnumerator LateStart () {
+        yield return new WaitForEndOfFrame();
+
+        soundPlayer.PlaySoundEvent ("Fireball");
+    }
+
     public void SetTargetList (LayerMask targetList) {
         this.targetList = targetList;
     }
 
     void OnTriggerEnter (Collider other) {
-        if (Physics.CheckSphere (transform.position, 1f, targetList) && !other.CompareTag ("Ignore")) {
+        if (targetList == (targetList | (1 << other.gameObject.layer))) {
+            soundPlayer.StopSoundEvent ("Fireball");
             ITakeDamage hittedObject = other.GetComponent<ITakeDamage> ();
             if (hittedObject != null)
                 hittedObject.TakeDamage (damage);
@@ -24,7 +44,7 @@ public class Fireball : MonoBehaviour {
             GameObject explosion = Instantiate (explosionVFX, transform.position, transform.rotation);
             explosion.GetComponent<VisualEffect> ().Play ();
             Destroy (explosion, 3f);
-            Destroy (gameObject, 0.01f);
+            Destroy (gameObject, .1f);
         }
     }
 }

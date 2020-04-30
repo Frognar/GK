@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(SoundPlayer))]
-public class Player : MonoBehaviour, ITakeDamage
-{
+public class Player : MonoBehaviour, ITakeDamage {
     private MouseInput mouseInput;
     private KeyboardInput keyboardInput;
+    private SoundPlayer soundPlayer;
 
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int health = 100;
@@ -26,7 +25,7 @@ public class Player : MonoBehaviour, ITakeDamage
             else
                 pixels = value;
 
-            pixelsBar.SetHealth(pixels);
+            pixelsBar.SetHealth (pixels);
         }
     }
 
@@ -45,7 +44,11 @@ public class Player : MonoBehaviour, ITakeDamage
     }
 
     private bool isAlive = true;
-    public bool IsAlive { get { return isAlive; } }
+    public bool IsAlive {
+        get {
+            return isAlive;
+        }
+    }
 
     public HealthBar healthBar;
     public HealthBar pixelsBar;
@@ -53,6 +56,7 @@ public class Player : MonoBehaviour, ITakeDamage
     private void Awake () {
         mouseInput = GetComponent<MouseInput> ();
         keyboardInput = GetComponent<KeyboardInput> ();
+        soundPlayer = GetComponent<SoundPlayer> ();
     }
 
     void Start () {
@@ -66,7 +70,7 @@ public class Player : MonoBehaviour, ITakeDamage
             if (health <= 0)
                 Die ();
             else
-                GetComponent<SoundPlayer> ().PlaySoundEvent ("PlayerTakeDamage");
+                soundPlayer.PlaySoundEvent ("PlayerTakeDamage");
 
             healthBar.SetHealth (health);
         }
@@ -81,40 +85,35 @@ public class Player : MonoBehaviour, ITakeDamage
         return true;
     }
 
-    private void Die()
-    {
-        GetComponent<SoundPlayer>().PlaySoundEvent("PlayerDie");
+    private void Die () {
+        soundPlayer.PlaySoundEvent ("PlayerDie");
         mouseInput.enabled = false;
         keyboardInput.enabled = false;
         isAlive = false;
     }
 
-    public void ResetPlayer()
-    {
+    public void ResetPlayer () {
         health = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetMaxHealth (maxHealth);
         pixels = maxPixels;
-        pixelsBar.SetMaxHealth(maxPixels);
+        pixelsBar.SetMaxHealth (maxPixels);
         mouseInput.enabled = true;
         keyboardInput.enabled = true;
         isAlive = true;
     }
 
-    public void AddExp(int newExp)
-    {
+    public void AddExp (int newExp) {
         exp += newExp;
-        if (exp >= expToNextLevel)
-        {
+        if (exp >= expToNextLevel) {
             exp -= expToNextLevel;
-            LevelUp();
-            //LevelUpSound();
+            LevelUp ();
         }
     }
 
-    private void LevelUp()
-    {
+    private void LevelUp () {
         level++;
-        health = maxHealth = (int)(1.2 * maxHealth);
-        maxPixels = (int)(1.1 * maxPixels);
+        health = maxHealth = (int) (1.2 * maxHealth);
+        maxPixels = (int) (1.1 * maxPixels);
+        soundPlayer.PlaySoundEventOnDefaultSource ("LevelUp");
     }
 }
