@@ -54,7 +54,7 @@ public class EnemyCubeMaster : Enemy
         enemy.GetComponent<BoxCollider> ().enabled = true;
         Rigidbody rb = enemy.GetComponent<Rigidbody> ();
         rb.velocity = Vector3.zero;
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
         rb.interpolation = RigidbodyInterpolation.Interpolate;
     }
 

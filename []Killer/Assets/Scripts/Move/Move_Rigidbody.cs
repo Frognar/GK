@@ -19,7 +19,7 @@ public class Move_Rigidbody : MonoBehaviour, IMove {
 
     private void Awake () {
         rigidBody = GetComponent<Rigidbody> ();
-        rigidBody.constraints = RigidbodyConstraints.FreezeRotation;
+        rigidBody.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
     }
 
     void FixedUpdate () {
