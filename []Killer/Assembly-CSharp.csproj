@@ -79,8 +79,8 @@
     <Compile Include="Assets\Scripts\Managers\PauseManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\MaterialsColorManager.cs" />
+    <Compile Include="Assets\Scripts\Move\HeightController.cs" />
     <Compile Include="Assets\Scripts\Move\IMove.cs" />
-    <Compile Include="Assets\Scripts\Move\JumpController.cs" />
     <Compile Include="Assets\Scripts\Move\Move_CharacterController.cs" />
     <Compile Include="Assets\Scripts\Move\Move_Rigidbody.cs" />
     <Compile Include="Assets\Scripts\Player\KeyboardInput.cs" />

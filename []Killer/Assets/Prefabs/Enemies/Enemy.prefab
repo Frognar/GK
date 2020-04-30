@@ -612,7 +612,8 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 1281
-  checkSphere: 0
+  enemy: 1
+  halfExtents: {x: 5, y: 1, z: 1}
 --- !u!1 &7114045848691001710
 GameObject:
   m_ObjectHideFlags: 0

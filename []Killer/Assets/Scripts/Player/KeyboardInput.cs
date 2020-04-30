@@ -2,7 +2,7 @@
 
 public class KeyboardInput : MonoBehaviour {
     private IMove move;
-    private JumpController jumpController;
+    private HeightController jumpController;
 
     private void OnDisable () {
         move.SetMoveVector (Vector3.zero);
@@ -14,7 +14,7 @@ public class KeyboardInput : MonoBehaviour {
         if (move == null)
             Debug.LogError ("No movement script in Player!");
 
-        jumpController = GetComponent<JumpController> ();
+        jumpController = GetComponent<HeightController> ();
         if (jumpController == null)
             Debug.LogError ("No jump controller script in Player!");
     }
@@ -26,7 +26,7 @@ public class KeyboardInput : MonoBehaviour {
         Vector3 direction = transform.right * x + transform.forward * z;
         move.SetMoveVector (direction);
 
-        Vector3 jump = jumpController.jump (Input.GetButtonDown ("Jump"));
+        Vector3 jump = jumpController.HeightControl (Input.GetButtonDown ("Jump"));
         move.SetJumpVector (jump);
     }
 

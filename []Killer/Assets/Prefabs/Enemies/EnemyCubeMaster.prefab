@@ -333,7 +333,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 1281
-  enemy: 1
+  iAmNPC: 1
   halfExtents: {x: 5, y: 1, z: 5}
 --- !u!1 &6341320122946534503
 GameObject:
