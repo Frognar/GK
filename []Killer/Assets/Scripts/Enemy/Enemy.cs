@@ -56,7 +56,6 @@ public class Enemy : MonoBehaviour, ITakeDamage, IHavePiksels {
                 death.SetGradient ("Color", gradient);
             }
 
-            death.SetVector3 ("Scale", transform.localScale);
             death.Play ();
         }
         Destroy (deathEffect, 15f);

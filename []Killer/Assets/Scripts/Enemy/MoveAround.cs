@@ -8,7 +8,7 @@ public class MoveAround : MonoBehaviour {
     [SerializeField] private float angularSpeed = 10f;
     private float movementTimeRemaining = 0f;
 
-    private HeightController jumpController;
+    private HeightController heightController;
     [SerializeField] private bool allowJump = false;
     private bool jumpNow = false;
     [SerializeField] private float timeBeetwenJumps = 5f;
@@ -20,8 +20,8 @@ public class MoveAround : MonoBehaviour {
         if (move == null)
             Debug.LogError ("No moveVelocity script on NPC [" + this.name + "]");
 
-        jumpController = GetComponent<HeightController> ();
-        if (jumpController == null)
+        heightController = GetComponent<HeightController> ();
+        if (heightController == null)
             Debug.LogError ("No jumpController script on NPC [" + this.name + "]");
     }
 
@@ -65,16 +65,16 @@ public class MoveAround : MonoBehaviour {
     }
 
     protected void ControllHeight () {
-        Vector3 jump = jumpController.HeightControl (false);
-        jump.x = jump.z = 0f;
+        Vector3 jump = heightController.HeightControl (false);
         if (allowJump) {
             if (Time.time >= lastJampTime) {
                 jumpNow = Random.Range (0f, 1f) < jumpProbability;
                 lastJampTime = Time.time + timeBeetwenJumps;
             } else
                 jumpNow = false;
-            jump = jumpController.HeightControl (jumpNow);
+            jump = heightController.HeightControl (jumpNow);
         }
+        jump.x = jump.z = 0f;
         move.SetJumpVector (jump);
     }
 

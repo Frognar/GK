@@ -5,28 +5,30 @@ public class EnemyCubeMaster : Enemy
 {
     public BoxCollider mainCollider;
     private List<Vector3> cubesPosition = new List<Vector3> {
-        new Vector3( 0.5f, 0f, -0.5f),  // LEFT
-        new Vector3( -0.5f, 0f, -0.5f), // RIGHT
-        new Vector3( 0f, 0f, -1f),      // BACK
-        new Vector3( 0f, 0.5f, -0.5f),  // UP
+        new Vector3( 5f, 0f, -5f),  // LEFT
+        new Vector3( -5f, 0f, -5f), // RIGHT
+        new Vector3( 0f, 0f, -10f), // BACK
+        new Vector3( 0f, 5f, -5f),  // UP
+        new Vector3( 0f, -5f, -5f), // DOWN
     };
     private List<Vector3> cubesRotation = new List<Vector3> {
         new Vector3(0f,90f,0f),     // LEFT
         new Vector3(0f,-90f,0f),    // RIGHT
         new Vector3(0f,180f,0f),    // BACK
         new Vector3(-90f,0f,0f),    // UP
+        new Vector3(90f,0f,0f),     // DOWN
     };
     [SerializeField] private List<Enemy> enemySquad = new List<Enemy>();
 
     public void DestroyCube () {
-        //Kwadraty przestają należeć do cube
+        //squares no longer belong to cube master
         foreach (Enemy enemy in enemySquad)
             resetEnemy (enemy);
 
         enemySquad.Clear ();
 
         mainCollider.center = new Vector3 (0f, 0f, 0f);
-        mainCollider.size = new Vector3 (1f, 1f, 0.05f);
+        mainCollider.size = new Vector3 (10f, 10f, 0.05f);
     }
 
     void setEnemy (Enemy enemy, int index) {
@@ -49,12 +51,18 @@ public class EnemyCubeMaster : Enemy
 
     void resetEnemy (Enemy enemy) {
         enemy.transform.parent = this.transform.parent;
+        enemy.transform.rotation = this.transform.rotation;
+
+        if (enemy.Equals (enemySquad[4]))
+            enemy.transform.position = transform.position + new Vector3 (0f, 0f, 1f);
+        if (enemy.Equals (enemySquad[3]))
+            enemy.transform.position = transform.position + new Vector3 (0f, 0f, -1f);
 
         enemy.GetComponent<MoveAround> ().enabled = true;
         enemy.GetComponent<BoxCollider> ().enabled = true;
         Rigidbody rb = enemy.GetComponent<Rigidbody> ();
         rb.velocity = Vector3.zero;
-        rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
         rb.interpolation = RigidbodyInterpolation.Interpolate;
     }
 
@@ -67,13 +75,13 @@ public class EnemyCubeMaster : Enemy
         }
 
         //We don't take AttackingEnemy or EnemyCubeMaster to cube
-        if (other.CompareTag ("Enemy") && enemySquad.Count < 4) {
+        if (other.CompareTag ("Enemy") && enemySquad.Count < 5) {
             Debug.Log ("Dotknął mnie!");
             Enemy otherEnemy = other.GetComponent<Enemy> ();
             setEnemy (otherEnemy, enemySquad.Count);
             enemySquad.Add (otherEnemy);
-            mainCollider.center = new Vector3 (0f, 0f, -.5f);
-            mainCollider.size = new Vector3 (1f, 1f, 1f);
+            mainCollider.center = new Vector3 (0f, 0f, -5f);
+            mainCollider.size = new Vector3 (10f, 10f, 10f);
         }
     }
 }

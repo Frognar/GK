@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2660952044795331846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7114045847996367377}
@@ -59,7 +59,7 @@ RectTransform:
   m_GameObject: {fileID: 7114045846982954106}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.004999999, y: 0.005, z: 0.004999999}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7114045847021111408}
   m_Father: {fileID: 7114045847996367377}
@@ -67,8 +67,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1}
-  m_SizeDelta: {x: 400, y: 50}
+  m_AnchoredPosition: {x: 0, y: 6}
+  m_SizeDelta: {x: 10, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7114045846982954097
 Canvas:
@@ -252,10 +252,10 @@ RectTransform:
   m_Father: {fileID: 7114045846982954101}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 400, y: 50}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7114045847021111410
 MonoBehaviour:
@@ -347,7 +347,7 @@ Transform:
   m_GameObject: {fileID: 7114045847811517803}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0.00001}
+  m_LocalScale: {x: 10, y: 10, z: 0.00001}
   m_Children: []
   m_Father: {fileID: 7114045847996367377}
   m_RootOrder: 0
@@ -432,7 +432,7 @@ Transform:
   m_GameObject: {fileID: 7114045847996367382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7114045847811517802}
   - {fileID: 7114045846982954101}
@@ -470,7 +470,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.05}
+  m_Size: {x: 10, y: 10, z: 0.05}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &7114045847996367469
 Rigidbody:
@@ -612,8 +612,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 1281
-  enemy: 1
-  halfExtents: {x: 5, y: 1, z: 1}
+  groundCheckHalfExtents: {x: 5, y: 1, z: 1}
 --- !u!1 &7114045848691001710
 GameObject:
   m_ObjectHideFlags: 0
