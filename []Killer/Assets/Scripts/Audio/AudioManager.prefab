@@ -221,7 +221,7 @@ MonoBehaviour:
     randomizeLoop: 1
     loop: 0
     mute: 0
-    playOnAwake: 1
+    playOnAwake: 0
   - name: DestroyObj
     defaultAudioSource: {fileID: 0}
     audioClips:
@@ -264,7 +264,7 @@ MonoBehaviour:
     stereoPan: 0
     avoidRepeat: 1
     randomizeLoop: 1
-    loop: 0
+    loop: 1
     mute: 0
     playOnAwake: 0
   - name: FireballExplosion
