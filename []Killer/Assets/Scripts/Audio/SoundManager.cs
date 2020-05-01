@@ -23,6 +23,7 @@ public class SoundEvent {
     public bool loop = false;
     public bool mute = false;
     public bool playOnAwake = false;
+    public Coroutine coroutine = null;
 
     private void Play (AudioSource source) {
         float randomVolume = Random.Range (minVolume, maxVolume);
