@@ -9,6 +9,7 @@ public class DestructibleObject : MonoBehaviour, ITakeDamage, IHavePiksels
     [Header("PixelDrop")]
     [SerializeField] private int minPixelsDrop = 5;
     [SerializeField] private int maxPixelsDrop = 15;
+    public GameObject pixelsToPickPrefab;
 
     [Header("Destroy VFX")]
     public GameObject destroyEffectPrefab;
@@ -19,10 +20,8 @@ public class DestructibleObject : MonoBehaviour, ITakeDamage, IHavePiksels
     }
 
     private void DestroyObject () {
-        int pixels = DropPixels ();
-        Debug.Log ("I drop " + pixels + " pixels!");
-
         CreateDestroyEffect ();
+        CreatePixelsToPick ();
         Destroy (gameObject, .1f);
     }
 
@@ -50,9 +49,14 @@ public class DestructibleObject : MonoBehaviour, ITakeDamage, IHavePiksels
             DestroyObject ();
     }
 
+    private void CreatePixelsToPick () {
+        GameObject pixelsToPixkGO = Instantiate (pixelsToPickPrefab, transform.position, Quaternion.identity);
+        PixelsToPick pixelsToPick = pixelsToPixkGO.GetComponent<PixelsToPick> ();
+        if (pixelsToPick != null)
+            pixelsToPick.SetPixels (DropPixels ());
+    }
+
     public int DropPixels () {
-        int Pixels = Random.Range (minPixelsDrop, maxPixelsDrop);
-        PlayerManager.instance.player.GetComponent<Player> ().Pixels += Pixels;
-        return Pixels;
+        return Random.Range (minPixelsDrop, maxPixelsDrop);
     }
 }

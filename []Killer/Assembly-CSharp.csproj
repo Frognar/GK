@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\Move\IMove.cs" />
     <Compile Include="Assets\Scripts\Move\Move_CharacterController.cs" />
     <Compile Include="Assets\Scripts\Move\Move_Rigidbody.cs" />
+    <Compile Include="Assets\Scripts\PixelsToPick.cs" />
     <Compile Include="Assets\Scripts\Player\KeyboardInput.cs" />
     <Compile Include="Assets\Scripts\Player\MouseInput.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />

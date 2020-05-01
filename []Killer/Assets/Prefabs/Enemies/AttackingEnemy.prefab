@@ -604,6 +604,8 @@ MonoBehaviour:
   healthBar: {fileID: 8073628634878413735}
   minPixelsDrop: 16
   maxPixelsDrop: 25
+  pixelsToPickPrefab: {fileID: 8645143502130818624, guid: b554c91e28f35184fa8ab03c2a086bce,
+    type: 3}
   exp: 30
 --- !u!114 &3117108249083064540
 MonoBehaviour:

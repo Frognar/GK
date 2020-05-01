@@ -302,6 +302,8 @@ MonoBehaviour:
   healthBar: {fileID: 6341320123201034623}
   minPixelsDrop: 16
   maxPixelsDrop: 35
+  pixelsToPickPrefab: {fileID: 8645143502130818624, guid: b554c91e28f35184fa8ab03c2a086bce,
+    type: 3}
   exp: 20
   mainCollider: {fileID: 6341320122158600990}
   masterCollider: {fileID: 2482876341755288949}
