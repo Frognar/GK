@@ -45,10 +45,10 @@ public class GameManager : MonoBehaviour {
         bool battleMusic = SoundManager.instance.IsSoundPlaying ("BattleTheme");
 
         if (inBattle && !battleMusic)
-            SoundManager.instance.ChangeMusicInicjalizeCoroution ("GameTheme", "BattleTheme");
+            SoundManager.instance.ChangeMusicInitializeCoroutine ("GameTheme", "BattleTheme");
 
         if (!inBattle && battleMusic)
-            SoundManager.instance.ChangeMusicInicjalizeCoroution ("BattleTheme", "GameTheme");
+            SoundManager.instance.ChangeMusicInitializeCoroutine ("BattleTheme", "GameTheme");
     }
 
     void Respawn () {

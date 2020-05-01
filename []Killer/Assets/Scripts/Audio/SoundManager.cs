@@ -113,7 +113,7 @@ public class SoundManager : MonoBehaviour {
             }
 
             if (SoundEvents[i].playOnAwake)
-                PlaySoundOnDefaultSource(SoundEvents[i].name);
+                PlaySoundOnDefaultSource (SoundEvents[i].name);
         }
     }
 
@@ -125,7 +125,15 @@ public class SoundManager : MonoBehaviour {
             return;
         }
 
+        if (s.coroutine != null) {
+            StopCoroutine (s.coroutine);
+            s.coroutine = null;
+        }
+
         s.PlayOnDefaultSource ();
+
+        if (s.randomizeLoop)
+            s.coroutine = StartCoroutine (RepeatPlaySound (s));
     }
 
     public void PlaySoundOnSpecifiedSource (string name, AudioSource audioSource) {
@@ -147,6 +155,10 @@ public class SoundManager : MonoBehaviour {
             return;
         }
 
+        if (s.coroutine != null) {
+            StopCoroutine (s.coroutine);
+            s.coroutine = null;
+        }
         s.StopDefaultSource ();
     }
 
@@ -172,7 +184,7 @@ public class SoundManager : MonoBehaviour {
         return s.IsPlayingOnDefaultSource ();
     }
 
-    public void ChangeMusicInicjalizeCoroution (string from, string to) {
+    public void ChangeMusicInitializeCoroutine (string from, string to) {
         StartCoroutine (ChangeMusic (from, to));
     }
 
@@ -184,13 +196,11 @@ public class SoundManager : MonoBehaviour {
 
         SoundEvent SoundNowPlaying = Array.Find (SoundEvents, sound => sound.name == from);
         SoundEvent SoundToPlay = Array.Find (SoundEvents, sound => sound.name == from);
-        if (SoundNowPlaying == null) {
+        if (SoundNowPlaying == null)
             Debug.LogWarning ("SoundManager: Sound not found in SoundEvents [" + from + "]");
-            //yield return null;
-        } else if (SoundToPlay == null) {
+        else if (SoundToPlay == null)
             Debug.LogWarning ("SoundManager: Sound not found in SoundEvents [" + to + "]");
-            //yield return null;
-        } else {
+        else {
             while (SoundNowPlaying.defaultAudioSource.volume > 0f) {
                 yield return new WaitForSeconds (0.25f);
                 SoundNowPlaying.defaultAudioSource.volume -= 0.01f;
@@ -200,11 +210,18 @@ public class SoundManager : MonoBehaviour {
 
             StopSoundOnDefaultSource (from);
             PlaySoundOnDefaultSource (to);
-            changingSound = false;
         }
+        changingSound = false;
     }
 
-    public SoundEvent GetSoundEvent (string name) {
-        return Array.Find (SoundEvents, sound => sound.name == name);
+    IEnumerator RepeatPlaySound (SoundEvent soundEvent) {
+        yield return new WaitForSeconds (soundEvent.defaultAudioSource.clip.length);
+        PlaySoundOnDefaultSource (soundEvent.name);
+    }
+
+    public SoundEvent GetSoundEvent (int index) {
+        if (SoundEvents.Length >= index + 1)
+            return SoundEvents[index];
+        return null;
     }
 }
