@@ -3,7 +3,7 @@
 public class Billboard : MonoBehaviour
 {
     private Transform playerCamera;
-    public HealthBar healthBar;
+    public GUIBar healthBar;
     public GameObject bar;
 
     void Start()

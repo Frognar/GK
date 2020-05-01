@@ -20,9 +20,10 @@ public class cheat : MonoBehaviour
         soundManager = SoundManager.instance;
     }
 
-    void Update()
+    void LateUpdate()
     {
-        Time.timeScale = speedHack;
+        if(Time.timeScale > 0)
+            Time.timeScale = speedHack;
         if (godMode) {
             player.Health = 10000;
         }

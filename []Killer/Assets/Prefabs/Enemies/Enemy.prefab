@@ -461,6 +461,7 @@ MonoBehaviour:
   healthBar: {fileID: 7114045847021111411}
   minPixelsDrop: 16
   maxPixelsDrop: 25
+  exp: 10
 --- !u!65 &7114045847996367378
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -627,7 +628,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a31e9119a97e60943a29227954c68523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundNames: []
 --- !u!82 &6526164105243058601
 AudioSource:
   m_ObjectHideFlags: 0

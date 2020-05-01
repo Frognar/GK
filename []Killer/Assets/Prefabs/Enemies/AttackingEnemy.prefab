@@ -604,6 +604,7 @@ MonoBehaviour:
   healthBar: {fileID: 8073628634878413735}
   minPixelsDrop: 16
   maxPixelsDrop: 25
+  exp: 30
 --- !u!114 &3117108249083064540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -673,7 +674,7 @@ MonoBehaviour:
     m_Bits: 5377
   attackRate: 2
   missle: {fileID: 4333735131589390889, guid: de3ea7acde6b0604c9d09cfbba70268b, type: 3}
-  missleSpeed: 20
+  missleSpeed: 35
 --- !u!2083052967 &6421364712104628655
 VisualEffect:
   m_ObjectHideFlags: 0

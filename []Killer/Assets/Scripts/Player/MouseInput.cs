@@ -26,6 +26,10 @@ public class MouseInput : MonoBehaviour {
             Shoot ();
     }
 
+    private void OnDisable () {
+        playerCamera.YRotation = 0;
+    }
+
     private void CameraMovement () {
         playerCamera.YRotation = Input.GetAxis ("Mouse X") * mouseSensitivity * Time.deltaTime;
         playerCamera.XRotation -= Input.GetAxis ("Mouse Y") * mouseSensitivity * Time.deltaTime;

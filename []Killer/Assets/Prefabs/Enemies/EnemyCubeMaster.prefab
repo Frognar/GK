@@ -302,7 +302,9 @@ MonoBehaviour:
   healthBar: {fileID: 6341320123201034623}
   minPixelsDrop: 16
   maxPixelsDrop: 35
+  exp: 20
   mainCollider: {fileID: 6341320122158600990}
+  masterCollider: {fileID: 2482876341755288949}
   enemySquad: []
 --- !u!114 &8342568843050110453
 MonoBehaviour:

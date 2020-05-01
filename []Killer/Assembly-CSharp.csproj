@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\Enemy\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyCubeMaster.cs" />
     <Compile Include="Assets\Scripts\Enemy\MoveAround.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IGiveExp.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IHavePiksels.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ITakeDamage.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
@@ -88,7 +89,7 @@
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerCamera.cs" />
     <Compile Include="Assets\Scripts\UI\Billboard.cs" />
-    <Compile Include="Assets\Scripts\UI\HealthBar.cs" />
+    <Compile Include="Assets\Scripts\UI\GUIBar.cs" />
     <Compile Include="Assets\Scripts\UI\MainMenu.cs" />
     <Compile Include="Assets\Scripts\UI\Minimap.cs" />
     <Compile Include="Assets\Scripts\UI\OnMouseOver.cs" />

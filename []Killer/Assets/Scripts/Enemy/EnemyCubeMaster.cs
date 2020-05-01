@@ -4,6 +4,7 @@ using UnityEngine;
 public class EnemyCubeMaster : Enemy
 {
     public BoxCollider mainCollider;
+    public Collider masterCollider;
     private List<Vector3> cubesPosition = new List<Vector3> {
         new Vector3( 5f, 0f, -5f),  // LEFT
         new Vector3( -5f, 0f, -5f), // RIGHT
@@ -53,10 +54,12 @@ public class EnemyCubeMaster : Enemy
         enemy.transform.parent = this.transform.parent;
         enemy.transform.rotation = this.transform.rotation;
 
-        if (enemy.Equals (enemySquad[4]))
-            enemy.transform.position = transform.position + new Vector3 (0f, 0f, 1f);
-        if (enemy.Equals (enemySquad[3]))
-            enemy.transform.position = transform.position + new Vector3 (0f, 0f, -1f);
+        if(enemySquad.Count > 4)
+            if (enemy.Equals (enemySquad[4]))
+                enemy.transform.position = transform.position + new Vector3 (0f, 0f, 1f);
+        if(enemySquad.Count > 3)
+            if (enemy.Equals (enemySquad[3]))
+                enemy.transform.position = transform.position + new Vector3 (0f, 0f, -1f);
 
         enemy.GetComponent<MoveAround> ().enabled = true;
         enemy.GetComponent<BoxCollider> ().enabled = true;
@@ -70,7 +73,7 @@ public class EnemyCubeMaster : Enemy
         if (health < maxHealth) {
             //Disable collider so we stop checking it when EnemyCubeMaster is hurt
             //(EnemyCubeMaster still have second collider)
-            this.enabled = false;
+            masterCollider.enabled = false;
             return;
         }
 

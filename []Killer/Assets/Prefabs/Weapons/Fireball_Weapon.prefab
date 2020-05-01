@@ -226,5 +226,5 @@ MonoBehaviour:
   targetList:
     serializedVersion: 2
     m_Bits: 3329
-  missle: {fileID: 4333735131589390889, guid: de3ea7acde6b0604c9d09cfbba70268b, type: 3}
-  missleSpeed: 20
+  missile: {fileID: 4333735131589390889, guid: de3ea7acde6b0604c9d09cfbba70268b, type: 3}
+  missileSpeed: 25

@@ -25,8 +25,13 @@ public class Player : MonoBehaviour, ITakeDamage {
             else
                 pixels = value;
 
-            pixelsBar.SetHealth (pixels);
+            pixelsBar.SetValue (pixels);
         }
+    }
+
+    private void SetMaxPixels (int maxPixels) {
+        this.maxPixels = maxPixels;
+        this.pixelsBar.SetMaxValue (maxPixels);
     }
 
     public int Health {
@@ -39,8 +44,29 @@ public class Player : MonoBehaviour, ITakeDamage {
             else
                 health = value;
 
-            healthBar.SetHealth (health);
+            healthBar.SetValue (health);
         }
+    }
+
+    private void SetMaxHealth (int maxHealth) {
+        this.maxHealth = maxHealth;
+        this.healthBar.SetMaxValue (maxHealth);
+    }
+
+    public int Exp {
+        get {
+            return exp;
+        }
+        set {
+            exp = value;
+
+            expBar.SetValue (exp);
+        }
+    }
+
+    private void SetExpToNextLevel (int expToNextLevel) {
+        this.expToNextLevel = expToNextLevel;
+        this.expBar.SetMaxValue (expToNextLevel);
     }
 
     private bool isAlive = true;
@@ -50,8 +76,9 @@ public class Player : MonoBehaviour, ITakeDamage {
         }
     }
 
-    public HealthBar healthBar;
-    public HealthBar pixelsBar;
+    public GUIBar healthBar;
+    public GUIBar pixelsBar;
+    public GUIBar expBar;
 
     private void Awake () {
         mouseInput = GetComponent<MouseInput> ();
@@ -65,14 +92,12 @@ public class Player : MonoBehaviour, ITakeDamage {
 
     public void TakeDamage (int damage) {
         if (IsAlive) {
-            health -= damage;
+            Health -= damage;
 
-            if (health <= 0)
+            if (Health <= 0)
                 Die ();
             else
                 soundPlayer.PlaySoundEvent ("PlayerTakeDamage");
-
-            healthBar.SetHealth (health);
         }
     }
 
@@ -92,26 +117,32 @@ public class Player : MonoBehaviour, ITakeDamage {
     }
 
     public void ResetPlayer () {
-        health = maxHealth;
-        healthBar.SetMaxHealth (maxHealth);
-        pixels = maxPixels;
-        pixelsBar.SetMaxHealth (maxPixels);
+        healthBar.SetMaxValue (maxHealth);
+        pixelsBar.SetMaxValue (maxPixels);
+        expBar.SetMaxValue (expToNextLevel);
+
+        Health = maxHealth;
+        Pixels = maxPixels;
+        Exp = 0;
         InputEnabled (true);
         isAlive = true;
     }
 
     public void AddExp (int newExp) {
-        exp += newExp;
-        if (exp >= expToNextLevel) {
-            exp -= expToNextLevel;
+        Exp += newExp;
+        if (Exp >= expToNextLevel)
             LevelUp ();
-        }
     }
 
     private void LevelUp () {
         level++;
-        health = maxHealth = (int) (1.2 * maxHealth);
-        maxPixels = (int) (1.1 * maxPixels);
+        Exp -= expToNextLevel;
+
+        SetMaxHealth ((int) (1.2f * maxHealth));
+        SetMaxPixels ((int) (1.1f * maxPixels));
+        SetExpToNextLevel ((int) (1.2f * expToNextLevel));
+        Health = maxHealth;
+
         soundPlayer.PlaySoundEventOnDefaultSource ("LevelUp");
     }
 
