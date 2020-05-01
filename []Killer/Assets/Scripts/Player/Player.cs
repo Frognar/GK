@@ -87,8 +87,7 @@ public class Player : MonoBehaviour, ITakeDamage {
 
     private void Die () {
         soundPlayer.PlaySoundEvent ("PlayerDie");
-        mouseInput.enabled = false;
-        keyboardInput.enabled = false;
+        InputEnabled (false);
         isAlive = false;
     }
 
@@ -97,8 +96,7 @@ public class Player : MonoBehaviour, ITakeDamage {
         healthBar.SetMaxHealth (maxHealth);
         pixels = maxPixels;
         pixelsBar.SetMaxHealth (maxPixels);
-        mouseInput.enabled = true;
-        keyboardInput.enabled = true;
+        InputEnabled (true);
         isAlive = true;
     }
 
@@ -115,5 +113,10 @@ public class Player : MonoBehaviour, ITakeDamage {
         health = maxHealth = (int) (1.2 * maxHealth);
         maxPixels = (int) (1.1 * maxPixels);
         soundPlayer.PlaySoundEventOnDefaultSource ("LevelUp");
+    }
+
+    public void InputEnabled (bool enabled) {
+        mouseInput.enabled = enabled;
+        keyboardInput.enabled = enabled;
     }
 }

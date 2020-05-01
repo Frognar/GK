@@ -1,36 +1,30 @@
 ﻿using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class PauseManager : MonoBehaviour
-{
+public class PauseManager : MonoBehaviour {
     #region Singleton
     public static PauseManager instance;
 
-    void Awake()
-    {
+    void Awake () {
         if (instance == null)
             instance = this;
-        else
-        {
-            Destroy(gameObject);
+        else {
+            Destroy (gameObject);
             return;
         }
     }
     #endregion
 
-    private void Start()
-    {
+    private void Start () {
         gameIsPaused = false;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
+    private void Update () {
+        if (Input.GetKeyDown (KeyCode.Escape)) {
             if (gameIsPaused)
-                Resume();
+                Resume ();
             else
-                Pause();
+                Pause ();
         }
     }
 
@@ -38,36 +32,34 @@ public class PauseManager : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject optionMenuUI;
 
-    public void Resume()
-    {
+    public void Resume () {
+        PlayerManager.instance.player.GetComponent<Player> ()?.InputEnabled (true);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         gameIsPaused = false;
         Time.timeScale = 1f;
-        pauseMenuUI.SetActive(false);
-        optionMenuUI.SetActive(false);
+        pauseMenuUI.SetActive (false);
+        optionMenuUI.SetActive (false);
     }
 
-    void Pause()
-    {
+    void Pause () {
+        PlayerManager.instance.player.GetComponent<Player> ()?.InputEnabled (false);
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
         gameIsPaused = true;
         Time.timeScale = 0f;
-        pauseMenuUI.SetActive(true);
+        pauseMenuUI.SetActive (true);
     }
 
-    public void LoadLevel(int sceneIndex)
-    {
+    public void LoadLevel (int sceneIndex) {
         Time.timeScale = 1f;
         gameIsPaused = false;
         GameManager.inBattle = false;
-        SceneManager.LoadScene(sceneIndex);
+        SceneManager.LoadScene (sceneIndex);
     }
 
-    public void QuitGame()
-    {
-        Debug.Log("Quit");
-        Application.Quit();
+    public void QuitGame () {
+        Debug.Log ("Quit");
+        Application.Quit ();
     }
 }
