@@ -491,7 +491,6 @@ GameObject:
   - component: {fileID: 2732338863343177278}
   - component: {fileID: 3521611597825424821}
   - component: {fileID: 6421364712104628655}
-  - component: {fileID: 74280777}
   - component: {fileID: 5244927342058847822}
   - component: {fileID: -3382903365163004395}
   m_Layer: 11
@@ -711,25 +710,6 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
---- !u!114 &74280777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8073628635719418306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33318ddc6282d1744b8abca4506999b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rayCastDistance: 10
-  rayCount: 5
-  angularSpeed: 10
-  allowJump: 0
-  timeBeetwenJumps: 5
-  jumpProbability: 0.5
-  lookRadius: 60
 --- !u!114 &5244927342058847822
 MonoBehaviour:
   m_ObjectHideFlags: 0

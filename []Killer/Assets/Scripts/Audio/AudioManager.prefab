@@ -255,27 +255,29 @@ MonoBehaviour:
   - name: Fireball
     defaultAudioSource: {fileID: 0}
     audioClips:
-    - {fileID: 8300000, guid: c78b786377e2549429991124e26fd4fb, type: 3}
+    - {fileID: 8300000, guid: 5f731e5533a8eb242babfa0fb6df8cb2, type: 3}
+    - {fileID: 8300000, guid: b11d7512d6a61f64ca44d10680fd986f, type: 3}
+    - {fileID: 8300000, guid: 3f39803028666bc4d9cb9b083ef53771, type: 3}
     output: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68, type: 2}
-    minVolume: 1
+    minVolume: 0.9
     maxVolume: 1
-    minPitch: 1
-    maxPitch: 1
+    minPitch: 0.9
+    maxPitch: 1.1
     stereoPan: 0
     avoidRepeat: 1
-    randomizeLoop: 1
+    randomizeLoop: 0
     loop: 1
     mute: 0
     playOnAwake: 0
   - name: FireballExplosion
     defaultAudioSource: {fileID: 0}
     audioClips:
-    - {fileID: 8300000, guid: c78b786377e2549429991124e26fd4fb, type: 3}
+    - {fileID: 8300000, guid: ccb8155bbcdcc4242954cb41f3914647, type: 3}
     output: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68, type: 2}
-    minVolume: 1
+    minVolume: 0.9
     maxVolume: 1
-    minPitch: 1
-    maxPitch: 1
+    minPitch: 0.9
+    maxPitch: 1.1
     stereoPan: 0
     avoidRepeat: 1
     randomizeLoop: 0

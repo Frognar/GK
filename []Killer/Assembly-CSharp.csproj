@@ -71,7 +71,6 @@
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyCubeMaster.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Fireball.cs" />
     <Compile Include="Assets\Scripts\Enemy\MoveAround.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IHavePiksels.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ITakeDamage.cs" />
@@ -79,6 +78,7 @@
     <Compile Include="Assets\Scripts\Managers\PauseManager.cs" />
     <Compile Include="Assets\Scripts\Managers\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\MaterialsColorManager.cs" />
+    <Compile Include="Assets\Scripts\Missiles\Fireball.cs" />
     <Compile Include="Assets\Scripts\Move\HeightController.cs" />
     <Compile Include="Assets\Scripts\Move\IMove.cs" />
     <Compile Include="Assets\Scripts\Move\Move_CharacterController.cs" />
@@ -96,7 +96,7 @@
     <Compile Include="Assets\Scripts\Weapons\GunPattern.cs" />
     <Compile Include="Assets\Scripts\Weapons\IShoot.cs" />
     <Compile Include="Assets\Scripts\Weapons\Shoot_Gun.cs" />
-    <Compile Include="Assets\Scripts\Weapons\Shoot_Missle.cs" />
+    <Compile Include="Assets\Scripts\Weapons\Shoot_Missile.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponSwitching.cs" />
     <Compile Include="Assets\Scripts\cheat.cs" />
     <None Include="Assets\_Packages\TextMesh Pro\Resources\Shaders\TMPro.cginc" />

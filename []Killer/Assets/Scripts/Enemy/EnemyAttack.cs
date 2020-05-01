@@ -43,4 +43,9 @@ public class EnemyAttack : MonoBehaviour {
 
         Destroy (missleGO, 15f);
     }
+
+    public void OnDrawGizmosSelected () {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere (transform.position, AttackRadius);
+    }
 }

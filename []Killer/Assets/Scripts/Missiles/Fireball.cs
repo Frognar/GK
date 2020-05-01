@@ -43,8 +43,16 @@ public class Fireball : MonoBehaviour {
 
             GameObject explosion = Instantiate (explosionVFX, transform.position, transform.rotation);
             explosion.GetComponent<VisualEffect> ().Play ();
+
+            StartCoroutine(LateExplosionSound(explosion.GetComponent<SoundPlayer> ()));
             Destroy (explosion, 3f);
             Destroy (gameObject, .1f);
         }
+    }
+
+    IEnumerator LateExplosionSound (SoundPlayer explosionSoundPlayer) {
+        yield return new WaitForEndOfFrame ();
+
+        explosionSoundPlayer?.PlaySoundEvent ("FireballExplosion");
     }
 }

@@ -38,8 +38,6 @@ public class AttackingMoveAround : MoveAround {
     }
 
     public void OnDrawGizmosSelected () {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere (transform.position, enemyAttack.AttackRadius);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere (transform.position, lookRadius);
     }
