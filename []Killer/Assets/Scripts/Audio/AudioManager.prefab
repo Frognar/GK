@@ -231,12 +231,12 @@ MonoBehaviour:
   - name: DestroyObj
     defaultAudioSource: {fileID: 0}
     audioClips:
-    - {fileID: 8300000, guid: c78b786377e2549429991124e26fd4fb, type: 3}
+    - {fileID: 8300000, guid: 3cbef629fde77ce4db566e13e0d2c903, type: 3}
     output: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68, type: 2}
-    minVolume: 1
-    maxVolume: 1
-    minPitch: 1
-    maxPitch: 1
+    minVolume: 0.8
+    maxVolume: 0.9
+    minPitch: 0.8
+    maxPitch: 1.2
     stereoPan: 0
     avoidRepeat: 1
     randomizeLoop: 0
