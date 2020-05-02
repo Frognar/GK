@@ -296,8 +296,8 @@ MonoBehaviour:
     audioClips:
     - {fileID: 8300000, guid: 5a74ff7a5360b134d875e1ef33b16792, type: 3}
     output: {fileID: 24300002, guid: 01c4f0fc49ed4ab41a687b24736efc68, type: 2}
-    minVolume: 0.45
-    maxVolume: 0.55
+    minVolume: 0.6
+    maxVolume: 0.7
     minPitch: 0.9
     maxPitch: 1.1
     stereoPan: 0
@@ -305,4 +305,4 @@ MonoBehaviour:
     randomizeLoop: 0
     loop: 1
     mute: 0
-    playOnAwake: 1
+    playOnAwake: 0

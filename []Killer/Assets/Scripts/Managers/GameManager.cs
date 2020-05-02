@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour {
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        SoundManager.instance.PlaySoundOnDefaultSource ("BG_SFX");
     }
 
     void Update () {
