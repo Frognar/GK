@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class MouseInput : MonoBehaviour {
-    [SerializeField] private float mouseSensitivity = 100f;
+    private float mouseSensitivity = 100f;
+    public Slider mouseSensitivitySlider;
     private PlayerCamera playerCamera;
     private float nextTimeToFire = 0f;
 
@@ -56,5 +58,9 @@ public class MouseInput : MonoBehaviour {
             weapon = weaponSwitcher.SelectWeapon ();
         } else
             Debug.Log ("No weapon holder!");
+    }
+
+    public void SetMouseSensitivity (float value) {
+        mouseSensitivity = value;
     }
 }

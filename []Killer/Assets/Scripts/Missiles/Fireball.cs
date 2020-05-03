@@ -5,6 +5,7 @@ using System.Collections;
 public class Fireball : MonoBehaviour {
     public GameObject explosionVFX;
     [SerializeField] private int damage;
+    [SerializeField] private float explosionForce;
     private LayerMask targetList;
     private SoundPlayer soundPlayer;
 
@@ -38,7 +39,7 @@ public class Fireball : MonoBehaviour {
             foreach (RaycastHit hit in Physics.SphereCastAll (transform.position, 15f, transform.forward)) {
                 Rigidbody rb = hit.collider.gameObject.GetComponent<Rigidbody> ();
                 if (rb != null)
-                    rb.AddExplosionForce (250f, transform.position, 15f);
+                    rb.AddExplosionForce (explosionForce, transform.position, 15f);
             }
 
             GameObject explosion = Instantiate (explosionVFX, transform.position, transform.rotation);
