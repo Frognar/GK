@@ -1,6 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+/**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   
+ */
 public class SoundPlayer : MonoBehaviour {
 
     SoundManager soundManager;

@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.VFX;
 
+/**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   Anna Mach - ?
+ */
 public class Enemy : MonoBehaviour, ITakeDamage, IHavePiksels, IGiveExp {
     [Header ("Health")]
     [SerializeField] protected int maxHealth = 100;

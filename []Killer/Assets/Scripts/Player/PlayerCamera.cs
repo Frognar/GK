@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+/**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   
+ */
 public class PlayerCamera : MonoBehaviour {
     private Transform playerBody;
     private float xRotation = 0f;

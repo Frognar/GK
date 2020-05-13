@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.Audio;
 using Random = UnityEngine.Random;
 
+/**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   
+ */
 [System.Serializable]
 public class SoundEvent {
 

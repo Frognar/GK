@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+/**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   
+ */
 public class MouseInput : MonoBehaviour {
     private float mouseSensitivity = 100f;
     public Slider mouseSensitivitySlider;

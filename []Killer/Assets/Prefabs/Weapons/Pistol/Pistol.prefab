@@ -322,6 +322,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunPattern: {fileID: 11400000, guid: abad40f3383d0c44f860782db6e45211, type: 2}
+  impactEffectPrefab: {fileID: 3040826003949266460, guid: 7ca2ebfe6c3c761478778b03d929aced,
+    type: 3}
 --- !u!114 &297338814057441301
 MonoBehaviour:
   m_ObjectHideFlags: 0

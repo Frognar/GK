@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Author:          Anna Mach
+ * Collaborators:   Sebastian Przyszlak - skrócenie kodu, poprawki, podział na funkcje
+ */
 public class EnemyCubeMaster : Enemy
 {
     public BoxCollider mainCollider;

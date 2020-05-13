@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   
+ */
 public class EnemyAttack : MonoBehaviour {
     [Header ("Attack")]
     [SerializeField] private float attackRadius = 25f;

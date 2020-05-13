@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   
+ */
 public class GameManager : MonoBehaviour {
     #region Singleton
     public static GameManager instance;

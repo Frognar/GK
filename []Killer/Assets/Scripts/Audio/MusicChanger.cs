@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   
+ */
 public class MusicChanger : MonoBehaviour {
 
     private List<Collider> inCollider = new List<Collider> ();

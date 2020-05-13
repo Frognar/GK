@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Anna Mach 12.05.2020
+/**
+ * Author:          Anna Mach
+ * Date:            12.05.2020
+ * Collaborators:   
+ */
 public class Teleporter : MonoBehaviour
 {
     public GameObject placeToTeleport;

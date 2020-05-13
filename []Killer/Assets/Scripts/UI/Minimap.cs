@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+/**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   
+ */
 public class Minimap : MonoBehaviour
 {
     private Transform player;

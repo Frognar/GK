@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4978410182068398028}
   m_Layer: 13
-  m_Name: GroundCheck
+  m_Name: GroundChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -415,7 +415,6 @@ GameObject:
   - component: {fileID: 5452773214246228603}
   - component: {fileID: 6424398760950874748}
   - component: {fileID: 5117825815223774686}
-  - component: {fileID: 401284237202078136}
   - component: {fileID: 1112112091057347977}
   - component: {fileID: 6526164105243058601}
   m_Layer: 11
@@ -486,8 +485,8 @@ Rigidbody:
   m_GameObject: {fileID: 7114045847996367382}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 6
-  m_AngularDrag: 1
+  m_Drag: 0
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
@@ -598,26 +597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e780111e85c8104ca07a7211de9d439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
---- !u!114 &401284237202078136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7114045847996367382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 842e5448278b9134a8a7b657d6668d62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 3
-  gravityForce: -60
-  groundCheck: {fileID: 4978410182068398028}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 1281
-  groundCheckHalfExtents: {x: 5, y: 1, z: 1}
+  moveStats: {fileID: 11400000, guid: f16aa0b2764ce854bae24180b170897a, type: 2}
 --- !u!114 &1112112091057347977
 MonoBehaviour:
   m_ObjectHideFlags: 0

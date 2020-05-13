@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
 
+/**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   Anna Mach - system pikseli
+ *                  Mateusz Chłopek - system levelowania
+ */
 public class Player : MonoBehaviour, ITakeDamage {
     private MouseInput mouseInput;
     private KeyboardInput keyboardInput;

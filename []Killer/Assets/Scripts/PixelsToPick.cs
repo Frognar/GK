@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
 
+
+/**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   
+ */
 public class PixelsToPick : MonoBehaviour
 {
     private int pixels;

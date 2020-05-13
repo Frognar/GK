@@ -1,6 +1,10 @@
 ﻿using UnityEngine.SceneManagement;
 using UnityEngine;
 
+/**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   
+ */
 public class PauseManager : MonoBehaviour {
     #region Singleton
     public static PauseManager instance;

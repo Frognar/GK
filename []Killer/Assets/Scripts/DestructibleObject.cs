@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.VFX;
 
+/**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   
+ */
 public class DestructibleObject : MonoBehaviour, ITakeDamage, IHavePiksels
 {
     [Header("Health")]

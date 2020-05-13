@@ -18,6 +18,7 @@ MonoBehaviour:
   impactForce: 1000
   bulletsCount: 10
   shotInacurracy: 7
-  shotSoundName: ShotgunShot
+  shotSoundName: 2
   impactEffectPrefab: {fileID: 7480268875133555099, guid: 57e3e97f6e345da48be61c414b712b0e,
     type: 3}
+  pixelCost: 10

@@ -1,22 +1,20 @@
 ﻿using UnityEngine;
 
+/**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   
+ */
 public class KeyboardInput : MonoBehaviour {
     private IMove move;
-    private HeightController jumpController;
 
     private void OnDisable () {
-        move.SetMoveVector (Vector3.zero);
-        move.SetJumpVector (Vector3.zero);
+        move.SetDirectionVector (Vector3.zero);
     }
 
     private void Awake () {
         move = GetComponent<IMove> ();
         if (move == null)
             Debug.LogError ("No movement script in Player!");
-
-        jumpController = GetComponent<HeightController> ();
-        if (jumpController == null)
-            Debug.LogError ("No jump controller script in Player!");
     }
 
     private void PlayerMovement () {
@@ -24,10 +22,11 @@ public class KeyboardInput : MonoBehaviour {
         float z = Input.GetAxis ("Vertical");
 
         Vector3 direction = transform.right * x + transform.forward * z;
-        move.SetMoveVector (direction);
+        move.SetDirectionVector (direction);
 
-        Vector3 jump = jumpController.HeightControl (Input.GetButtonDown ("Jump"));
-        move.SetJumpVector (jump);
+        if (Input.GetKeyDown (KeyCode.Space)) {
+            move.Jump ();
+        }
     }
 
     private void Update () {

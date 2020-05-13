@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+/**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   
+ */
 public class WeaponSwitching : MonoBehaviour
 {
     private int selectedWeapon = 0;

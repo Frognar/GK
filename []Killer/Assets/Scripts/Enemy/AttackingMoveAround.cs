@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+/**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   
+ */
 public class AttackingMoveAround : MoveAround {
 
     [SerializeField] private float lookRadius = 60f;
@@ -17,7 +21,7 @@ public class AttackingMoveAround : MoveAround {
         Vector3 direction = enemyAttack.TargetPosition - this.transform.position;
         float distance = direction.magnitude;
 
-        move.SetMoveVector (Vector3.zero);
+        move.SetDirectionVector (Vector3.zero);
 
         if (distance <= lookRadius) {
             Rotate (direction.x, direction.z);
@@ -29,12 +33,12 @@ public class AttackingMoveAround : MoveAround {
             } else {
                 direction.Normalize ();
                 direction.y = 0f;
-                move.SetMoveVector (direction);
+                move.SetDirectionVector (direction);
             }
         } else
             RandomMovement ();
 
-        ControllHeight ();
+        RandomJump ();
     }
 
     public void OnDrawGizmosSelected () {

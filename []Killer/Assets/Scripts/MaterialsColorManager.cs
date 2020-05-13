@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 /**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   
+ * 
  * Allow extract base color from material, avg color from texture and create gradient color.
  * Used for calculate VFX gradient color.
  */

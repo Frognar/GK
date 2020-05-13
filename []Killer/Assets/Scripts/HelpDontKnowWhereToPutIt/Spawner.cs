@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Author:          Anna Mach
+ * Collaborators:   
+ */
 public class Spawner : MonoBehaviour
 {
     public Transform spawnedContainer;

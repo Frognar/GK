@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+/**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   
+ */
 public class Billboard : MonoBehaviour
 {
     private Transform playerCamera;

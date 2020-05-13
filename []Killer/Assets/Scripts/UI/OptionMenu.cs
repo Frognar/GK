@@ -3,6 +3,10 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
+/**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   
+ */
 public class OptionMenu : MonoBehaviour {
     public AudioMixer audioMixer;
     public TMPro.TMP_Dropdown resolutionDropdown;

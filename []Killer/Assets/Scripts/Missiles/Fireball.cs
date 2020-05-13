@@ -2,6 +2,10 @@
 using UnityEngine.VFX;
 using System.Collections;
 
+/**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   
+ */
 public class Fireball : MonoBehaviour {
     public GameObject explosionVFX;
     [SerializeField] private int damage;
@@ -36,10 +40,10 @@ public class Fireball : MonoBehaviour {
             if (hittedObject != null)
                 hittedObject.TakeDamage (damage);
 
-            foreach (RaycastHit hit in Physics.SphereCastAll (transform.position, 15f, transform.forward)) {
+            foreach (RaycastHit hit in Physics.SphereCastAll (transform.position, 10f, transform.forward)) {
                 Rigidbody rb = hit.collider.gameObject.GetComponent<Rigidbody> ();
                 if (rb != null)
-                    rb.AddExplosionForce (explosionForce, transform.position, 15f);
+                    rb.AddExplosionForce (explosionForce, transform.position, 5f);
             }
 
             GameObject explosion = Instantiate (explosionVFX, transform.position, transform.rotation);

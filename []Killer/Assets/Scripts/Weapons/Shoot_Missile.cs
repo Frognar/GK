@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   
+ */
 public class Shoot_Missile : MonoBehaviour, IShoot {
     private float fireRate = 3f;
     [SerializeField] private LayerMask targetList;

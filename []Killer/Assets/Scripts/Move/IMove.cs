@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 
+/**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   
+ */
 public interface IMove {
-    void SetMoveVector (Vector3 moveVector);
-    void SetJumpVector (Vector3 jumpVector);
+    void SetDirectionVector (Vector3 directionVector);
+    void Jump ();
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7980538046591152591}
   m_Layer: 13
-  m_Name: GroundCheck
+  m_Name: GroundChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -170,8 +170,8 @@ Rigidbody:
   m_GameObject: {fileID: 6341320122158600986}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 6
-  m_AngularDrag: 1
+  m_Drag: 0
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e780111e85c8104ca07a7211de9d439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  moveStats: {fileID: 11400000, guid: f16aa0b2764ce854bae24180b170897a, type: 2}
 --- !u!114 &8635396989978370719
 MonoBehaviour:
   m_ObjectHideFlags: 0

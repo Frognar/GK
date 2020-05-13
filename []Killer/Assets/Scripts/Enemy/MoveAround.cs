@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 
+/**
+ * Author:          Anna Mach
+ * Collaborators:   Sebastian Przyszlak - wykorzystanie IMove
+ */
 public class MoveAround : MonoBehaviour {
     protected IMove move;
     [SerializeField] private float rayCastDistance = 10f;
@@ -8,7 +12,6 @@ public class MoveAround : MonoBehaviour {
     [SerializeField] private float angularSpeed = 10f;
     private float movementTimeRemaining = 0f;
 
-    private HeightController heightController;
     [SerializeField] private bool allowJump = false;
     private bool jumpNow = false;
     [SerializeField] private float timeBeetwenJumps = 5f;
@@ -18,11 +21,7 @@ public class MoveAround : MonoBehaviour {
     protected virtual void Awake () {
         move = GetComponent<IMove> ();
         if (move == null)
-            Debug.LogError ("No moveVelocity script on NPC [" + this.name + "]");
-
-        heightController = GetComponent<HeightController> ();
-        if (heightController == null)
-            Debug.LogError ("No jumpController script on NPC [" + this.name + "]");
+            Debug.LogError ("No IMove script on NPC [" + this.name + "]");
     }
 
     protected bool ChangePath () {
@@ -45,7 +44,7 @@ public class MoveAround : MonoBehaviour {
 
     protected void RandomMovement () {
         if (movementTimeRemaining <= 0f) {
-            move.SetMoveVector (Vector3.zero);
+            move.SetDirectionVector (Vector3.zero);
             System.Random rnd = new System.Random ((int) (transform.position.x + transform.position.y + transform.position.z + Time.time));
             int fate = rnd.Next (0, 100);
             if (fate > 10 & fate < 35)
@@ -60,26 +59,27 @@ public class MoveAround : MonoBehaviour {
             Vector3 movementVector = transform.forward;
             movementVector.y = 0f;
 
-            move.SetMoveVector (movementVector);
+            move.SetDirectionVector (movementVector);
         }
     }
 
-    protected void ControllHeight () {
-        Vector3 jump = heightController.HeightControl (false);
+    protected void RandomJump () {
         if (allowJump) {
             if (Time.time >= lastJampTime) {
                 jumpNow = Random.Range (0f, 1f) < jumpProbability;
                 lastJampTime = Time.time + timeBeetwenJumps;
-            } else
+            } else {
                 jumpNow = false;
-            jump = heightController.HeightControl (jumpNow);
+            }
+            
+            if (jumpNow) {
+                move.Jump ();
+            }
         }
-        jump.x = jump.z = 0f;
-        move.SetJumpVector (jump);
     }
 
     protected virtual void Update () {
         RandomMovement ();
-        ControllHeight ();
+        RandomJump ();
     }
 }

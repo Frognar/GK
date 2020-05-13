@@ -1,51 +1,27 @@
 ﻿using UnityEngine.VFX;
 using UnityEngine;
 
+/**
+ * Author:          Sebastian Przyszlak
+ * Collaborators:   
+ */
 public class Shoot_Gun: MonoBehaviour, IShoot
 {
     [SerializeField] private GunPattern gunPattern;
 
-    private int damage = 35;
-    private float range = 150f;
-    private float fireRate = 3f;
-    public float FireRate {
-        get {
-            return 1f / fireRate;
-        }
-    }
-    private float impactForce = 60f;
-    private int bulletsCount = 1;
-    public int PixelCost {
-        get {
-            return bulletsCount;
-        }
-    }
-    private float shotInacurracy = .5f;
     private Transform raycastFrom;
 
-    private GameObject impactEffectPrefab;
+    [SerializeField] private GameObject impactEffectPrefab;
     private VisualEffect shotEffect;
     private Animator animator;
 
-    private string shotSoundName = "RifleShot";
     private SoundPlayer soundPlayer;
 
-    // Set up weapon stats from ScriptableObject
-    private void SetUpGun()
-    {
-        damage = gunPattern.damage;
-        range = gunPattern.range;
-        fireRate = gunPattern.fireRate;
-        impactForce = gunPattern.impactForce;
-        bulletsCount = gunPattern.bulletsCount;
-        shotInacurracy = gunPattern.shotInacurracy;
-        shotSoundName = gunPattern.shotSoundName;
-        impactEffectPrefab = gunPattern.impactEffectPrefab;
-    }
+    public float FireRate => 1f / gunPattern.FireRate;
+
+    public int PixelCost => gunPattern.PixelCost;
 
     private void Start () {
-        SetUpGun ();
-
         soundPlayer = GetComponent<SoundPlayer> ();
         if (soundPlayer == null)
             Debug.LogWarning ("No soundPlayer in gun!");
@@ -66,28 +42,28 @@ public class Shoot_Gun: MonoBehaviour, IShoot
     private void ShotEffectPlay () {
         animator?.SetTrigger ("Shot");
         shotEffect?.SendEvent ("OnPlay");
-        soundPlayer?.PlaySoundEvent(shotSoundName);
+        soundPlayer?.PlaySoundEvent(gunPattern.ShotSoundName.ToString());
     }
 
     public void Shoot () {
         ShotEffectPlay ();
 
-        for (int i = 0; i < bulletsCount; i++) {
-            Vector3 shotInacurracyVector = new Vector3 (Random.Range (-shotInacurracy, shotInacurracy),
-                                                        Random.Range (-shotInacurracy, shotInacurracy),
-                                                        Random.Range (-shotInacurracy, shotInacurracy));
+        for (int i = 0; i < gunPattern.BulletsCount; i++) {
+            Vector3 shotInacurracyVector = new Vector3 (Random.Range (-gunPattern.ShotInacurracy, gunPattern.ShotInacurracy),
+                                                        Random.Range (-gunPattern.ShotInacurracy, gunPattern.ShotInacurracy),
+                                                        Random.Range (-gunPattern.ShotInacurracy, gunPattern.ShotInacurracy));
 
-            Vector3 direction = raycastFrom.forward * range + shotInacurracyVector;
+            Vector3 direction = raycastFrom.forward * gunPattern.Range + shotInacurracyVector;
 
-            if (Physics.Raycast (raycastFrom.position, direction, out RaycastHit hitInfo, range)) {
+            if (Physics.Raycast (raycastFrom.position, direction, out RaycastHit hitInfo, gunPattern.Range)) {
                 if (hitInfo.rigidbody != null)
-                    hitInfo.rigidbody.AddForce (-hitInfo.normal * impactForce / bulletsCount);
+                    hitInfo.rigidbody.AddForce (-hitInfo.normal * gunPattern.ImpactForce / gunPattern.BulletsCount);
 
                 SpawnImpactEffect (hitInfo);
 
                 ITakeDamage hittedObject = hitInfo.transform.GetComponent<ITakeDamage> ();
                 if (hittedObject != null && !hitInfo.transform.CompareTag("Player"))
-                    hittedObject.TakeDamage (damage / bulletsCount);
+                    hittedObject.TakeDamage (gunPattern.Damage / gunPattern.BulletsCount);
 
             }
         }
