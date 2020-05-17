@@ -2,7 +2,7 @@
 
 /**
  * Author:          Sebastian Przyszlak
- * Collaborators:   Anna Mach - system pikseli
+ * Collaborators:   Anna Mach - system pikseli, potrzebne do zapisu danych gettery i settery ( level )
  *                  Mateusz Chłopek - system levelowania
  */
 public class Player : MonoBehaviour, ITakeDamage {
@@ -17,6 +17,8 @@ public class Player : MonoBehaviour, ITakeDamage {
     [SerializeField] private int expToNextLevel = 100;
     [SerializeField] private int exp = 0;
     [SerializeField] private int level = 1;
+
+    public int Level { get; set; }
 
     public int Pixels {
         get {
