@@ -14,6 +14,9 @@ public class Spawner : MonoBehaviour
     public float timeBetweenSpawns = 10;
     public int maxObjectsSpawned = 10;
 
+    public bool spawnOnlyOneGroup = false;
+    private int noOfSpawned = 0;
+
     private float timer = 0;
 
     private void Start()
@@ -35,6 +38,14 @@ public class Spawner : MonoBehaviour
             if(spawnedContainer.childCount < maxObjectsSpawned)
             {
                 Instantiate(prefabToSpawn, transform.position, Quaternion.identity, spawnedContainer);
+                if (spawnOnlyOneGroup)
+                {
+                    noOfSpawned += 1;
+                    if(noOfSpawned >= maxObjectsSpawned)
+                    {
+                        this.enabled = false;
+                    }
+                }
             }
         }
     }
