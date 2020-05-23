@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-
+using UnityEngine.UI;
+using System.Collections.Generic;
 /**
  * Author:          Sebastian Przyszlak
  * Collaborators:   Anna Mach - system pikseli, potrzebne do zapisu danych gettery i settery ( level )
@@ -9,6 +10,8 @@ public class Player : MonoBehaviour, ITakeDamage {
     private MouseInput mouseInput;
     private KeyboardInput keyboardInput;
     private SoundPlayer soundPlayer;
+
+    private Dictionary<char, Ability> abilities;
 
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int health = 100;
@@ -86,6 +89,8 @@ public class Player : MonoBehaviour, ITakeDamage {
     public GUIBar healthBar;
     public GUIBar pixelsBar;
     public GUIBar expBar;
+    public Text healthRecoverCdText;
+    public Text ammoRecoverCdText;
 
     private void Awake () {
         mouseInput = GetComponent<MouseInput> ();
@@ -95,6 +100,14 @@ public class Player : MonoBehaviour, ITakeDamage {
 
     void Start () {
         ResetPlayer ();
+    }
+
+    void Update()
+    {
+        foreach(KeyValuePair <char, Ability> ability in abilities)
+        {
+            ability.Value.Update(Time.deltaTime);
+        }
     }
 
     public void TakeDamage (int damage) {
@@ -133,6 +146,15 @@ public class Player : MonoBehaviour, ITakeDamage {
         Exp = 0;
         InputEnabled (true);
         isAlive = true;
+
+        abilities = new Dictionary<char, Ability>();
+        abilities['1'] = new RecoverHealth(this);
+        abilities['2'] = new RecoverPixels(this);
+    }
+
+    public void UseAbility(char pressedKey)
+    {
+        abilities[pressedKey].UseAbility();
     }
 
     public void AddExp (int newExp) {

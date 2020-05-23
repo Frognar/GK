@@ -31,5 +31,19 @@ public class KeyboardInput : MonoBehaviour {
 
     private void Update () {
         PlayerMovement ();
+        CheckForAbilities();
+    }
+
+    private void CheckForAbilities()
+    {
+        //czy da się tego gracza "zdobyć" jakoś inaczej?
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            FindObjectOfType<Player>().UseAbility('1');
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            FindObjectOfType<Player>().UseAbility('2');
+        }
     }
 }
