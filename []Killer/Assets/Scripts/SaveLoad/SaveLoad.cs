@@ -13,11 +13,17 @@ public class SaveLoad : MonoBehaviour
     private string filePath = "68656c6c6f7468657265.dat";
     public DataToSaveLoad data;
 
+    private void Start()
+    {
+        Load();
+    }
+
     public void Save()
     {
         StreamWriter file = new StreamWriter(filePath, true);
         if(file != null)
         {
+
             Dictionary<int, int> dataSave = data.GetAllDataAsDictionary();
             foreach (KeyValuePair<int, int> item in dataSave)
             {
@@ -57,6 +63,7 @@ public class SaveLoad : MonoBehaviour
             }
 
             data.SetAllDataFromDictionary(dataLoad);
+            data.PutIntoGameAllData();
         }
         else
         {

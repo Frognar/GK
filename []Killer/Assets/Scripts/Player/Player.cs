@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 /**
  * Author:          Sebastian Przyszlak
- * Collaborators:   Anna Mach - system pikseli, potrzebne do zapisu danych gettery i settery ( level )
+ * Collaborators:   Anna Mach - system pikseli, potrzebne do zapisu danych gettery i settery i zmiany
  *                  Mateusz Chłopek - system levelowania
  */
 public class Player : MonoBehaviour, ITakeDamage {
@@ -18,10 +18,12 @@ public class Player : MonoBehaviour, ITakeDamage {
     [SerializeField] int maxPixels = 100;
     [SerializeField] int pixels = 100;
     [SerializeField] private int expToNextLevel = 100;
-    [SerializeField] private int exp = 0;
-    [SerializeField] private int level = 1;
+    [SerializeField] private int exp;
+    [SerializeField] private int level;
 
-    public int Level { get; set; }
+    public GameObject saveLoadData;
+
+    public int Level { get { return level; } set { level = value; } }
 
     public int Pixels {
         get {
@@ -99,7 +101,7 @@ public class Player : MonoBehaviour, ITakeDamage {
     }
 
     void Start () {
-        ResetPlayer ();
+        ResetPlayerWithoutExp();
     }
 
     void Update()
@@ -135,21 +137,30 @@ public class Player : MonoBehaviour, ITakeDamage {
         InputEnabled (false);
         isAlive = false;
     }
+    
+    public void ResetPlayerWithoutExp()
+    {
 
-    public void ResetPlayer () {
-        healthBar.SetMaxValue (maxHealth);
-        pixelsBar.SetMaxValue (maxPixels);
-        expBar.SetMaxValue (expToNextLevel);
+        healthBar.SetMaxValue(maxHealth);
+        pixelsBar.SetMaxValue(maxPixels);
+        expBar.SetMaxValue(expToNextLevel);
 
         Health = maxHealth;
         Pixels = maxPixels;
-        Exp = 0;
-        InputEnabled (true);
+
+        InputEnabled(true);
         isAlive = true;
 
         abilities = new Dictionary<char, Ability>();
         abilities['1'] = new RecoverHealth(this);
         abilities['2'] = new RecoverPixels(this);
+    }
+
+    public void ResetPlayer () {
+        ResetPlayerWithoutExp();
+        Exp = 0;
+
+        saveLoadData.GetComponent<DataToSaveLoad>().IncreaseMaxEnemiesAttacking();
     }
 
     public void UseAbility(char pressedKey)

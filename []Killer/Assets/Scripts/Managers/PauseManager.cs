@@ -35,6 +35,7 @@ public class PauseManager : MonoBehaviour {
     public static bool gameIsPaused;
     public GameObject pauseMenuUI;
     public GameObject optionMenuUI;
+    public GameObject saveLoadThings;
 
     public void Resume () {
         PlayerManager.instance.player.GetComponent<Player> ()?.InputEnabled (true);
@@ -44,6 +45,12 @@ public class PauseManager : MonoBehaviour {
         Time.timeScale = 1f;
         pauseMenuUI.SetActive (false);
         optionMenuUI.SetActive (false);
+    }
+
+    public void SaveLevel()
+    {
+        saveLoadThings.GetComponent<DataToSaveLoad>().RefreshStoredData();
+        saveLoadThings.GetComponent<SaveLoad>().Save();
     }
 
     void Pause () {

@@ -50,6 +50,11 @@ public class DataToSaveLoad : MonoBehaviour
     public void IncreaseMaxEnemiesAttacking()
     {
         noOfEnemyAttacking++;
+
+        foreach (GameObject spawner in spawnersEnemiesAttacking)
+        {
+            spawner.GetComponent<Spawner>().maxObjectsSpawned = noOfEnemyAttacking;
+        }
     }
 
     public Dictionary<int, int> GetAllDataAsDictionary()
