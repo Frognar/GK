@@ -20,6 +20,8 @@ public class DataToSaveLoad : MonoBehaviour
     //Source of data
     public GameObject player;
     public List<GameObject> spawnersEnemiesAttacking = new List<GameObject>();
+    public GameObject babySpawner;
+    public GameObject mommySpawner;
 
     //What to save
     private int level;
@@ -40,6 +42,17 @@ public class DataToSaveLoad : MonoBehaviour
     {
         player.GetComponent<Player>().Level = level;
         player.GetComponent<Player>().Exp = experience;
+
+        if(wasBaby == 1)
+        {
+            babySpawner.GetComponent<Spawner>().enabled = true;
+            mommySpawner.GetComponent<Spawner>().enabled = false;
+        }
+        else
+        {
+            babySpawner.GetComponent<Spawner>().enabled = false;
+            mommySpawner.GetComponent<Spawner>().enabled = true;
+        }
 
         foreach(GameObject spawner in spawnersEnemiesAttacking)
         {

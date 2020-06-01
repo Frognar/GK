@@ -20,6 +20,8 @@ public class SaveLoad : MonoBehaviour
 
     public void Save()
     {
+        File.WriteAllText(filePath, string.Empty);
+
         StreamWriter file = new StreamWriter(filePath, true);
         if(file != null)
         {
@@ -27,7 +29,7 @@ public class SaveLoad : MonoBehaviour
             Dictionary<int, int> dataSave = data.GetAllDataAsDictionary();
             foreach (KeyValuePair<int, int> item in dataSave)
             {
-                file.WriteLine(item.Key + ' ' + item.Value);
+                file.WriteLine(item.Key.ToString() + ' ' + item.Value.ToString());
             }
 
             file.Close();

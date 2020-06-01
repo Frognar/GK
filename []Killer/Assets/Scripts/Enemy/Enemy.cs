@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour, ITakeDamage, IHavePiksels, IGiveExp {
     [Header ("Health")]
     [SerializeField] protected int maxHealth = 100;
     [SerializeField] protected int health = 100;
-    private int Health {
+    protected int Health {
         get {
             return health;
         }
@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour, ITakeDamage, IHavePiksels, IGiveExp {
             GetComponent<EnemyCubeMaster> ().DestroyCube ();
     }
 
-    private void Die () {
+    protected virtual void Die () {
         CreateDeathEffect ();
         CreatePixelsToPick ();
         GiveExp ();
@@ -63,7 +63,7 @@ public class Enemy : MonoBehaviour, ITakeDamage, IHavePiksels, IGiveExp {
         Destroy (gameObject, .1f);
     }
 
-    private void CreateDeathEffect () {
+    protected void CreateDeathEffect () {
         GameObject deathEffect = Instantiate (deathEffectGO, transform.position + new Vector3 (0f, .5f, 0f), transform.rotation);
         VisualEffect death = deathEffect.GetComponent<VisualEffect> ();
         if (death != null) {
@@ -78,7 +78,7 @@ public class Enemy : MonoBehaviour, ITakeDamage, IHavePiksels, IGiveExp {
         Destroy (deathEffect, 15f);
     }
 
-    private void CreatePixelsToPick () {
+    protected void CreatePixelsToPick () {
         GameObject pixelsToPixkGO = Instantiate (pixelsToPickPrefab, transform.position, Quaternion.identity);
         PixelsToPick pixelsToPick = pixelsToPixkGO.GetComponent<PixelsToPick> ();
         if (pixelsToPick != null)
