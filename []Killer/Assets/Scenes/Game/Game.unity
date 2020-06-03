@@ -7716,6 +7716,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   babySpawner: {fileID: 712202269}
   data: {fileID: 418284202}
+  cam: {fileID: 8360723347067479947}
+  player: {fileID: 8360723347472737917}
 --- !u!1 &641434462
 GameObject:
   m_ObjectHideFlags: 0

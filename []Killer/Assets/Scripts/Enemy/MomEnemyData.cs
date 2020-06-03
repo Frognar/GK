@@ -6,4 +6,6 @@ public class MomEnemyData: MonoBehaviour
 {
     public GameObject babySpawner;
     public GameObject data;
+    public GameObject cam;
+    public GameObject player;
 }

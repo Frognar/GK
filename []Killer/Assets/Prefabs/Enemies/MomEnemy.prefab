@@ -416,6 +416,7 @@ GameObject:
   - component: {fileID: 1112112091057347977}
   - component: {fileID: 6526164105243058601}
   - component: {fileID: -5490316876650118285}
+  - component: {fileID: 8023519117331381994}
   m_Layer: 11
   m_Name: MomEnemy
   m_TagString: Enemy
@@ -687,6 +688,38 @@ MonoBehaviour:
   pixelsToPickPrefab: {fileID: 8645143502130818624, guid: b554c91e28f35184fa8ab03c2a086bce,
     type: 3}
   exp: 10
+--- !u!328 &8023519117331381994
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7114045847996367382}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: 49a70f5a634c07b47a81cf7a70554bd4, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 0}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: _MainTex
+  m_RenderMode: 1
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 1
+  m_TargetAudioSources: []
+  m_DirectAudioVolumes: []
+  m_Url: 
+  m_EnabledAudioTracks: 
+  m_DirectAudioMutes: 
+  m_ControlledAudioTrackCount: 0
+  m_PlayOnAwake: 0
+  m_SkipOnDrop: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
 --- !u!1 &7114045848691001710
 GameObject:
   m_ObjectHideFlags: 0
