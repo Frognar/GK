@@ -15,7 +15,7 @@ public class SaveLoad : MonoBehaviour
 
     private void Start()
     {
-        Load();
+        //Load();
     }
 
     public void Save()

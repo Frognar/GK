@@ -3,7 +3,7 @@ using UnityEngine;
 
 /**
  * Author:          Sebastian Przyszlak
- * Collaborators:   
+ * Collaborators:   Anna Mach - save, loadData
  */
 public class PauseManager : MonoBehaviour {
     #region Singleton
@@ -51,6 +51,11 @@ public class PauseManager : MonoBehaviour {
     {
         saveLoadThings.GetComponent<DataToSaveLoad>().RefreshStoredData();
         saveLoadThings.GetComponent<SaveLoad>().Save();
+    }
+
+    public void LoadData()
+    {
+        saveLoadThings.GetComponent<SaveLoad>().Load();
     }
 
     void Pause () {
