@@ -5,11 +5,14 @@ using UnityEngine;
  * Author:          Sebastian Przyszlak
  * Collaborators:   
  */
-[RequireComponent (typeof(SoundPlayer))]
 public class OnMouseOver : MonoBehaviour, IPointerEnterHandler
 {
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        GetComponent<SoundPlayer>().PlaySoundEvent("OnMouseOver");
+    SoundManager soundManager;
+
+    private void Start () {
+        soundManager = SoundManager.instance;
+    }
+    public void OnPointerEnter(PointerEventData eventData) {
+        soundManager.PlaySoundOnDefaultSource ("OnMouseOver");
     }
 }

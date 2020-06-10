@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -756,7 +756,6 @@ GameObject:
   - component: {fileID: 247021139}
   - component: {fileID: 247021138}
   - component: {fileID: 247021141}
-  - component: {fileID: 247021142}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -896,18 +895,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23504e7a21cbe3c498348367a454c9ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &247021142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247021136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a31e9119a97e60943a29227954c68523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &298940284
@@ -1608,7 +1595,6 @@ GameObject:
   - component: {fileID: 668757021}
   - component: {fileID: 668757020}
   - component: {fileID: 668757023}
-  - component: {fileID: 668757024}
   m_Layer: 5
   m_Name: OptionButton
   m_TagString: Untagged
@@ -1748,18 +1734,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23504e7a21cbe3c498348367a454c9ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &668757024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 668757018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a31e9119a97e60943a29227954c68523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &683335496
@@ -4650,7 +4624,6 @@ GameObject:
   - component: {fileID: 1691215890}
   - component: {fileID: 1691215889}
   - component: {fileID: 1691215892}
-  - component: {fileID: 1691215893}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -4801,18 +4774,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23504e7a21cbe3c498348367a454c9ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1691215893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1691215887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a31e9119a97e60943a29227954c68523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1694612061
@@ -5891,7 +5852,6 @@ GameObject:
   - component: {fileID: 2050599124}
   - component: {fileID: 2050599123}
   - component: {fileID: 2050599126}
-  - component: {fileID: 2050599127}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -6020,18 +5980,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23504e7a21cbe3c498348367a454c9ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2050599127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2050599121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a31e9119a97e60943a29227954c68523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2051735555
