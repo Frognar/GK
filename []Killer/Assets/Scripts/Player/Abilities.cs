@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+
+/**
+ * Author:          Mateusz Chłopek
+ * Date:            23.05.2020
+ * Collaborators:   
+ */
 public abstract class Ability
 {
     //czas wyrażony w sekundach

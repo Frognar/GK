@@ -2,7 +2,7 @@
 
 /**
  * Author:          Sebastian Przyszlak
- * Collaborators:   
+ * Collaborators:   Mateusz Chłopek - wybieranie umiejętności
  */
 public class KeyboardInput : MonoBehaviour {
     private IMove move;

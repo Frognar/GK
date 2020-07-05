@@ -4,7 +4,7 @@ using System.Collections.Generic;
 /**
  * Author:          Sebastian Przyszlak
  * Collaborators:   Anna Mach - system pikseli, potrzebne do zapisu danych gettery i settery i zmiany
- *                  Mateusz Chłopek - system levelowania
+ *                  Mateusz Chłopek - system levelowania i umiejętności
  */
 public class Player : MonoBehaviour, ITakeDamage {
     private MouseInput mouseInput;
