@@ -64,8 +64,8 @@ public class EnemyMom : Enemy
         transform.position = new Vector3(0f, 0f, 0f);
 
         //Player can move again
-        player.GetComponent<MouseInput>().enabled = false;
-        player.GetComponent<KeyboardInput>().enabled = false;
+        player.GetComponent<MouseInput>().enabled = true;
+        player.GetComponent<KeyboardInput>().enabled = true;
 
         babiesSpawner.GetComponent<Spawner>().enabled = true;
         data.WasBaby = 1;        
