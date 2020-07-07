@@ -83,7 +83,7 @@ public class RecoverPixels : Ability
 
     public override void UseAbility()
     {
-        if (leftTime == 0.0f && player.Pixels > healthCost)
+        if (leftTime == 0.0f && player.Health > healthCost)
         {
             leftTime = cooldown;
 
