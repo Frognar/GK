@@ -156,7 +156,7 @@ MonoBehaviour:
   explosionVFX: {fileID: 5577325567762440293, guid: e9ff6e27e734b2f429d9aa682f079bd2,
     type: 3}
   damage: 35
-  explosionForce: 120
+  explosionForce: 30
 --- !u!114 &5027225830291608192
 MonoBehaviour:
   m_ObjectHideFlags: 0

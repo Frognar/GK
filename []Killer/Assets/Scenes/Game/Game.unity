@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 59696103f8efae4469093cf413875790,
     type: 2}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -17245,6 +17245,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: frogStatue
       objectReference: {fileID: 0}
+    - target: {fileID: 8476195339441670943, guid: b13bb6140bd52a44284886723ca1f8fb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d530efab8856e1e47aa5393f25c3a5fe, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b13bb6140bd52a44284886723ca1f8fb, type: 3}
 --- !u!1001 &1251787696
@@ -33014,7 +33019,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &8360723347374378798
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -33259,8 +33264,8 @@ Rigidbody:
   m_GameObject: {fileID: 8360723347472737917}
   serializedVersion: 2
   m_Mass: 5
-  m_Drag: 0
-  m_AngularDrag: 0
+  m_Drag: 1
+  m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
