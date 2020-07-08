@@ -67,13 +67,14 @@ public class SaveLoad : MonoBehaviour
 
             data.SetAllDataFromDictionary(dataLoad);
             data.PutIntoGameAllData();
+            Debug.Log(data.WasBaby);
+            OnLoadData(data.WasBaby);
         }
         else
         {
             Debug.LogError("Couldn't open file.");
         }
 
-        OnLoadData(data.WasBaby);
         file.Close();
     }
 }
