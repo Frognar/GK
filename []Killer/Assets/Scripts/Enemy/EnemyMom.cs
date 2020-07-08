@@ -68,7 +68,7 @@ public class EnemyMom : Enemy
         player.GetComponent<KeyboardInput>().enabled = true;
 
         babiesSpawner.GetComponent<Spawner>().enabled = true;
-        data.WasBaby = 1;        
+        data.WasBaby = true;        
 
         Destroy(gameObject, .1f);
     }

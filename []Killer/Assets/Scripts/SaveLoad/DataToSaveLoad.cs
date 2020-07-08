@@ -30,7 +30,17 @@ public class DataToSaveLoad : MonoBehaviour
     private int noOfEnemyAttacking = 0;
     private int wasBaby = 0;
 
-    public bool WasBaby { get; set; }
+    public bool WasBaby
+    {
+        get => wasBaby > 0;
+        set
+        {
+            if (value)
+                wasBaby = 1;
+            else
+                wasBaby = 0;
+        }
+    }
 
     public void ResetBaby()
     {
