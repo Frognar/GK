@@ -39,6 +39,7 @@ public class DataToSaveLoad : MonoBehaviour
                 wasBaby = 1;
             else
                 wasBaby = 0;
+            Debug.Log(wasBaby);
         }
     }
 

@@ -29,7 +29,7 @@ public class EnemyMom : Enemy
 
     private void OnDestroy()
     {
-        shouldBeDead = true;
+        SaveLoad.OnLoadData -= SaveLoadOnOnLoadData;
     }
 
     protected override void Start()
@@ -67,6 +67,7 @@ public class EnemyMom : Enemy
         cam.GetComponent<Volume>().weight = 0;
         // Cutscene start
         vidPlayer.Play();
+        shouldBeDead = true;
 
     }
 
@@ -83,7 +84,7 @@ public class EnemyMom : Enemy
         player.GetComponent<KeyboardInput>().enabled = true;
 
         babiesSpawner.GetComponent<Spawner>().enabled = true;
-        data.WasBaby = true;        
+        data.WasBaby = true;
 
         Destroy(gameObject, .1f);
     }
