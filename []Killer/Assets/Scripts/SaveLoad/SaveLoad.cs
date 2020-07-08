@@ -10,6 +10,7 @@ using UnityEngine;
  */
 public class SaveLoad : MonoBehaviour
 {
+    public static event Action<bool> OnLoadData = delegate {  };
     private string filePath = "68656c6c6f7468657265.dat";
     public DataToSaveLoad data;
 
@@ -72,6 +73,7 @@ public class SaveLoad : MonoBehaviour
             Debug.LogError("Couldn't open file.");
         }
 
+        OnLoadData(data.WasBaby);
         file.Close();
     }
 }

@@ -1,21 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 
 /**
  * Author:         Anna Mach
- * Collaborators:   
+ * Collaborators:  Sebastian Przyszlak - usuwanie obiektu, kiedy nie powinien być na mapie
  */
 
 public class EnemyMom : Enemy
 {
+    public static bool shouldBeDead = false;
     private Spawner babiesSpawner;
     private DataToSaveLoad data;
     private UnityEngine.Video.VideoPlayer vidPlayer;
     private GameObject player;
     private GameObject cam;
+
+    private void Awake()
+    {
+        if (shouldBeDead) Destroy(gameObject);
+        SaveLoad.OnLoadData += SaveLoadOnOnLoadData;
+    }
+
+    private void SaveLoadOnOnLoadData(bool obj)
+    {
+        if (obj) Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        shouldBeDead = true;
+    }
 
     protected override void Start()
     {

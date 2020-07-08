@@ -67,6 +67,12 @@ public class PauseManager : MonoBehaviour {
         pauseMenuUI.SetActive (true);
     }
 
+    public void ResetLevel(int sceneIndex)
+    {
+        EnemyMom.shouldBeDead = false;
+        LoadLevel(sceneIndex);
+    }
+    
     public void LoadLevel (int sceneIndex) {
         Time.timeScale = 1f;
         gameIsPaused = false;
