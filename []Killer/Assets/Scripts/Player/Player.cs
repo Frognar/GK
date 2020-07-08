@@ -140,7 +140,6 @@ public class Player : MonoBehaviour, ITakeDamage {
     
     public void ResetPlayerWithoutExp()
     {
-
         healthBar.SetMaxValue(maxHealth);
         pixelsBar.SetMaxValue(maxPixels);
         expBar.SetMaxValue(expToNextLevel);
@@ -154,13 +153,14 @@ public class Player : MonoBehaviour, ITakeDamage {
         abilities = new Dictionary<char, Ability>();
         abilities['1'] = new RecoverHealth(this);
         abilities['2'] = new RecoverPixels(this);
+
+        saveLoadData.GetComponent<DataToSaveLoad>().ResetBaby();
+        saveLoadData.GetComponent<DataToSaveLoad>().IncreaseMaxEnemiesAttacking();
     }
 
     public void ResetPlayer () {
         ResetPlayerWithoutExp();
         Exp = 0;
-
-        saveLoadData.GetComponent<DataToSaveLoad>().IncreaseMaxEnemiesAttacking();
     }
 
     public void UseAbility(char pressedKey)

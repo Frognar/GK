@@ -30,20 +30,27 @@ public class DataToSaveLoad : MonoBehaviour
     private int noOfEnemyAttacking = 0;
     private int wasBaby = 0;
 
-    public int WasBaby { get; set; }
+    public bool WasBaby { get; set; }
+
+    public void ResetBaby()
+    {
+        wasBaby = 0;
+        babySpawner.GetComponent<Spawner>().enabled = false;
+        mommySpawner.GetComponent<Spawner>().enabled = true;
+    }
 
     public void RefreshStoredData()
     {
         level = player.GetComponent<Player>().Level;
         experience = player.GetComponent<Player>().Exp;
     }
-    
+
     public void PutIntoGameAllData()
     {
         player.GetComponent<Player>().Level = level;
         player.GetComponent<Player>().Exp = experience;
 
-        if(wasBaby == 1)
+        if (wasBaby == 1)
         {
             babySpawner.GetComponent<Spawner>().enabled = true;
             mommySpawner.GetComponent<Spawner>().enabled = false;
@@ -54,7 +61,7 @@ public class DataToSaveLoad : MonoBehaviour
             mommySpawner.GetComponent<Spawner>().enabled = true;
         }
 
-        foreach(GameObject spawner in spawnersEnemiesAttacking)
+        foreach (GameObject spawner in spawnersEnemiesAttacking)
         {
             spawner.GetComponent<Spawner>().maxObjectsSpawned = noOfEnemyAttacking;
         }
@@ -84,7 +91,7 @@ public class DataToSaveLoad : MonoBehaviour
 
     public void SetAllDataFromDictionary(Dictionary<int, int> dataToGet)
     {
-        foreach (KeyValuePair<int,int> item in dataToGet)
+        foreach (KeyValuePair<int, int> item in dataToGet)
         {
             DataInfo key = (DataInfo)item.Key;
 
